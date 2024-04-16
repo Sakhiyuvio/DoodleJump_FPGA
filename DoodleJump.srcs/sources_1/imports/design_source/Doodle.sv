@@ -30,8 +30,8 @@ module  doodle
 	 
     parameter [9:0] Ball_X_Center=320;  // Center position on the X axis
     parameter [9:0] Ball_Y_Center=240;  // Center position on the Y axis
-    parameter [9:0] Ball_X_Min=0;       // Leftmost point on the X axis
-    parameter [9:0] Ball_X_Max=639;     // Rightmost point on the X axis
+    parameter [9:0] Ball_X_Min=160;       // Leftmost point on the X axis
+    parameter [9:0] Ball_X_Max=479;     // Rightmost point on the X axis
     parameter [9:0] Ball_Y_Min=199;       // Topmost point on the Y axis
     parameter [9:0] Ball_Y_Max=479;     // Bottommost point on the Y axis
     parameter [9:0] Ball_X_Step=1;      // Step size on the X axis
@@ -45,16 +45,7 @@ module  doodle
     logic [9:0] Ball_X_next;
     logic [9:0] Ball_Y_next;
     
-//    logic wait_state, update_frame; 
-    
-//    always_ff @(posedge frame_clk) 
-//    begin
-//        wait_state <= frame_clk;
-//    end 
-    
-//    assign update_frame = (frame_clk && !(wait_state)); 
-  
-  
+
     always_comb begin
         Ball_Y_Motion_next = Ball_Y_Motion; // set default motion to be same as prev clock cycle 
         Ball_X_Motion_next = Ball_X_Motion;
@@ -86,6 +77,7 @@ module  doodle
         if ( (BallY + BallS) >= Ball_Y_Max )  // Ball is at the bottom edge, BOUNCE!
         begin
             Ball_Y_Motion_next = (~ (Ball_Y_Step) + 1'b1);  // set to -1 via 2's complement.
+              
             
         end
         else if ( (BallY - BallS) <= Ball_Y_Min )  // Ball is at the top edge, BOUNCE!
@@ -95,28 +87,45 @@ module  doodle
        //fill in the rest of the motion equations here to bounce left and right
    
  // FIGURE OUT HOW TO crossover 
-        else if ((BallX + BallS) >= Ball_X_Max) begin // Ball is at the right edge
+        else if ((BallX - BallS) >= Ball_X_Max) begin // Ball is at the right edge
             //do something
 //            Ball_X_Motion_next = (~ (Ball_X_Step) + 1'b1);
-              Ball_X_Motion_next = (~(BallS) + 1'b1) + (~(BallX) + 1'b1) + Ball_X_Min; // keep the same way but start the ball at the left 
+//              Ball_X_Motion_next = (~(BallS) + 1'b1) + (~(BallX) + 1'b1) + Ball_X_Min; // keep the same way but start the ball at the left
+              Ball_X_Motion_next = Ball_X_Step; // step but make sure to start on left edge 
         end
         
-        else if ( (BallX - BallS) <= Ball_X_Min) begin// Ball is at left edge
+        else if ( (BallX + BallS) <= Ball_X_Min) begin// Ball is at left edge
             //do something
             
 //            Ball_X_Motion_next = Ball_X_Step;
-              Ball_X_Motion_next = (~(BallX) + 1'b1) + BallS + Ball_X_Max; // go to furthest right 
+//              Ball_X_Motion_next = (~(BallX) + 1'b1) + BallS + Ball_X_Max; // go to furthest right 
+              Ball_X_Motion_next = (~(Ball_X_Step) + 1'b1); 
         end
 
     end
 
     assign BallS = 16;  // default ball size
     
-    
     // set ball x and y next position per frame clock
-    
-    assign Ball_X_next = (BallX + Ball_X_Motion_next);
-    assign Ball_Y_next = (BallY + Ball_Y_Motion_next); 
+    always_comb
+    begin
+        // if right edge
+        if (((BallX - BallS) >= Ball_X_Max))
+        begin
+            Ball_X_next = Ball_X_Min + BallS + Ball_X_Motion_next; 
+        end
+        // if left edge
+        else if ( (BallX + BallS) <= Ball_X_Min)
+        begin
+            Ball_X_next = Ball_X_Max + (~(BallS) + 1'b1) + Ball_X_Motion_next; 
+        end
+        else
+        begin
+        Ball_X_next = (BallX + Ball_X_Motion_next);
+        Ball_Y_next = (BallY + Ball_Y_Motion_next); 
+        end
+       
+    end
     
    
     always_ff @(posedge frame_clk) //make sure the frame clock is instantiated correctly

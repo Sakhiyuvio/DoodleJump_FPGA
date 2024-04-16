@@ -17,6 +17,7 @@
 module  color_mapper ( input  logic [9:0] BallX, BallY, DrawX, DrawY, Ball_size,
                        input logic [2:0] game_state, 
                        input logic[3:0] gs_red, gs_green, gs_blue,
+                       input logic[3:0] gb_red, gb_green, gb_blue,
                        output logic [3:0]  Red, Green, Blue );
     
     logic ball_on;
@@ -52,38 +53,59 @@ module  color_mapper ( input  logic [9:0] BallX, BallY, DrawX, DrawY, Ball_size,
     begin:RGB_Display
         if (game_state == 3'b010)  //draw dead background
         begin
-            Red = 4'hf; 
-            Green = 4'hf; 
-            Blue = 4'hf; 
+            if (DrawX >= 160 && DrawX < 480)
+                begin
+                Red = gb_red; 
+                Green = gb_green; 
+                Blue = gb_blue; 
+                end 
+            else
+            begin
+                Red = 4'b0;
+                Green = 4'b0;
+                Blue = 4'b0; 
+
+            end
         end 
         else if (game_state == 3'b001) // draw game background
         begin
-            if ((ball_on == 1'b1)) begin 
-                Red = 4'hf;
-                Green = 4'h7;
-                Blue = 4'h0;
-            end       
-            else begin 
-                Red = 4'hf - DrawX[9:6]; 
-                Green = 4'hf - DrawX[9:6];
-                Blue = 4'hf - DrawX[9:6];
-            end    
+            // add logic for background screen and doodle coord
+            if (DrawX >= 160 && DrawX < 480)
+            begin
+                if ((ball_on == 1'b1)) begin 
+                    Red = 4'hf;
+                    Green = 4'h7;
+                    Blue = 4'h0;
+                end       
+                else begin 
+                    // draw the background 
+                    Red = gb_red; 
+                    Green = gb_green;
+                    Blue = gb_blue;
+                end   
+            end 
+            else 
+            begin
+                Red = 4'b0;
+                Green = 4'b0;
+                Blue = 4'b0; 
+            end
         end 
         else    // draw home background
         begin
             // upscale from 320x240 to 640x480
-            if(DrawX >= 160 && DrawX < 480)
-            begin
-            Red = gs_red; 
-            Green = gs_green; 
-            Blue = gs_blue; 
-            end 
+            if(DrawX >= 160 && DrawX < 480 && DrawY <= 440)
+                begin
+                Red = gs_red; 
+                Green = gs_green; 
+                Blue = gs_blue; 
+                end 
             else 
-            begin
-            Red = 4'b0;
-            Green = 4'b0;
-            Blue = 4'b0; 
-            end
+                begin
+                Red = 4'b0;
+                Green = 4'b0;
+                Blue = 4'b0; 
+                end
         end
     end 
     

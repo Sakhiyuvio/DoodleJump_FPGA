@@ -157,6 +157,9 @@ module mb_usb_hdmi_top(
         .gs_red(game_start_r),
         .gs_green(game_start_g),
         .gs_blue(game_start_b),
+        .gb_red(game_b_r),
+        .gb_green(game_b_g),
+        .gb_blue(game_b_b),
         .Red(red),
         .Green(green),
         .Blue(blue)
@@ -168,10 +171,18 @@ module mb_usb_hdmi_top(
     assign dead = 1'b0; // manually set dead as 0 for now, will need to instantiate a module for when the doodle fails 
     logic [2:0] game_vidmem; 
     logic [3:0] game_start_r, game_start_g, game_start_b; 
+    logic [3:0] game_b_r, game_b_g, game_b_b; // background rgb
 //    logic restart; 
 
 // Drawing modules
-   doodlejump_example home_screen(
+
+// hardcode background screen color for now
+assign game_b_r = 4'hf; 
+assign game_b_g = 4'hf;
+assign game_b_b = 4'hf; 
+
+// draw the homescreen
+   doodlejump_homescreen home_screen(
         .vga_clk(clk_25MHz),
         .DrawX(drawX),
         .DrawY(drawY),
@@ -180,6 +191,17 @@ module mb_usb_hdmi_top(
         .green(game_start_g),
         .blue(game_start_b)
     ); 
+    
+// draw doodle grid screen for background
+//    doodlejump_gridscreen grid_screen(
+//        .vga_clk(clk_25MHz),
+//        .DrawX(drawX),
+//        .DrawY(drawY),
+//        .blank(vde),
+//        .red(game_b_r),
+//        .green(game_b_g),
+//        .blue(game_b_b)
+//    );
     
     // Game state Module 
     game_control_unit game (

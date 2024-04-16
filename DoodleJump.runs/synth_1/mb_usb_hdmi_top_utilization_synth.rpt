@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------
 | Tool Version : Vivado v.2022.2 (lin64) Build 3671981 Fri Oct 14 04:59:54 MDT 2022
-| Date         : Tue Apr 16 00:45:26 2024
+| Date         : Tue Apr 16 15:11:31 2024
 | Host         : michael-XPS-13-9360 running 64-bit Ubuntu 20.04.4 LTS
 | Command      : report_utilization -file mb_usb_hdmi_top_utilization_synth.rpt -pb mb_usb_hdmi_top_utilization_synth.pb
 | Design       : mb_usb_hdmi_top
@@ -31,13 +31,13 @@ Table of Contents
 +-------------------------+------+-------+------------+-----------+-------+
 |        Site Type        | Used | Fixed | Prohibited | Available | Util% |
 +-------------------------+------+-------+------------+-----------+-------+
-| Slice LUTs*             |  620 |     0 |          0 |     32600 |  1.90 |
-|   LUT as Logic          |  620 |     0 |          0 |     32600 |  1.90 |
+| Slice LUTs*             |  630 |     0 |          0 |     32600 |  1.93 |
+|   LUT as Logic          |  630 |     0 |          0 |     32600 |  1.93 |
 |   LUT as Memory         |    0 |     0 |          0 |      9600 |  0.00 |
-| Slice Registers         |  110 |     0 |          0 |     65200 |  0.17 |
+| Slice Registers         |  120 |     0 |          0 |     65200 |  0.18 |
 |   Register as Flip Flop |  110 |     0 |          0 |     65200 |  0.17 |
-|   Register as Latch     |    0 |     0 |          0 |     65200 |  0.00 |
-| F7 Muxes                |    0 |     0 |          0 |     16300 |  0.00 |
+|   Register as Latch     |   10 |     0 |          0 |     65200 |  0.02 |
+| F7 Muxes                |    2 |     0 |          0 |     16300 |  0.01 |
 | F8 Muxes                |    0 |     0 |          0 |      8150 |  0.00 |
 +-------------------------+------+-------+------------+-----------+-------+
 * Warning! The Final LUT count, after physical optimizations and full implementation, is typically lower. Run opt_design after synthesis, if not already completed, for a more realistic count.
@@ -57,7 +57,7 @@ Warning! LUT value is adjusted to account for LUT combining.
 | 0     |            _ |       Reset |            - |
 | 0     |          Yes |           - |            - |
 | 0     |          Yes |           - |          Set |
-| 22    |          Yes |           - |        Reset |
+| 32    |          Yes |           - |        Reset |
 | 8     |          Yes |         Set |            - |
 | 80    |          Yes |       Reset |            - |
 +-------+--------------+-------------+--------------+
@@ -148,19 +148,21 @@ Warning! LUT value is adjusted to account for LUT combining.
 +----------+------+---------------------+
 | Ref Name | Used | Functional Category |
 +----------+------+---------------------+
-| LUT2     |  189 |                 LUT |
-| LUT6     |  169 |                 LUT |
-| LUT4     |  152 |                 LUT |
-| LUT5     |  132 |                 LUT |
+| LUT2     |  193 |                 LUT |
+| LUT6     |  178 |                 LUT |
+| LUT4     |  150 |                 LUT |
+| LUT5     |  127 |                 LUT |
 | CARRY4   |  119 |          CarryLogic |
-| LUT3     |  105 |                 LUT |
+| LUT3     |  109 |                 LUT |
 | FDRE     |   80 |        Flop & Latch |
 | OBUF     |   29 |                  IO |
 | FDCE     |   22 |        Flop & Latch |
-| LUT1     |   18 |                 LUT |
+| LUT1     |   19 |                 LUT |
+| LDCE     |   10 |        Flop & Latch |
 | DSP48E1  |    9 |    Block Arithmetic |
 | FDSE     |    8 |        Flop & Latch |
 | IBUF     |    5 |                  IO |
+| MUXF7    |    2 |               MuxFx |
 | BUFG     |    1 |               Clock |
 +----------+------+---------------------+
 

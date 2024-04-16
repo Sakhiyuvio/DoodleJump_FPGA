@@ -1,4 +1,4 @@
-module doodlejump_example (
+module doodlejump_homescreen (
 	input logic vga_clk,
 	input logic [9:0] DrawX, DrawY,
 	input logic blank,
