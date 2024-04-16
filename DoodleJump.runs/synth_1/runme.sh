@@ -20,7 +20,7 @@ else
 fi
 export LD_LIBRARY_PATH
 
-HD_PWD='/home/rishab/Documents/lab6/lab6.runs/synth_1'
+HD_PWD='/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1'
 cd "$HD_PWD"
 
 HD_LOG=runme.log

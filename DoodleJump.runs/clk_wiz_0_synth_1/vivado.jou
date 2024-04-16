@@ -2,12 +2,12 @@
 # Vivado v2022.2 (64-bit)
 # SW Build 3671981 on Fri Oct 14 04:59:54 MDT 2022
 # IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
-# Start of session at: Tue Mar 19 15:13:17 2024
-# Process ID: 11863
-# Current directory: /home/rishab/Documents/lab6/lab6.runs/clk_wiz_0_synth_1
+# Start of session at: Fri Apr 12 16:48:41 2024
+# Process ID: 76095
+# Current directory: /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/clk_wiz_0_synth_1
 # Command line: vivado -log clk_wiz_0.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source clk_wiz_0.tcl
-# Log file: /home/rishab/Documents/lab6/lab6.runs/clk_wiz_0_synth_1/clk_wiz_0.vds
-# Journal file: /home/rishab/Documents/lab6/lab6.runs/clk_wiz_0_synth_1/vivado.jou
-# Running On: michael-XPS-13-9360, OS: Linux, CPU Frequency: 2000.000 MHz, CPU Physical cores: 4, Host memory: 8036 MB
+# Log file: /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/clk_wiz_0_synth_1/clk_wiz_0.vds
+# Journal file: /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/clk_wiz_0_synth_1/vivado.jou
+# Running On: michael-XPS-13-9360, OS: Linux, CPU Frequency: 3367.641 MHz, CPU Physical cores: 4, Host memory: 8036 MB
 #-----------------------------------------------------------
 source clk_wiz_0.tcl -notrace

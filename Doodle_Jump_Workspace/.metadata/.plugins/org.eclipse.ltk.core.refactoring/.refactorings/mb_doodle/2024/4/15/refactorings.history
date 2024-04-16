@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">
+<refactoring comment="Rename resource &apos;mb_doodle/src/mb_usb&apos; to &apos;lw_usb&apos;" description="Rename resource &apos;mb_usb&apos;" flags="7" id="org.eclipse.ltk.core.refactoring.rename.resource" input="src/mb_usb" name="lw_usb" stamp="1712960234634" updateReferences="true"/>
+</session>

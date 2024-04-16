@@ -135,8 +135,8 @@ module mb_usb_hdmi_top(
     );
 
     
-    //Ball Module
-    ball ball_instance(
+    // Ball Module
+    doodle doodle_instance(
         .Reset(reset_ah),
         .frame_clk(vsync),                    //Figure out what this should be so that the ball will move
         .keycode(keycode0_gpio[7:0]),    //Notice: only one keycode connected to ball by default
@@ -144,6 +144,7 @@ module mb_usb_hdmi_top(
         .BallY(ballysig),
         .BallS(ballsizesig)
     );
+   
     
     //Color Mapper Module   
     color_mapper color_instance(
@@ -152,9 +153,44 @@ module mb_usb_hdmi_top(
         .DrawX(drawX),
         .DrawY(drawY),
         .Ball_size(ballsizesig),
+        .game_state(game_vidmem), 
+        .gs_red(game_start_r),
+        .gs_green(game_start_g),
+        .gs_blue(game_start_b),
         .Red(red),
         .Green(green),
         .Blue(blue)
     );
+    
+    // final project additional modules and logic
+    
+    logic dead; 
+    assign dead = 1'b0; // manually set dead as 0 for now, will need to instantiate a module for when the doodle fails 
+    logic [2:0] game_vidmem; 
+    logic [3:0] game_start_r, game_start_g, game_start_b; 
+//    logic restart; 
+
+// Drawing modules
+   doodlejump_example home_screen(
+        .vga_clk(clk_25MHz),
+        .DrawX(drawX),
+        .DrawY(drawY),
+        .blank(vde),
+        .red(game_start_r),
+        .green(game_start_g),
+        .blue(game_start_b)
+    ); 
+    
+    // Game state Module 
+    game_control_unit game (
+        .keycode(keycode0_gpio[7:0]),
+        .dead_bit(dead), 
+        .reset(reset_ah), 
+        .clk(Clk), 
+        .game_state(game_vidmem)
+//        .restart_bit(restart)
+    );
+    
+    // object design to add: doodle's ball, monster, platforms, collision logic, score logic 
     
 endmodule
