@@ -90,7 +90,6 @@ set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 add_files /home/rishab/Image_to_COE/doodlejump/doodlejump.COE
-add_files /home/rishab/Image_to_COE/doodlegamegrid/doodlegamegrid.COE
 read_verilog -library xil_defaultlib -sv {
   /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/design_source/Color_Mapper.sv
   /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/design_source/Doodle.sv
@@ -99,6 +98,7 @@ read_verilog -library xil_defaultlib -sv {
   /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/doodlejump/doodlejump_palette.sv
   /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/new/game_control_unit.sv
   /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/design_source/hex_driver.sv
+  /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/new/platform.sv
   /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/design_source/mb_usb_hdmi_top.sv
 }
 add_files /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/bd/mb_block/mb_block.bd

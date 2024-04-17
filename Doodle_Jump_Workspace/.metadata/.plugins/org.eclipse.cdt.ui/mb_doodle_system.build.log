@@ -1,6 +1,6 @@
-15:21:03 **** Incremental Build of configuration Debug for project mb_doodle_system ****
+17:38:35 **** Build of configuration Debug for project mb_doodle_system ****
 make all 
 Skipping SD card image generation. Reason: The system project only has applications for microblaze processors.
 
-15:21:04 Build Finished (took 716ms)
+17:38:36 Build Finished (took 836ms)
 

@@ -18,12 +18,16 @@
 module  doodle
 ( 
     input  logic        Reset, 
+//    input  logic        cpu_clk, 
     input  logic        frame_clk,
     input  logic [7:0]  keycode,
+    input logic         doodle_restart, 
+    input logic [9:0]   topplatXmin, topplatXmax, topplatY, 
 
     output logic [9:0]  BallX, 
     output logic [9:0]  BallY, 
-    output logic [9:0]  BallS 
+    output logic [9:0]  BallS,
+    output logic dead
 );
     
 
@@ -44,6 +48,10 @@ module  doodle
 
     logic [9:0] Ball_X_next;
     logic [9:0] Ball_Y_next;
+    
+    // doodle conditional states 
+    logic doodle_dead; 
+    assign dead = doodle_dead; 
     
 
     always_comb begin
@@ -72,12 +80,17 @@ module  doodle
             Ball_X_Motion_next = 10'd1;
             Ball_Y_Motion_next = 10'd0;
         end
-
-
-        if ( (BallY + BallS) >= Ball_Y_Max )  // Ball is at the bottom edge, BOUNCE!
+        
+        // doodle-platform collision logic 
+        if (((BallY + BallS) >= topplatY) && ((BallX) <= topplatXmax) && ((BallX) >= topplatXmin))
         begin
-            Ball_Y_Motion_next = (~ (Ball_Y_Step) + 1'b1);  // set to -1 via 2's complement.
-              
+            Ball_Y_Motion_next = (~(Ball_Y_Step) + 1'b1); // jump 
+        end 
+
+        else if ( (BallY - BallS) >= Ball_Y_Max)  // Ball is at the bottom edge, game over!
+        begin
+//            Ball_Y_Motion_next = (~ (Ball_Y_Step) + 1'b1);  // set to -1 via 2's complement.
+              Ball_Y_Motion_next = Ball_Y_Step; 
             
         end
         else if ( (BallY - BallS) <= Ball_Y_Min )  // Ball is at the top edge, BOUNCE!
@@ -86,7 +99,7 @@ module  doodle
         end  
        //fill in the rest of the motion equations here to bounce left and right
    
- // FIGURE OUT HOW TO crossover 
+ // CROSSOVER between left and right edge of screen! 
         else if ((BallX - BallS) >= Ball_X_Max) begin // Ball is at the right edge
             //do something
 //            Ball_X_Motion_next = (~ (Ball_X_Step) + 1'b1);
@@ -127,10 +140,28 @@ module  doodle
        
     end
     
-   
+    
+    // takes care of doodle states! 
+    always_comb
+    begin: doodle_cond 
+        if (Reset || doodle_restart) 
+        begin
+            doodle_dead = 1'b0;
+        end 
+        else if ((BallY - BallS) >= Ball_Y_Max) // in this case, doodle has passed the screen condition, doodle has to die and switch screen
+        begin
+            doodle_dead = 1'b1; 
+        end
+        else
+        begin
+            doodle_dead = 1'b0; 
+        end
+    end 
+    
+    // takes care of doodle movement
     always_ff @(posedge frame_clk) //make sure the frame clock is instantiated correctly
     begin: Move_Ball
-        if (Reset)
+        if (Reset || doodle_restart) // if reset from cpu or doodle has die, restart the game condition to make sure doodle stays re-centered
         begin 
             Ball_Y_Motion <= 10'd0; //Ball_Y_Step;
 			Ball_X_Motion <= 10'd1; //Ball_X_Step;

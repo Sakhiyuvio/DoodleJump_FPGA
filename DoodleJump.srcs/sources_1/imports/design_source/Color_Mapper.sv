@@ -18,9 +18,13 @@ module  color_mapper ( input  logic [9:0] BallX, BallY, DrawX, DrawY, Ball_size,
                        input logic [2:0] game_state, 
                        input logic[3:0] gs_red, gs_green, gs_blue,
                        input logic[3:0] gb_red, gb_green, gb_blue,
+                       input logic[3:0] doodle_red, doodle_green, doodle_blue,
+                       input logic platform_on, 
+                       output logic doodle_on, 
                        output logic [3:0]  Red, Green, Blue );
     
     logic ball_on;
+    assign doodle_on = ball_on; 
 	 
  /* Old Ball: Generated square box by checking if the current pixel is within a square of length
     2*BallS, centered at (BallX, BallY).  Note that this requires unsigned comparisons.
@@ -72,12 +76,21 @@ module  color_mapper ( input  logic [9:0] BallX, BallY, DrawX, DrawY, Ball_size,
             // add logic for background screen and doodle coord
             if (DrawX >= 160 && DrawX < 480)
             begin
+                // draw doodle
                 if ((ball_on == 1'b1)) begin 
-                    Red = 4'hf;
-                    Green = 4'h7;
-                    Blue = 4'h0;
+                    Red = doodle_red;
+                    Green = doodle_green;
+                    Blue = doodle_blue;
                 end       
-                else begin 
+                // draw platform
+                else if (platform_on == 1'b1)
+                begin
+                    Red = 4'h2;
+                    Green = 4'hD; 
+                    Blue = 4'h2; 
+                end       
+                else
+                begin 
                     // draw the background 
                     Red = gb_red; 
                     Green = gb_green;

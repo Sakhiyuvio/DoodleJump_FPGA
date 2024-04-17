@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="UTF-8" standalone="no" ?>
-<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Fri Apr 12 16:48:31 2024" VIVADOVERSION="2022.2">
+<EDKSYSTEM EDWVERSION="1.2" TIMESTAMP="Tue Apr 16 17:59:40 2024" VIVADOVERSION="2022.2">
 
   <SYSTEMINFO ARCH="spartan7" DEVICE="7s50" NAME="mb_block" PACKAGE="csga324" SPEEDGRADE="-1"/>
 
@@ -34,6 +34,10 @@
         <CONNECTION INSTANCE="gpio_usb_rst" PORT="gpio_io_o"/>
       </CONNECTIONS>
     </PORT>
+    <PORT DIR="O" NAME="HDMI_0_tmds_clk_n" SIGIS="undef"/>
+    <PORT DIR="O" LEFT="2" NAME="HDMI_0_tmds_data_n" RIGHT="0" SIGIS="undef"/>
+    <PORT DIR="O" LEFT="2" NAME="HDMI_0_tmds_data_p" RIGHT="0" SIGIS="undef"/>
+    <PORT DIR="O" NAME="HDMI_0_tmds_clk_p" SIGIS="undef"/>
     <PORT CLKFREQUENCY="100000000" DIR="I" NAME="clk_100MHz" SIGIS="clk" SIGNAME="External_Ports_clk_100MHz">
       <CONNECTIONS>
         <CONNECTION INSTANCE="clk_wiz_1" PORT="clk_in1"/>
@@ -64,6 +68,9 @@
         <CONNECTION INSTANCE="spi_usb" PORT="sck_o"/>
       </CONNECTIONS>
     </PORT>
+    <PORT DIR="O" LEFT="10" NAME="bram_addr_0" RIGHT="0" SIGIS="undef"/>
+    <PORT DIR="O" NAME="slv_rden_0" SIGIS="undef"/>
+    <PORT DIR="O" NAME="slv_wren_0" SIGIS="undef"/>
   </EXTERNALPORTS>
 
   <EXTERNALINTERFACES>
@@ -95,6 +102,14 @@
     </BUSINTERFACE>
     <BUSINTERFACE BUSNAME="__NOC__" NAME="gpio_rtl_0" TYPE="INITIATOR">
       <PORTMAPS/>
+    </BUSINTERFACE>
+    <BUSINTERFACE BUSNAME="__NOC__" NAME="HDMI_0" TYPE="INITIATOR">
+      <PORTMAPS>
+        <PORTMAP LOGICAL="TMDS_CLK_N" PHYSICAL="HDMI_0_tmds_clk_n"/>
+        <PORTMAP LOGICAL="TMDS_DATA_N" PHYSICAL="HDMI_0_tmds_data_n"/>
+        <PORTMAP LOGICAL="TMDS_DATA_P" PHYSICAL="HDMI_0_tmds_data_p"/>
+        <PORTMAP LOGICAL="TMDS_CLK_P" PHYSICAL="HDMI_0_tmds_clk_p"/>
+      </PORTMAPS>
     </BUSINTERFACE>
   </EXTERNALINTERFACES>
 
@@ -1086,6 +1101,7 @@
             <CONNECTION INSTANCE="timer_usb_axi" PORT="s_axi_aclk"/>
             <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M06_ACLK"/>
             <CONNECTION INSTANCE="spi_usb" PORT="ext_spi_clk"/>
+            <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M07_ACLK"/>
           </CONNECTIONS>
         </PORT>
         <PORT DIR="O" NAME="locked" SIGIS="undef" SIGNAME="clk_wiz_1_locked">
@@ -4661,7 +4677,7 @@
       </DOCUMENTS>
       <PARAMETERS>
         <PARAMETER NAME="NUM_SI" VALUE="1"/>
-        <PARAMETER NAME="NUM_MI" VALUE="7"/>
+        <PARAMETER NAME="NUM_MI" VALUE="8"/>
         <PARAMETER NAME="STRATEGY" VALUE="0"/>
         <PARAMETER NAME="ENABLE_ADVANCED_OPTIONS" VALUE="0"/>
         <PARAMETER NAME="ENABLE_PROTOCOL_CHECKERS" VALUE="0"/>
@@ -5064,6 +5080,16 @@
           </CONNECTIONS>
         </PORT>
         <PORT DIR="I" NAME="M06_ARESETN" SIGIS="rst" SIGNAME="rst_clk_wiz_1_100M_peripheral_aresetn">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="rst_clk_wiz_1_100M" PORT="peripheral_aresetn"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M07_ACLK" SIGIS="clk" SIGNAME="clk_wiz_1_clk_out1">
+          <CONNECTIONS>
+            <CONNECTION INSTANCE="clk_wiz_1" PORT="clk_out1"/>
+          </CONNECTIONS>
+        </PORT>
+        <PORT DIR="I" NAME="M07_ARESETN" SIGIS="rst" SIGNAME="rst_clk_wiz_1_100M_peripheral_aresetn">
           <CONNECTIONS>
             <CONNECTION INSTANCE="rst_clk_wiz_1_100M" PORT="peripheral_aresetn"/>
           </CONNECTIONS>
@@ -5772,6 +5798,25 @@
             <CONNECTION INSTANCE="timer_usb_axi" PORT="s_axi_rready"/>
           </CONNECTIONS>
         </PORT>
+        <PORT DIR="O" NAME="M07_AXI_awaddr" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M07_AXI_awprot" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M07_AXI_awvalid" SIGIS="undef"/>
+        <PORT DIR="I" NAME="M07_AXI_awready" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M07_AXI_wdata" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M07_AXI_wstrb" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M07_AXI_wvalid" SIGIS="undef"/>
+        <PORT DIR="I" NAME="M07_AXI_wready" SIGIS="undef"/>
+        <PORT DIR="I" NAME="M07_AXI_bresp" SIGIS="undef"/>
+        <PORT DIR="I" NAME="M07_AXI_bvalid" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M07_AXI_bready" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M07_AXI_araddr" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M07_AXI_arprot" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M07_AXI_arvalid" SIGIS="undef"/>
+        <PORT DIR="I" NAME="M07_AXI_arready" SIGIS="undef"/>
+        <PORT DIR="I" NAME="M07_AXI_rdata" SIGIS="undef"/>
+        <PORT DIR="I" NAME="M07_AXI_rresp" SIGIS="undef"/>
+        <PORT DIR="I" NAME="M07_AXI_rvalid" SIGIS="undef"/>
+        <PORT DIR="O" NAME="M07_AXI_rready" SIGIS="undef"/>
       </PORTS>
       <BUSINTERFACES>
         <BUSINTERFACE BUSNAME="microblaze_0_M_AXI_DP" DATAWIDTH="32" NAME="S00_AXI" TYPE="SLAVE" VLNV="xilinx.com:interface:aximm:1.0">
@@ -5956,6 +6001,29 @@
             <PORTMAP LOGICAL="RRESP" PHYSICAL="M06_AXI_rresp"/>
             <PORTMAP LOGICAL="RVALID" PHYSICAL="M06_AXI_rvalid"/>
             <PORTMAP LOGICAL="RREADY" PHYSICAL="M06_AXI_rready"/>
+          </PORTMAPS>
+        </BUSINTERFACE>
+        <BUSINTERFACE BUSNAME="__NOC__" NAME="M07_AXI" TYPE="MASTER" VLNV="xilinx.com:interface:aximm:1.0">
+          <PORTMAPS>
+            <PORTMAP LOGICAL="AWADDR" PHYSICAL="M07_AXI_awaddr"/>
+            <PORTMAP LOGICAL="AWPROT" PHYSICAL="M07_AXI_awprot"/>
+            <PORTMAP LOGICAL="AWVALID" PHYSICAL="M07_AXI_awvalid"/>
+            <PORTMAP LOGICAL="AWREADY" PHYSICAL="M07_AXI_awready"/>
+            <PORTMAP LOGICAL="WDATA" PHYSICAL="M07_AXI_wdata"/>
+            <PORTMAP LOGICAL="WSTRB" PHYSICAL="M07_AXI_wstrb"/>
+            <PORTMAP LOGICAL="WVALID" PHYSICAL="M07_AXI_wvalid"/>
+            <PORTMAP LOGICAL="WREADY" PHYSICAL="M07_AXI_wready"/>
+            <PORTMAP LOGICAL="BRESP" PHYSICAL="M07_AXI_bresp"/>
+            <PORTMAP LOGICAL="BVALID" PHYSICAL="M07_AXI_bvalid"/>
+            <PORTMAP LOGICAL="BREADY" PHYSICAL="M07_AXI_bready"/>
+            <PORTMAP LOGICAL="ARADDR" PHYSICAL="M07_AXI_araddr"/>
+            <PORTMAP LOGICAL="ARPROT" PHYSICAL="M07_AXI_arprot"/>
+            <PORTMAP LOGICAL="ARVALID" PHYSICAL="M07_AXI_arvalid"/>
+            <PORTMAP LOGICAL="ARREADY" PHYSICAL="M07_AXI_arready"/>
+            <PORTMAP LOGICAL="RDATA" PHYSICAL="M07_AXI_rdata"/>
+            <PORTMAP LOGICAL="RRESP" PHYSICAL="M07_AXI_rresp"/>
+            <PORTMAP LOGICAL="RVALID" PHYSICAL="M07_AXI_rvalid"/>
+            <PORTMAP LOGICAL="RREADY" PHYSICAL="M07_AXI_rready"/>
           </PORTMAPS>
         </BUSINTERFACE>
       </BUSINTERFACES>
@@ -7001,6 +7069,7 @@
             <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M05_ARESETN"/>
             <CONNECTION INSTANCE="timer_usb_axi" PORT="s_axi_aresetn"/>
             <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M06_ARESETN"/>
+            <CONNECTION INSTANCE="microblaze_0_axi_periph" PORT="M07_ARESETN"/>
           </CONNECTIONS>
         </PORT>
       </PORTS>

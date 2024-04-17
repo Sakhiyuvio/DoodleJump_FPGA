@@ -1436,3 +1436,666 @@ targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
 dow /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/Debug/mb_doodle.elf
 ----------------End of Script----------------
 
+18:06:45 INFO  : Hardware specification for platform project 'mb_usb_hdmi_top' is updated.
+18:07:31 INFO  : Result from executing command 'removePlatformRepo': 
+18:07:42 INFO  : Result from executing command 'getProjects': mb_usb_hdmi_top
+18:07:42 INFO  : Result from executing command 'getPlatforms': 
+18:07:45 INFO  : Checking for BSP changes to sync application flags for project 'mb_doodle'...
+18:07:48 INFO  : The hardware specification used by project 'mb_doodle' is out of sync with the platform. Resource files extracted from the hardware specification will be updated.
+18:07:48 INFO  : The file '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.bit' stored in project is removed.
+18:07:48 INFO  : The file '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.mmi' stored in project is removed.
+18:07:48 INFO  : The updated bitstream files are copied from platform to folder '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream' in project 'mb_doodle'.
+18:08:00 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+18:08:00 INFO  : Jtag cable 'RealDigital Boo 8874292301D5A' is selected.
+18:08:00 INFO  : 'jtag frequency' command is executed.
+18:08:00 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874292301D5A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+18:08:02 INFO  : Device configured successfully with "/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.bit"
+18:08:02 INFO  : Context for processor 'microblaze_0' is selected.
+18:08:02 INFO  : Hardware design and registers information is loaded from '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_usb_hdmi_top/export/mb_usb_hdmi_top/hw/mb_usb_hdmi_top.xsa'.
+18:08:02 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+18:08:02 INFO  : Context for processor 'microblaze_0' is selected.
+18:08:02 INFO  : System reset is completed.
+18:08:05 INFO  : 'after 3000' command is executed.
+18:08:05 INFO  : Context for processor 'microblaze_0' is selected.
+18:08:05 INFO  : The application '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/Debug/mb_doodle.elf' is downloaded to processor 'microblaze_0'.
+18:08:05 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874292301D5A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_usb_hdmi_top/export/mb_usb_hdmi_top/hw/mb_usb_hdmi_top.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -system
+after 3000
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/Debug/mb_doodle.elf
+----------------End of Script----------------
+
+18:08:05 INFO  : Context for processor 'microblaze_0' is selected.
+18:08:05 INFO  : 'con' command is executed.
+18:08:05 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+18:08:05 INFO  : Disconnected from the channel tcfchan#4.
+18:38:10 INFO  : Hardware specification for platform project 'mb_usb_hdmi_top' is updated.
+18:38:21 INFO  : Result from executing command 'removePlatformRepo': 
+18:38:34 INFO  : Result from executing command 'getProjects': mb_usb_hdmi_top
+18:38:34 INFO  : Result from executing command 'getPlatforms': 
+18:38:37 INFO  : Checking for BSP changes to sync application flags for project 'mb_doodle'...
+18:38:40 INFO  : The hardware specification used by project 'mb_doodle' is out of sync with the platform. Resource files extracted from the hardware specification will be updated.
+18:38:40 INFO  : The file '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.bit' stored in project is removed.
+18:38:40 INFO  : The file '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.mmi' stored in project is removed.
+18:38:40 INFO  : The updated bitstream files are copied from platform to folder '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream' in project 'mb_doodle'.
+18:38:51 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+18:38:51 INFO  : Jtag cable 'RealDigital Boo 8874292301D5A' is selected.
+18:38:51 INFO  : 'jtag frequency' command is executed.
+18:38:52 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874292301D5A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+18:38:53 INFO  : Device configured successfully with "/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.bit"
+18:38:53 INFO  : Context for processor 'microblaze_0' is selected.
+18:38:53 INFO  : Hardware design and registers information is loaded from '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_usb_hdmi_top/export/mb_usb_hdmi_top/hw/mb_usb_hdmi_top.xsa'.
+18:38:53 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+18:38:53 INFO  : Context for processor 'microblaze_0' is selected.
+18:38:53 INFO  : System reset is completed.
+18:38:56 INFO  : 'after 3000' command is executed.
+18:38:56 INFO  : Context for processor 'microblaze_0' is selected.
+18:38:56 INFO  : The application '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/Debug/mb_doodle.elf' is downloaded to processor 'microblaze_0'.
+18:38:56 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874292301D5A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_usb_hdmi_top/export/mb_usb_hdmi_top/hw/mb_usb_hdmi_top.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -system
+after 3000
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/Debug/mb_doodle.elf
+----------------End of Script----------------
+
+18:38:56 INFO  : Context for processor 'microblaze_0' is selected.
+18:38:56 INFO  : 'con' command is executed.
+18:38:56 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+18:38:56 INFO  : Disconnected from the channel tcfchan#9.
+19:17:04 INFO  : Hardware specification for platform project 'mb_usb_hdmi_top' is updated.
+19:17:13 INFO  : Result from executing command 'removePlatformRepo': 
+19:17:26 INFO  : Result from executing command 'getProjects': mb_usb_hdmi_top
+19:17:26 INFO  : Result from executing command 'getPlatforms': 
+19:17:29 INFO  : Checking for BSP changes to sync application flags for project 'mb_doodle'...
+19:17:32 INFO  : The hardware specification used by project 'mb_doodle' is out of sync with the platform. Resource files extracted from the hardware specification will be updated.
+19:17:32 INFO  : The file '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.bit' stored in project is removed.
+19:17:32 INFO  : The file '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.mmi' stored in project is removed.
+19:17:32 INFO  : The updated bitstream files are copied from platform to folder '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream' in project 'mb_doodle'.
+19:17:47 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+19:17:47 INFO  : Jtag cable 'RealDigital Boo 8874292301D5A' is selected.
+19:17:47 INFO  : 'jtag frequency' command is executed.
+19:17:47 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874292301D5A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+19:17:49 INFO  : Device configured successfully with "/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.bit"
+19:17:49 INFO  : Context for processor 'microblaze_0' is selected.
+19:17:49 INFO  : Hardware design and registers information is loaded from '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_usb_hdmi_top/export/mb_usb_hdmi_top/hw/mb_usb_hdmi_top.xsa'.
+19:17:49 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+19:17:49 INFO  : Context for processor 'microblaze_0' is selected.
+19:17:49 INFO  : System reset is completed.
+19:17:52 INFO  : 'after 3000' command is executed.
+19:17:52 INFO  : Context for processor 'microblaze_0' is selected.
+19:17:52 INFO  : The application '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/Debug/mb_doodle.elf' is downloaded to processor 'microblaze_0'.
+19:17:52 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874292301D5A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_usb_hdmi_top/export/mb_usb_hdmi_top/hw/mb_usb_hdmi_top.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -system
+after 3000
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/Debug/mb_doodle.elf
+----------------End of Script----------------
+
+19:17:52 INFO  : Context for processor 'microblaze_0' is selected.
+19:17:52 INFO  : 'con' command is executed.
+19:17:52 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+19:17:52 INFO  : Disconnected from the channel tcfchan#12.
+19:27:45 INFO  : Hardware specification for platform project 'mb_usb_hdmi_top' is updated.
+19:27:55 INFO  : Result from executing command 'removePlatformRepo': 
+19:28:05 INFO  : Result from executing command 'getProjects': mb_usb_hdmi_top
+19:28:05 INFO  : Result from executing command 'getPlatforms': 
+19:28:08 INFO  : Checking for BSP changes to sync application flags for project 'mb_doodle'...
+19:28:12 INFO  : The hardware specification used by project 'mb_doodle' is out of sync with the platform. Resource files extracted from the hardware specification will be updated.
+19:28:12 INFO  : The file '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.bit' stored in project is removed.
+19:28:12 INFO  : The file '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.mmi' stored in project is removed.
+19:28:12 INFO  : The updated bitstream files are copied from platform to folder '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream' in project 'mb_doodle'.
+19:28:23 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+19:28:23 INFO  : Jtag cable 'RealDigital Boo 8874292301D5A' is selected.
+19:28:23 INFO  : 'jtag frequency' command is executed.
+19:28:23 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874292301D5A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+19:28:25 INFO  : Device configured successfully with "/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.bit"
+19:28:25 INFO  : Context for processor 'microblaze_0' is selected.
+19:28:25 INFO  : Hardware design and registers information is loaded from '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_usb_hdmi_top/export/mb_usb_hdmi_top/hw/mb_usb_hdmi_top.xsa'.
+19:28:25 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+19:28:25 INFO  : Context for processor 'microblaze_0' is selected.
+19:28:25 INFO  : System reset is completed.
+19:28:28 INFO  : 'after 3000' command is executed.
+19:28:28 INFO  : Context for processor 'microblaze_0' is selected.
+19:28:28 INFO  : The application '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/Debug/mb_doodle.elf' is downloaded to processor 'microblaze_0'.
+19:28:28 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874292301D5A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_usb_hdmi_top/export/mb_usb_hdmi_top/hw/mb_usb_hdmi_top.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -system
+after 3000
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/Debug/mb_doodle.elf
+----------------End of Script----------------
+
+19:28:28 INFO  : Context for processor 'microblaze_0' is selected.
+19:28:28 INFO  : 'con' command is executed.
+19:28:28 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+19:28:28 INFO  : Disconnected from the channel tcfchan#15.
+13:49:43 INFO  : Hardware specification for platform project 'mb_usb_hdmi_top' is updated.
+13:49:54 INFO  : Result from executing command 'removePlatformRepo': 
+13:50:15 INFO  : Result from executing command 'getProjects': mb_usb_hdmi_top
+13:50:15 INFO  : Result from executing command 'getPlatforms': 
+13:50:18 INFO  : Checking for BSP changes to sync application flags for project 'mb_doodle'...
+13:50:21 INFO  : The hardware specification used by project 'mb_doodle' is out of sync with the platform. Resource files extracted from the hardware specification will be updated.
+13:50:21 INFO  : The file '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.bit' stored in project is removed.
+13:50:21 INFO  : The file '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.mmi' stored in project is removed.
+13:50:21 INFO  : The updated bitstream files are copied from platform to folder '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream' in project 'mb_doodle'.
+13:51:02 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+13:51:02 INFO  : Jtag cable 'RealDigital Boo 8874292301D5A' is selected.
+13:51:02 INFO  : 'jtag frequency' command is executed.
+13:51:03 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874292301D5A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+13:51:04 INFO  : Device configured successfully with "/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.bit"
+13:51:04 INFO  : Context for processor 'microblaze_0' is selected.
+13:51:04 INFO  : Hardware design and registers information is loaded from '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_usb_hdmi_top/export/mb_usb_hdmi_top/hw/mb_usb_hdmi_top.xsa'.
+13:51:04 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+13:51:04 INFO  : Context for processor 'microblaze_0' is selected.
+13:51:04 INFO  : System reset is completed.
+13:51:07 INFO  : 'after 3000' command is executed.
+13:51:07 INFO  : Context for processor 'microblaze_0' is selected.
+13:51:07 INFO  : The application '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/Debug/mb_doodle.elf' is downloaded to processor 'microblaze_0'.
+13:51:07 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874292301D5A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_usb_hdmi_top/export/mb_usb_hdmi_top/hw/mb_usb_hdmi_top.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -system
+after 3000
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/Debug/mb_doodle.elf
+----------------End of Script----------------
+
+13:51:07 INFO  : Context for processor 'microblaze_0' is selected.
+13:51:07 INFO  : 'con' command is executed.
+13:51:07 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+13:51:07 INFO  : Disconnected from the channel tcfchan#18.
+14:22:01 INFO  : Hardware specification for platform project 'mb_usb_hdmi_top' is updated.
+14:22:11 INFO  : Result from executing command 'removePlatformRepo': 
+14:22:34 INFO  : Result from executing command 'getProjects': mb_usb_hdmi_top
+14:22:34 INFO  : Result from executing command 'getPlatforms': 
+14:22:37 INFO  : Checking for BSP changes to sync application flags for project 'mb_doodle'...
+14:22:41 INFO  : The hardware specification used by project 'mb_doodle' is out of sync with the platform. Resource files extracted from the hardware specification will be updated.
+14:22:41 INFO  : The file '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.bit' stored in project is removed.
+14:22:41 INFO  : The file '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.mmi' stored in project is removed.
+14:22:41 INFO  : The updated bitstream files are copied from platform to folder '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream' in project 'mb_doodle'.
+14:22:51 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:22:51 INFO  : Jtag cable 'RealDigital Boo 8874292301D5A' is selected.
+14:22:51 INFO  : 'jtag frequency' command is executed.
+14:22:51 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874292301D5A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+14:22:52 INFO  : Device configured successfully with "/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.bit"
+14:22:52 INFO  : Context for processor 'microblaze_0' is selected.
+14:22:52 INFO  : Hardware design and registers information is loaded from '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_usb_hdmi_top/export/mb_usb_hdmi_top/hw/mb_usb_hdmi_top.xsa'.
+14:22:52 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+14:22:52 INFO  : Context for processor 'microblaze_0' is selected.
+14:22:52 INFO  : System reset is completed.
+14:22:55 INFO  : 'after 3000' command is executed.
+14:22:55 INFO  : Context for processor 'microblaze_0' is selected.
+14:22:55 INFO  : The application '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/Debug/mb_doodle.elf' is downloaded to processor 'microblaze_0'.
+14:22:55 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874292301D5A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_usb_hdmi_top/export/mb_usb_hdmi_top/hw/mb_usb_hdmi_top.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -system
+after 3000
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/Debug/mb_doodle.elf
+----------------End of Script----------------
+
+14:22:56 INFO  : Context for processor 'microblaze_0' is selected.
+14:22:56 INFO  : 'con' command is executed.
+14:22:56 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+14:22:56 INFO  : Disconnected from the channel tcfchan#21.
+14:37:09 INFO  : Hardware specification for platform project 'mb_usb_hdmi_top' is updated.
+14:37:21 INFO  : Result from executing command 'removePlatformRepo': 
+14:37:33 INFO  : Result from executing command 'getProjects': mb_usb_hdmi_top
+14:37:33 INFO  : Result from executing command 'getPlatforms': 
+14:37:36 INFO  : Checking for BSP changes to sync application flags for project 'mb_doodle'...
+14:37:40 INFO  : The hardware specification used by project 'mb_doodle' is out of sync with the platform. Resource files extracted from the hardware specification will be updated.
+14:37:40 INFO  : The file '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.bit' stored in project is removed.
+14:37:40 INFO  : The file '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.mmi' stored in project is removed.
+14:37:40 INFO  : The updated bitstream files are copied from platform to folder '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream' in project 'mb_doodle'.
+14:37:51 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+14:37:51 INFO  : Jtag cable 'RealDigital Boo 8874292301D5A' is selected.
+14:37:51 INFO  : 'jtag frequency' command is executed.
+14:37:51 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874292301D5A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+14:37:52 INFO  : Device configured successfully with "/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.bit"
+14:37:53 INFO  : Context for processor 'microblaze_0' is selected.
+14:37:53 INFO  : Hardware design and registers information is loaded from '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_usb_hdmi_top/export/mb_usb_hdmi_top/hw/mb_usb_hdmi_top.xsa'.
+14:37:53 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+14:37:53 INFO  : Context for processor 'microblaze_0' is selected.
+14:37:53 INFO  : System reset is completed.
+14:37:56 INFO  : 'after 3000' command is executed.
+14:37:56 INFO  : Context for processor 'microblaze_0' is selected.
+14:37:56 INFO  : The application '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/Debug/mb_doodle.elf' is downloaded to processor 'microblaze_0'.
+14:37:56 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874292301D5A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_usb_hdmi_top/export/mb_usb_hdmi_top/hw/mb_usb_hdmi_top.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -system
+after 3000
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/Debug/mb_doodle.elf
+----------------End of Script----------------
+
+14:37:56 INFO  : Context for processor 'microblaze_0' is selected.
+14:37:56 INFO  : 'con' command is executed.
+14:37:56 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+14:37:56 INFO  : Disconnected from the channel tcfchan#24.
+15:08:35 INFO  : Hardware specification for platform project 'mb_usb_hdmi_top' is updated.
+15:08:45 INFO  : Result from executing command 'removePlatformRepo': 
+15:08:55 INFO  : Result from executing command 'getProjects': mb_usb_hdmi_top
+15:08:55 INFO  : Result from executing command 'getPlatforms': 
+15:08:58 INFO  : Checking for BSP changes to sync application flags for project 'mb_doodle'...
+15:09:01 INFO  : The hardware specification used by project 'mb_doodle' is out of sync with the platform. Resource files extracted from the hardware specification will be updated.
+15:09:01 INFO  : The file '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.bit' stored in project is removed.
+15:09:01 INFO  : The file '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.mmi' stored in project is removed.
+15:09:01 INFO  : The updated bitstream files are copied from platform to folder '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream' in project 'mb_doodle'.
+15:09:09 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:09:09 INFO  : Jtag cable 'RealDigital Boo 8874292301D5A' is selected.
+15:09:09 INFO  : 'jtag frequency' command is executed.
+15:09:09 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874292301D5A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+15:09:10 INFO  : Device configured successfully with "/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.bit"
+15:09:10 INFO  : Context for processor 'microblaze_0' is selected.
+15:09:10 INFO  : Hardware design and registers information is loaded from '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_usb_hdmi_top/export/mb_usb_hdmi_top/hw/mb_usb_hdmi_top.xsa'.
+15:09:10 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+15:09:10 INFO  : Context for processor 'microblaze_0' is selected.
+15:09:10 INFO  : System reset is completed.
+15:09:13 INFO  : 'after 3000' command is executed.
+15:09:13 INFO  : Context for processor 'microblaze_0' is selected.
+15:09:14 INFO  : The application '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/Debug/mb_doodle.elf' is downloaded to processor 'microblaze_0'.
+15:09:14 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874292301D5A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_usb_hdmi_top/export/mb_usb_hdmi_top/hw/mb_usb_hdmi_top.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -system
+after 3000
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/Debug/mb_doodle.elf
+----------------End of Script----------------
+
+15:09:14 INFO  : Context for processor 'microblaze_0' is selected.
+15:09:14 INFO  : 'con' command is executed.
+15:09:14 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+15:09:14 INFO  : Disconnected from the channel tcfchan#27.
+15:21:26 INFO  : Hardware specification for platform project 'mb_usb_hdmi_top' is updated.
+15:21:36 INFO  : Result from executing command 'getProjects': mb_usb_hdmi_top
+15:21:36 INFO  : Result from executing command 'getPlatforms': mb_usb_hdmi_top|/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_usb_hdmi_top/export/mb_usb_hdmi_top/mb_usb_hdmi_top.xpfm
+15:21:39 INFO  : Checking for BSP changes to sync application flags for project 'mb_doodle'...
+15:21:43 INFO  : The hardware specification used by project 'mb_doodle' is out of sync with the platform. Resource files extracted from the hardware specification will be updated.
+15:21:43 INFO  : The file '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.bit' stored in project is removed.
+15:21:43 INFO  : The file '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.mmi' stored in project is removed.
+15:21:43 INFO  : The updated bitstream files are copied from platform to folder '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream' in project 'mb_doodle'.
+15:21:48 INFO  : Result from executing command 'removePlatformRepo': 
+15:21:57 INFO  : Result from executing command 'getProjects': mb_usb_hdmi_top
+15:21:57 INFO  : Result from executing command 'getPlatforms': 
+15:22:01 INFO  : Checking for BSP changes to sync application flags for project 'mb_doodle'...
+15:22:07 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+15:22:07 INFO  : Jtag cable 'RealDigital Boo 8874292301D5A' is selected.
+15:22:07 INFO  : 'jtag frequency' command is executed.
+15:22:08 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874292301D5A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+15:22:09 INFO  : Device configured successfully with "/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.bit"
+15:22:09 INFO  : Context for processor 'microblaze_0' is selected.
+15:22:09 INFO  : Hardware design and registers information is loaded from '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_usb_hdmi_top/export/mb_usb_hdmi_top/hw/mb_usb_hdmi_top.xsa'.
+15:22:09 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+15:22:09 INFO  : Context for processor 'microblaze_0' is selected.
+15:22:09 INFO  : System reset is completed.
+15:22:12 INFO  : 'after 3000' command is executed.
+15:22:12 INFO  : Context for processor 'microblaze_0' is selected.
+15:22:12 INFO  : The application '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/Debug/mb_doodle.elf' is downloaded to processor 'microblaze_0'.
+15:22:12 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874292301D5A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_usb_hdmi_top/export/mb_usb_hdmi_top/hw/mb_usb_hdmi_top.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -system
+after 3000
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/Debug/mb_doodle.elf
+----------------End of Script----------------
+
+15:22:12 INFO  : Context for processor 'microblaze_0' is selected.
+15:22:12 INFO  : 'con' command is executed.
+15:22:12 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+15:22:12 INFO  : Disconnected from the channel tcfchan#31.
+16:27:15 INFO  : Hardware specification for platform project 'mb_usb_hdmi_top' is updated.
+16:27:27 INFO  : Result from executing command 'removePlatformRepo': 
+16:27:58 INFO  : Result from executing command 'getProjects': mb_usb_hdmi_top
+16:27:58 INFO  : Result from executing command 'getPlatforms': 
+16:28:01 INFO  : Checking for BSP changes to sync application flags for project 'mb_doodle'...
+16:28:04 INFO  : The hardware specification used by project 'mb_doodle' is out of sync with the platform. Resource files extracted from the hardware specification will be updated.
+16:28:04 INFO  : The file '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.bit' stored in project is removed.
+16:28:04 INFO  : The file '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.mmi' stored in project is removed.
+16:28:04 INFO  : The updated bitstream files are copied from platform to folder '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream' in project 'mb_doodle'.
+16:28:25 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+16:28:26 INFO  : Jtag cable 'RealDigital Boo 8874292301D5A' is selected.
+16:28:26 INFO  : 'jtag frequency' command is executed.
+16:28:26 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874292301D5A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+16:28:27 INFO  : Device configured successfully with "/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.bit"
+16:28:27 INFO  : Context for processor 'microblaze_0' is selected.
+16:28:27 INFO  : Hardware design and registers information is loaded from '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_usb_hdmi_top/export/mb_usb_hdmi_top/hw/mb_usb_hdmi_top.xsa'.
+16:28:27 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+16:28:27 INFO  : Context for processor 'microblaze_0' is selected.
+16:28:27 INFO  : System reset is completed.
+16:28:30 INFO  : 'after 3000' command is executed.
+16:28:30 INFO  : Context for processor 'microblaze_0' is selected.
+16:28:30 INFO  : The application '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/Debug/mb_doodle.elf' is downloaded to processor 'microblaze_0'.
+16:28:30 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874292301D5A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_usb_hdmi_top/export/mb_usb_hdmi_top/hw/mb_usb_hdmi_top.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -system
+after 3000
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/Debug/mb_doodle.elf
+----------------End of Script----------------
+
+16:28:30 INFO  : Context for processor 'microblaze_0' is selected.
+16:28:30 INFO  : 'con' command is executed.
+16:28:30 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+16:28:30 INFO  : Disconnected from the channel tcfchan#34.
+16:41:34 INFO  : Hardware specification for platform project 'mb_usb_hdmi_top' is updated.
+16:41:46 INFO  : Result from executing command 'removePlatformRepo': 
+16:42:01 INFO  : Result from executing command 'getProjects': mb_usb_hdmi_top
+16:42:01 INFO  : Result from executing command 'getPlatforms': 
+16:42:04 INFO  : Checking for BSP changes to sync application flags for project 'mb_doodle'...
+16:42:07 INFO  : The hardware specification used by project 'mb_doodle' is out of sync with the platform. Resource files extracted from the hardware specification will be updated.
+16:42:07 INFO  : The file '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.bit' stored in project is removed.
+16:42:07 INFO  : The file '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.mmi' stored in project is removed.
+16:42:07 INFO  : The updated bitstream files are copied from platform to folder '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream' in project 'mb_doodle'.
+16:42:51 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+16:42:51 INFO  : Jtag cable 'RealDigital Boo 8874292301D5A' is selected.
+16:42:51 INFO  : 'jtag frequency' command is executed.
+16:42:52 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874292301D5A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+16:42:53 INFO  : Device configured successfully with "/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.bit"
+16:42:53 INFO  : Context for processor 'microblaze_0' is selected.
+16:42:53 INFO  : Hardware design and registers information is loaded from '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_usb_hdmi_top/export/mb_usb_hdmi_top/hw/mb_usb_hdmi_top.xsa'.
+16:42:53 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+16:42:53 INFO  : Context for processor 'microblaze_0' is selected.
+16:42:53 INFO  : System reset is completed.
+16:42:56 INFO  : 'after 3000' command is executed.
+16:42:56 INFO  : Context for processor 'microblaze_0' is selected.
+16:42:56 INFO  : The application '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/Debug/mb_doodle.elf' is downloaded to processor 'microblaze_0'.
+16:42:56 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874292301D5A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_usb_hdmi_top/export/mb_usb_hdmi_top/hw/mb_usb_hdmi_top.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -system
+after 3000
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/Debug/mb_doodle.elf
+----------------End of Script----------------
+
+16:42:56 INFO  : Context for processor 'microblaze_0' is selected.
+16:42:56 INFO  : 'con' command is executed.
+16:42:56 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+16:42:56 INFO  : Disconnected from the channel tcfchan#37.
+16:51:26 INFO  : Hardware specification for platform project 'mb_usb_hdmi_top' is updated.
+16:51:37 INFO  : Result from executing command 'removePlatformRepo': 
+16:51:48 INFO  : Result from executing command 'getProjects': mb_usb_hdmi_top
+16:51:48 INFO  : Result from executing command 'getPlatforms': 
+16:51:52 INFO  : Checking for BSP changes to sync application flags for project 'mb_doodle'...
+16:51:55 INFO  : The hardware specification used by project 'mb_doodle' is out of sync with the platform. Resource files extracted from the hardware specification will be updated.
+16:51:55 INFO  : The file '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.bit' stored in project is removed.
+16:51:55 INFO  : The file '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.mmi' stored in project is removed.
+16:51:55 INFO  : The updated bitstream files are copied from platform to folder '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream' in project 'mb_doodle'.
+16:52:04 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+16:52:04 INFO  : Jtag cable 'RealDigital Boo 8874292301D5A' is selected.
+16:52:04 INFO  : 'jtag frequency' command is executed.
+16:52:04 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874292301D5A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+16:52:06 INFO  : Device configured successfully with "/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.bit"
+16:52:06 INFO  : Context for processor 'microblaze_0' is selected.
+16:52:06 INFO  : Hardware design and registers information is loaded from '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_usb_hdmi_top/export/mb_usb_hdmi_top/hw/mb_usb_hdmi_top.xsa'.
+16:52:06 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+16:52:06 INFO  : Context for processor 'microblaze_0' is selected.
+16:52:06 INFO  : System reset is completed.
+16:52:09 INFO  : 'after 3000' command is executed.
+16:52:09 INFO  : Context for processor 'microblaze_0' is selected.
+16:52:09 INFO  : The application '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/Debug/mb_doodle.elf' is downloaded to processor 'microblaze_0'.
+16:52:09 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874292301D5A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_usb_hdmi_top/export/mb_usb_hdmi_top/hw/mb_usb_hdmi_top.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -system
+after 3000
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/Debug/mb_doodle.elf
+----------------End of Script----------------
+
+16:52:09 INFO  : Context for processor 'microblaze_0' is selected.
+16:52:09 INFO  : 'con' command is executed.
+16:52:09 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+16:52:09 INFO  : Disconnected from the channel tcfchan#40.
+17:01:51 INFO  : Hardware specification for platform project 'mb_usb_hdmi_top' is updated.
+17:02:02 INFO  : Result from executing command 'removePlatformRepo': 
+17:02:16 INFO  : Result from executing command 'getProjects': mb_usb_hdmi_top
+17:02:16 INFO  : Result from executing command 'getPlatforms': 
+17:02:19 INFO  : Checking for BSP changes to sync application flags for project 'mb_doodle'...
+17:02:22 INFO  : The hardware specification used by project 'mb_doodle' is out of sync with the platform. Resource files extracted from the hardware specification will be updated.
+17:02:22 INFO  : The file '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.bit' stored in project is removed.
+17:02:22 INFO  : The file '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.mmi' stored in project is removed.
+17:02:22 INFO  : The updated bitstream files are copied from platform to folder '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream' in project 'mb_doodle'.
+17:02:26 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+17:02:26 INFO  : Jtag cable 'RealDigital Boo 8874292301D5A' is selected.
+17:02:26 INFO  : 'jtag frequency' command is executed.
+17:02:27 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874292301D5A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+17:02:28 INFO  : Device configured successfully with "/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.bit"
+17:02:28 INFO  : Context for processor 'microblaze_0' is selected.
+17:02:28 INFO  : Hardware design and registers information is loaded from '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_usb_hdmi_top/export/mb_usb_hdmi_top/hw/mb_usb_hdmi_top.xsa'.
+17:02:28 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+17:02:28 INFO  : Context for processor 'microblaze_0' is selected.
+17:02:28 INFO  : System reset is completed.
+17:02:31 INFO  : 'after 3000' command is executed.
+17:02:31 INFO  : Context for processor 'microblaze_0' is selected.
+17:02:31 INFO  : The application '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/Debug/mb_doodle.elf' is downloaded to processor 'microblaze_0'.
+17:02:31 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874292301D5A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_usb_hdmi_top/export/mb_usb_hdmi_top/hw/mb_usb_hdmi_top.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -system
+after 3000
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/Debug/mb_doodle.elf
+----------------End of Script----------------
+
+17:02:31 INFO  : Context for processor 'microblaze_0' is selected.
+17:02:31 INFO  : 'con' command is executed.
+17:02:31 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+17:02:31 INFO  : Disconnected from the channel tcfchan#43.
+17:28:17 INFO  : Hardware specification for platform project 'mb_usb_hdmi_top' is updated.
+17:28:30 INFO  : Result from executing command 'removePlatformRepo': 
+17:28:41 INFO  : Result from executing command 'getProjects': mb_usb_hdmi_top
+17:28:41 INFO  : Result from executing command 'getPlatforms': 
+17:28:44 INFO  : Checking for BSP changes to sync application flags for project 'mb_doodle'...
+17:28:48 INFO  : The hardware specification used by project 'mb_doodle' is out of sync with the platform. Resource files extracted from the hardware specification will be updated.
+17:28:48 INFO  : The file '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.bit' stored in project is removed.
+17:28:48 INFO  : The file '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.mmi' stored in project is removed.
+17:28:48 INFO  : The updated bitstream files are copied from platform to folder '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream' in project 'mb_doodle'.
+17:28:51 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+17:28:51 INFO  : Jtag cable 'RealDigital Boo 8874292301D5A' is selected.
+17:28:51 INFO  : 'jtag frequency' command is executed.
+17:28:51 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874292301D5A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+17:28:53 INFO  : Device configured successfully with "/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.bit"
+17:28:53 INFO  : Context for processor 'microblaze_0' is selected.
+17:28:53 INFO  : Hardware design and registers information is loaded from '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_usb_hdmi_top/export/mb_usb_hdmi_top/hw/mb_usb_hdmi_top.xsa'.
+17:28:53 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+17:28:53 INFO  : Context for processor 'microblaze_0' is selected.
+17:28:53 INFO  : System reset is completed.
+17:28:56 INFO  : 'after 3000' command is executed.
+17:28:56 INFO  : Context for processor 'microblaze_0' is selected.
+17:28:56 INFO  : The application '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/Debug/mb_doodle.elf' is downloaded to processor 'microblaze_0'.
+17:28:56 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874292301D5A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_usb_hdmi_top/export/mb_usb_hdmi_top/hw/mb_usb_hdmi_top.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -system
+after 3000
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/Debug/mb_doodle.elf
+----------------End of Script----------------
+
+17:28:56 INFO  : Context for processor 'microblaze_0' is selected.
+17:28:56 INFO  : 'con' command is executed.
+17:28:56 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+17:28:56 INFO  : Disconnected from the channel tcfchan#46.
+17:38:05 INFO  : Hardware specification for platform project 'mb_usb_hdmi_top' is updated.
+17:38:16 INFO  : Result from executing command 'removePlatformRepo': 
+17:38:28 INFO  : Result from executing command 'getProjects': mb_usb_hdmi_top
+17:38:28 INFO  : Result from executing command 'getPlatforms': 
+17:38:31 INFO  : Checking for BSP changes to sync application flags for project 'mb_doodle'...
+17:38:35 INFO  : The hardware specification used by project 'mb_doodle' is out of sync with the platform. Resource files extracted from the hardware specification will be updated.
+17:38:35 INFO  : The file '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.bit' stored in project is removed.
+17:38:35 INFO  : The file '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.mmi' stored in project is removed.
+17:38:35 INFO  : The updated bitstream files are copied from platform to folder '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream' in project 'mb_doodle'.
+17:38:38 INFO  : Connected to target on host '127.0.0.1' and port '3121'.
+17:38:38 INFO  : Jtag cable 'RealDigital Boo 8874292301D5A' is selected.
+17:38:38 INFO  : 'jtag frequency' command is executed.
+17:38:38 INFO  : 'targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874292301D5A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}' command is executed.
+17:38:40 INFO  : Device configured successfully with "/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.bit"
+17:38:40 INFO  : Context for processor 'microblaze_0' is selected.
+17:38:40 INFO  : Hardware design and registers information is loaded from '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_usb_hdmi_top/export/mb_usb_hdmi_top/hw/mb_usb_hdmi_top.xsa'.
+17:38:40 INFO  : 'configparams mdm-detect-bscan-mask 2' command is executed.
+17:38:40 INFO  : Context for processor 'microblaze_0' is selected.
+17:38:40 INFO  : System reset is completed.
+17:38:43 INFO  : 'after 3000' command is executed.
+17:38:43 INFO  : Context for processor 'microblaze_0' is selected.
+17:38:43 INFO  : The application '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/Debug/mb_doodle.elf' is downloaded to processor 'microblaze_0'.
+17:38:43 INFO  : ----------------XSDB Script----------------
+connect -url tcp:127.0.0.1:3121
+targets -set -filter {jtag_cable_name =~ "RealDigital Boo 8874292301D5A" && level==0 && jtag_device_ctx=="jsn1-0362f093-0"}
+fpga -file /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/_ide/bitstream/mb_usb_hdmi_top.bit
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+loadhw -hw /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_usb_hdmi_top/export/mb_usb_hdmi_top/hw/mb_usb_hdmi_top.xsa -regs
+configparams mdm-detect-bscan-mask 2
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+rst -system
+after 3000
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+dow /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle_Jump_Workspace/mb_doodle/Debug/mb_doodle.elf
+----------------End of Script----------------
+
+17:38:43 INFO  : Context for processor 'microblaze_0' is selected.
+17:38:43 INFO  : 'con' command is executed.
+17:38:43 INFO  : ----------------XSDB Script (After Launch)----------------
+targets -set -nocase -filter {name =~ "*microblaze*#0" && bscan=="USER2" }
+con
+----------------End of Script----------------
+
+17:38:43 INFO  : Disconnected from the channel tcfchan#49.

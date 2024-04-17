@@ -49,6 +49,19 @@ module mb_usb_hdmi_top(
     logic [3:0] red, green, blue;
     logic reset_ah;
     
+        // final project additional modules and logic
+    
+    logic dead; 
+    logic [2:0] game_vidmem; 
+    logic [3:0] game_start_r, game_start_g, game_start_b; 
+    logic [3:0] game_b_r, game_b_g, game_b_b; // background rgb
+    logic [3:0] doodle_r, doodle_g, doodle_b; // background rgb
+    logic restart; 
+    logic platform_on; 
+    logic [9:0] top_x_max; 
+    logic [9:0] top_y_loc;
+    logic [9:0] top_x_loc;
+    logic doodle_on; 
     
     assign reset_ah = reset_rtl_0;
     
@@ -135,17 +148,6 @@ module mb_usb_hdmi_top(
     );
 
     
-    // Ball Module
-    doodle doodle_instance(
-        .Reset(reset_ah),
-        .frame_clk(vsync),                    //Figure out what this should be so that the ball will move
-        .keycode(keycode0_gpio[7:0]),    //Notice: only one keycode connected to ball by default
-        .BallX(ballxsig),
-        .BallY(ballysig),
-        .BallS(ballsizesig)
-    );
-   
-    
     //Color Mapper Module   
     color_mapper color_instance(
         .BallX(ballxsig),
@@ -160,26 +162,42 @@ module mb_usb_hdmi_top(
         .gb_red(game_b_r),
         .gb_green(game_b_g),
         .gb_blue(game_b_b),
+        .doodle_red(doodle_r),
+        .doodle_green(doodle_g),
+        .doodle_blue(doodle_b),
+        .platform_on(platform_on), 
+        .doodle_on(doodle_on),
         .Red(red),
         .Green(green),
         .Blue(blue)
     );
     
-    // final project additional modules and logic
-    
-    logic dead; 
-    assign dead = 1'b0; // manually set dead as 0 for now, will need to instantiate a module for when the doodle fails 
-    logic [2:0] game_vidmem; 
-    logic [3:0] game_start_r, game_start_g, game_start_b; 
-    logic [3:0] game_b_r, game_b_g, game_b_b; // background rgb
-//    logic restart; 
-
 // Drawing modules
 
 // hardcode background screen color for now
-assign game_b_r = 4'hf; 
-assign game_b_g = 4'hf;
-assign game_b_b = 4'hf; 
+assign game_b_r = 4'hD; 
+assign game_b_g = 4'hD;
+assign game_b_b = 4'hD;
+
+// hard code doodle rgb for now
+assign doodle_r = 4'hf;
+assign doodle_g = 4'h8;
+assign doodle_b = 4'h2; 
+
+// hardcode platform location for now, figure out how to auto generate
+assign top_x_loc = 10'd200;
+assign top_y_loc = 10'd360; 
+
+// draw doodle
+//    doodlechar doodle (
+//         .vga_clk(clk_25MHz),
+//        .DrawX(drawX),
+//        .DrawY(drawY),
+//        .blank(vde),
+//        .red(doodle_r),
+//        .green(doodle_g),
+//        .blue(doodle_b)
+//    ); 
 
 // draw the homescreen
    doodlejump_homescreen home_screen(
@@ -192,15 +210,51 @@ assign game_b_b = 4'hf;
         .blue(game_start_b)
     ); 
     
-// draw doodle grid screen for background
-//    doodlejump_gridscreen grid_screen(
-//        .vga_clk(clk_25MHz),
-//        .DrawX(drawX),
-//        .DrawY(drawY),
-//        .blank(vde),
-//        .red(game_b_r),
-//        .green(game_b_g),
-//        .blue(game_b_b)
+// draw platform 
+    platform doodle_platform(
+        .Reset(reset_ah), 
+        .frame_clk(vsync), 
+        .drawX(drawX),
+        .drawY(drawY),
+        .topx(top_x_loc),
+        .topy(top_y_loc),
+        .doodle(doodle_on), 
+        .platform(platform_on),
+        .platx_range(top_x_max)
+    ); 
+
+    // Doodle Module
+   
+    
+    doodle doodle_instance(
+        .Reset(reset_ah),
+//        .cpu_clk(Clk), 
+//        .reset_doodle(reset_doodle), 
+        .frame_clk(vsync),                    //Figure out what this should be so that the ball will move
+        .keycode(keycode0_gpio[7:0]),    //Notice: only one keycode connected to ball by default
+        .doodle_restart(restart),
+        .topplatXmin(top_x_loc),        // doodle gets top x of plat
+        .topplatXmax(top_x_max),        // range 
+        .topplatY(top_y_loc),           // y loc 
+        .BallX(ballxsig),
+        .BallY(ballysig),
+        .BallS(ballsizesig),
+        .dead(dead)
+    );
+   
+
+// platform generator logic 
+
+// platform_generator platform_inst (
+//        .reset(reset_ah),
+//        .frame_clk(vsync), 
+//        .drawX(drawX), 
+//        .drawY(drawY),
+//        .doodle_on(doodle_on), 
+//        .platform(platform_on),
+//        .plat_range(top_x_max),
+//        .plat_y_loc(top_y_loc),
+//        .plat_x_loc(top_x_loc)
 //    );
     
     // Game state Module 
@@ -209,8 +263,8 @@ assign game_b_b = 4'hf;
         .dead_bit(dead), 
         .reset(reset_ah), 
         .clk(Clk), 
-        .game_state(game_vidmem)
-//        .restart_bit(restart)
+        .game_state(game_vidmem),
+        .doodle_rst(restart)
     );
     
     // object design to add: doodle's ball, monster, platforms, collision logic, score logic 
