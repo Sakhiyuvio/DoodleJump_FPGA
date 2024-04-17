@@ -29,11 +29,12 @@ module platform(
 //        input logic         doodle_restart, 
 
         // input logic top left coordinate of rect, auto generate this somehow 
-        input logic [9:0]   topx, topy, 
+        input logic [9:0]   topx [8], 
+        input logic [9:0]   topy [8], 
         input logic         doodle, 
     
-        output logic        platform,
-        output logic [9:0]  platx_range
+        output logic [7:0]  platform,
+        output logic [9:0]  platx_range[8]
 //        output logic dead
     );
     
@@ -48,12 +49,21 @@ module platform(
     parameter [9:0] plat_size_y = 8; 
     
     // hardcode the platform location for now 
-    logic platform_on; 
-    assign platform = platform_on; 
-    logic [9:0] plat_topl_x, plat_topl_y; 
-    assign plat_topl_x = topx;
-    assign plat_topl_y = topy; 
-    assign platx_range = plat_topl_x + plat_size_x; 
+    
+    // platform signal bits
+    logic [7:0] platform_on; 
+    assign platform = platform_on;
+    
+    // platform location 
+
+    integer i; 
+    always_comb
+    begin
+        for(i = 0; i < 8; i = i + 1)
+        begin
+            platx_range[i] = topx[i] + plat_size_x; 
+        end
+    end
     
     // location logic 
     always_comb
@@ -61,11 +71,46 @@ module platform(
         platform_on = 1'b0; 
         if(drawX >= 160 && drawX < 480) 
         begin
-            if(drawX >= plat_topl_x && drawX < plat_topl_x + plat_size_x && 
-               drawY >= plat_topl_y && drawY < plat_topl_y + plat_size_y && doodle == 1'b0)
+            if(drawX >= topx[0] && drawX < topx[0] + plat_size_x && 
+               drawY >= topy[0] && drawY < topy[0] + plat_size_y && doodle == 1'b0)
                begin
-                    platform_on = 1'b1; 
+                    platform_on[0] = 1'b1; 
                end 
+            else if(drawX >= topx[1] && drawX < topx[1] + plat_size_x && 
+               drawY >= topy[1] && drawY < topy[1] + plat_size_y && doodle == 1'b0)
+               begin
+                    platform_on[1] = 1'b1; 
+               end  
+            else if(drawX >= topx[2] && drawX < topx[2] + plat_size_x && 
+               drawY >= topy[2] && drawY < topy[2] + plat_size_y && doodle == 1'b0)
+               begin
+                    platform_on[2] = 1'b1; 
+               end 
+            else if(drawX >= topx[3] && drawX < topx[3] + plat_size_x && 
+               drawY >= topy[3] && drawY < topy[3] + plat_size_y && doodle == 1'b0)
+               begin
+                    platform_on[3] = 1'b1; 
+               end  
+            else if(drawX >= topx[4] && drawX < topx[4] + plat_size_x && 
+               drawY >= topy[4] && drawY < topy[4] + plat_size_y && doodle == 1'b0)
+               begin
+                    platform_on[4] = 1'b1; 
+               end 
+            else if(drawX >= topx[5] && drawX < topx[5] + plat_size_x && 
+               drawY >= topy[5] && drawY < topy[5] + plat_size_y && doodle == 1'b0)
+               begin
+                    platform_on[5] = 1'b1; 
+               end  
+            else if(drawX >= topx[6] && drawX < topx[6] + plat_size_x && 
+               drawY >= topy[6] && drawY < topy[6] + plat_size_y && doodle == 1'b0)
+               begin
+                    platform_on[6] = 1'b1; 
+               end 
+            else if(drawX >= topx[7] && drawX < topx[7] + plat_size_x && 
+               drawY >= topy[7] && drawY < topy[7] + plat_size_y && doodle == 1'b0)
+               begin
+                    platform_on[7] = 1'b1; 
+               end                                                  
         end  
     end
     

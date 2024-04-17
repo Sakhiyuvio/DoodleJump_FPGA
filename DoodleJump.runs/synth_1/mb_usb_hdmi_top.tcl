@@ -99,6 +99,7 @@ read_verilog -library xil_defaultlib -sv {
   /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/new/game_control_unit.sv
   /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/design_source/hex_driver.sv
   /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/new/platform.sv
+  /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/new/platform_generator.sv
   /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/design_source/mb_usb_hdmi_top.sv
 }
 add_files /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/bd/mb_block/mb_block.bd

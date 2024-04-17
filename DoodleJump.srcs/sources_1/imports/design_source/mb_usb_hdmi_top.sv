@@ -57,10 +57,10 @@ module mb_usb_hdmi_top(
     logic [3:0] game_b_r, game_b_g, game_b_b; // background rgb
     logic [3:0] doodle_r, doodle_g, doodle_b; // background rgb
     logic restart; 
-    logic platform_on; 
-    logic [9:0] top_x_max; 
-    logic [9:0] top_y_loc;
-    logic [9:0] top_x_loc;
+    logic [7:0] platform_on; 
+    logic [9:0] top_x_max [8]; 
+    logic [9:0] top_y_loc [8];
+    logic [9:0] top_x_loc [8];
     logic doodle_on; 
     
     assign reset_ah = reset_rtl_0;
@@ -185,8 +185,8 @@ assign doodle_g = 4'h8;
 assign doodle_b = 4'h2; 
 
 // hardcode platform location for now, figure out how to auto generate
-assign top_x_loc = 10'd200;
-assign top_y_loc = 10'd360; 
+//assign top_x_loc = 10'd200;
+//assign top_y_loc = 10'd360; 
 
 // draw doodle
 //    doodlechar doodle (
@@ -208,19 +208,6 @@ assign top_y_loc = 10'd360;
         .red(game_start_r),
         .green(game_start_g),
         .blue(game_start_b)
-    ); 
-    
-// draw platform 
-    platform doodle_platform(
-        .Reset(reset_ah), 
-        .frame_clk(vsync), 
-        .drawX(drawX),
-        .drawY(drawY),
-        .topx(top_x_loc),
-        .topy(top_y_loc),
-        .doodle(doodle_on), 
-        .platform(platform_on),
-        .platx_range(top_x_max)
     ); 
 
     // Doodle Module
@@ -245,18 +232,31 @@ assign top_y_loc = 10'd360;
 
 // platform generator logic 
 
-// platform_generator platform_inst (
-//        .reset(reset_ah),
-//        .frame_clk(vsync), 
-//        .drawX(drawX), 
-//        .drawY(drawY),
-//        .doodle_on(doodle_on), 
-//        .platform(platform_on),
-//        .plat_range(top_x_max),
-//        .plat_y_loc(top_y_loc),
-//        .plat_x_loc(top_x_loc)
-//    );
+    platform_generator platform_inst (
+        .reset(reset_ah),
+        .frame_clk(vsync), 
+        .drawX(drawX), 
+        .drawY(drawY),
+        .doodle_on(doodle_on), 
+        .platform(platform_on),
+        .plat_range(top_x_max),
+        .plat_y_loc(top_y_loc),
+        .plat_x_loc(top_x_loc)
+    );
     
+    // draw platform 
+//    platform doodle_platform(
+//        .Reset(reset_ah), 
+//        .frame_clk(vsync), 
+//        .drawX(drawX),
+//        .drawY(drawY),
+//        .topx(top_x_loc),
+//        .topy(top_y_loc),
+//        .doodle(doodle_on), 
+//        .platform(platform_on),
+//        .platx_range(top_x_max)
+//    ); 
+
     // Game state Module 
     game_control_unit game (
         .keycode(keycode0_gpio[7:0]),

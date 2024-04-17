@@ -22,7 +22,9 @@ module  doodle
     input  logic        frame_clk,
     input  logic [7:0]  keycode,
     input logic         doodle_restart, 
-    input logic [9:0]   topplatXmin, topplatXmax, topplatY, 
+    input logic [9:0]   topplatXmin [8], 
+    input logic [9:0]   topplatXmax [8], 
+    input logic [9:0]   topplatY [8], 
 
     output logic [9:0]  BallX, 
     output logic [9:0]  BallY, 
@@ -36,7 +38,7 @@ module  doodle
     parameter [9:0] Ball_Y_Center=240;  // Center position on the Y axis
     parameter [9:0] Ball_X_Min=160;       // Leftmost point on the X axis
     parameter [9:0] Ball_X_Max=479;     // Rightmost point on the X axis
-    parameter [9:0] Ball_Y_Min=199;       // Topmost point on the Y axis
+    parameter [9:0] Ball_Y_Min= 0;       // Topmost point on the Y axis
     parameter [9:0] Ball_Y_Max=479;     // Bottommost point on the Y axis
     parameter [9:0] Ball_X_Step=1;      // Step size on the X axis
     parameter [9:0] Ball_Y_Step=1;      // Step size on the Y axis
@@ -82,11 +84,18 @@ module  doodle
         end
         
         // doodle-platform collision logic 
-        if (((BallY + BallS) >= topplatY) && ((BallX) <= topplatXmax) && ((BallX) >= topplatXmin))
+        if ((((BallY + BallS) >= topplatY[0]) && ((BallX) <= topplatXmax[0]) && ((BallX) >= topplatXmin[0]))
+        || (((BallY + BallS) >= topplatY[1]) && ((BallX) <= topplatXmax[1]) && ((BallX) >= topplatXmin[1]))
+        || (((BallY + BallS) >= topplatY[2]) && ((BallX) <= topplatXmax[2]) && ((BallX) >= topplatXmin[2]))
+        || (((BallY + BallS) >= topplatY[3]) && ((BallX) <= topplatXmax[3]) && ((BallX) >= topplatXmin[3]))
+        || (((BallY + BallS) >= topplatY[4]) && ((BallX) <= topplatXmax[4]) && ((BallX) >= topplatXmin[4]))
+        || (((BallY + BallS) >= topplatY[5]) && ((BallX) <= topplatXmax[5]) && ((BallX) >= topplatXmin[5]))
+        || (((BallY + BallS) >= topplatY[6]) && ((BallX) <= topplatXmax[6]) && ((BallX) >= topplatXmin[6]))
+        || (((BallY + BallS) >= topplatY[7]) && ((BallX) <= topplatXmax[7]) && ((BallX) >= topplatXmin[7])))
         begin
             Ball_Y_Motion_next = (~(Ball_Y_Step) + 1'b1); // jump 
-        end 
-
+        end     
+        
         else if ( (BallY - BallS) >= Ball_Y_Max)  // Ball is at the bottom edge, game over!
         begin
 //            Ball_Y_Motion_next = (~ (Ball_Y_Step) + 1'b1);  // set to -1 via 2's complement.

@@ -19,7 +19,7 @@ module  color_mapper ( input  logic [9:0] BallX, BallY, DrawX, DrawY, Ball_size,
                        input logic[3:0] gs_red, gs_green, gs_blue,
                        input logic[3:0] gb_red, gb_green, gb_blue,
                        input logic[3:0] doodle_red, doodle_green, doodle_blue,
-                       input logic platform_on, 
+                       input logic [7:0] platform_on, 
                        output logic doodle_on, 
                        output logic [3:0]  Red, Green, Blue );
     
@@ -83,12 +83,13 @@ module  color_mapper ( input  logic [9:0] BallX, BallY, DrawX, DrawY, Ball_size,
                     Blue = doodle_blue;
                 end       
                 // draw platform
-                else if (platform_on == 1'b1)
+                else if (platform_on[0] == 1'b1 || platform_on[1] == 1'b1 || platform_on[2] == 1'b1 || platform_on[3] == 1'b1 ||
+                        platform_on[4] == 1'b1 || platform_on[5] == 1'b1 || platform_on[6] == 1'b1 || platform_on[7] == 1'b1)
                 begin
                     Red = 4'h2;
                     Green = 4'hD; 
                     Blue = 4'h2; 
-                end       
+                end                                                    
                 else
                 begin 
                     // draw the background 

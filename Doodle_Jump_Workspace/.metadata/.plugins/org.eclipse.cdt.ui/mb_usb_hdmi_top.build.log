@@ -1,6 +1,6 @@
-17:38:24 **** Build of project mb_usb_hdmi_top ****
+18:46:05 **** Build of project mb_usb_hdmi_top ****
 buildplatform.sh 45855 mb_usb_hdmi_top  
-XSDB Server Channel: tcfchan#48
+XSDB Server Channel: tcfchan#60
 /tools/Xilinx/Vitis/2022.2/gnu/microblaze/lin
 Building the BSP Library for domain  - standalone_microblaze_0 on processor microblaze_0
 make --no-print-directory seq_libs
@@ -11,11 +11,11 @@ make -j 6 --no-print-directory par_libs
 
 Running Make include in microblaze_0/libsrc/standalone_v8_0/src
 
-Running Make include in microblaze_0/libsrc/spi_v4_9/src
-
 make -C microblaze_0/libsrc/standalone_v8_0/src -s include  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar
 " "COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mno-xl-reorder -mno-xl-soft-mul -mxl-barrel-shift -mxl-pattern-compare"
  "EXTRA_COMPILER_FLAGS=-g -ffunction-sections -fdata-sections -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+Running Make include in microblaze_0/libsrc/spi_v4_9/src
 
 make -C microblaze_0/libsrc/spi_v4_9/src -s include  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "COMP
 ILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mno-xl-reorder -mno-xl-soft-mul -mxl-barrel-shift -mxl-pattern-compare" "EXTRA
@@ -59,10 +59,6 @@ RA_COMPILER_FLAGS=-g -ffunction-sections -fdata-sections -Wall -Wextra -fno-tree
 
 Running Make libs in microblaze_0/libsrc/standalone_v8_0/src
 
-make -C microblaze_0/libsrc/standalone_v8_0/src -s libs  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "
-COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mno-xl-reorder -mno-xl-soft-mul -mxl-barrel-shift -mxl-pattern-compare" "E
-XTRA_COMPILER_FLAGS=-g -ffunction-sections -fdata-sections -Wall -Wextra -fno-tree-loop-distribute-patterns"
-
 Running Make libs in microblaze_0/libsrc/spi_v4_9/src
 
 Running Make libs in microblaze_0/libsrc/uartlite_v3_7/src
@@ -71,19 +67,23 @@ make -C microblaze_0/libsrc/spi_v4_9/src -s libs  "SHELL=/bin/sh" "COMPILER=mb-g
 R_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mno-xl-reorder -mno-xl-soft-mul -mxl-barrel-shift -mxl-pattern-compare" "EXTRA_CO
 MPILER_FLAGS=-g -ffunction-sections -fdata-sections -Wall -Wextra -fno-tree-loop-distribute-patterns"
 
+Running Make libs in microblaze_0/libsrc/bram_v4_8/src
+
+make -C microblaze_0/libsrc/standalone_v8_0/src -s libs  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "
+COMPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mno-xl-reorder -mno-xl-soft-mul -mxl-barrel-shift -mxl-pattern-compare" "E
+XTRA_COMPILER_FLAGS=-g -ffunction-sections -fdata-sections -Wall -Wextra -fno-tree-loop-distribute-patterns"
+
+Running Make libs in microblaze_0/libsrc/gpio_v4_9/src
+
 make -C microblaze_0/libsrc/uartlite_v3_7/src -s libs  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "CO
 MPILER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mno-xl-reorder -mno-xl-soft-mul -mxl-barrel-shift -mxl-pattern-compare" "EXT
 RA_COMPILER_FLAGS=-g -ffunction-sections -fdata-sections -Wall -Wextra -fno-tree-loop-distribute-patterns"
 
-Running Make libs in microblaze_0/libsrc/bram_v4_8/src
+Running Make libs in microblaze_0/libsrc/cpu_v2_16/src
 
 make -C microblaze_0/libsrc/bram_v4_8/src -s libs  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "COMPIL
 ER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mno-xl-reorder -mno-xl-soft-mul -mxl-barrel-shift -mxl-pattern-compare" "EXTRA_C
 OMPILER_FLAGS=-g -ffunction-sections -fdata-sections -Wall -Wextra -fno-tree-loop-distribute-patterns"
-
-Running Make libs in microblaze_0/libsrc/gpio_v4_9/src
-
-Running Make libs in microblaze_0/libsrc/cpu_v2_16/src
 
 make -C microblaze_0/libsrc/gpio_v4_9/src -s libs  "SHELL=/bin/sh" "COMPILER=mb-gcc" "ASSEMBLER=mb-as" "ARCHIVER=mb-ar" "COMPIL
 ER_FLAGS=  -O2 -c -mcpu=v11.0 -mlittle-endian -mno-xl-reorder -mno-xl-soft-mul -mxl-barrel-shift -mxl-pattern-compare" "EXTRA_C
@@ -145,5 +145,5 @@ xuartlite_stats.o
 Finished building libraries
 
 
-17:38:31 Build Finished (took 7s.672ms)
+18:46:12 Build Finished (took 7s.720ms)
 
