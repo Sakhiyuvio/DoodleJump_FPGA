@@ -2,16 +2,16 @@
 # Vivado v2022.2 (64-bit)
 # SW Build 3671981 on Fri Oct 14 04:59:54 MDT 2022
 # IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
-# Start of session at: Wed Apr 17 18:39:30 2024
-# Process ID: 464708
+# Start of session at: Wed Apr 17 23:40:03 2024
+# Process ID: 632587
 # Current directory: /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1
 # Command line: vivado -log mb_usb_hdmi_top.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source mb_usb_hdmi_top.tcl
 # Log file: /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/mb_usb_hdmi_top.vds
 # Journal file: /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/vivado.jou
-# Running On: michael-XPS-13-9360, OS: Linux, CPU Frequency: 3290.387 MHz, CPU Physical cores: 4, Host memory: 8036 MB
+# Running On: michael-XPS-13-9360, OS: Linux, CPU Frequency: 2000.000 MHz, CPU Physical cores: 4, Host memory: 8036 MB
 #-----------------------------------------------------------
 source mb_usb_hdmi_top.tcl -notrace
-create_project: Time (s): cpu = 00:00:08 ; elapsed = 00:00:08 . Memory (MB): peak = 1254.836 ; gain = 0.023 ; free physical = 1675 ; free virtual = 3773
+create_project: Time (s): cpu = 00:00:06 ; elapsed = 00:00:06 . Memory (MB): peak = 1317.324 ; gain = 0.023 ; free physical = 1737 ; free virtual = 4480
 INFO: [IP_Flow 19-234] Refreshing IP repositories
 INFO: [IP_Flow 19-1700] Loaded user IP repository '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/hdmi_tx_1.0'.
 INFO: [IP_Flow 19-2313] Loaded Vivado IP repository '/tools/Xilinx/Vivado/2022.2/data/ip'.
@@ -27,12 +27,12 @@ INFO: [Designutils 20-5440] No compile time benefit to using incremental synthes
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-7079] Multithreading enabled for synth_design using a maximum of 4 processes.
 INFO: [Synth 8-7078] Launching helper process for spawning children vivado processes
-INFO: [Synth 8-7075] Helper process launched with PID 464784
+INFO: [Synth 8-7075] Helper process launched with PID 632632
 INFO: [Synth 8-11241] undeclared symbol 'REGCCE', assumed default net type 'wire' [/tools/Xilinx/Vivado/2022.2/data/verilog/src/unimacro/BRAM_SINGLE_MACRO.v:2170]
 ---------------------------------------------------------------------------------
-Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 1953.379 ; gain = 371.699 ; free physical = 860 ; free virtual = 2957
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1438.026; parent = 1217.943; children = 220.083
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 2961.129; parent = 1961.320; children = 999.809
+Starting RTL Elaboration : Time (s): cpu = 00:00:06 ; elapsed = 00:00:07 . Memory (MB): peak = 1954.086 ; gain = 371.699 ; free physical = 918 ; free virtual = 3663
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1392.455; parent = 1183.508; children = 208.947
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 2954.832; parent = 1961.027; children = 993.805
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-6157] synthesizing module 'mb_usb_hdmi_top' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/design_source/mb_usb_hdmi_top.sv:14]
 INFO: [Synth 8-6157] synthesizing module 'hex_driver' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/design_source/hex_driver.sv:1]
@@ -46,22 +46,22 @@ INFO: [Synth 8-6157] synthesizing module 'nibble_to_hex' [/home/rishab/Documents
 INFO: [Synth 8-6155] done synthesizing module 'nibble_to_hex' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/design_source/hex_driver.sv:11]
 INFO: [Synth 8-6155] done synthesizing module 'hex_driver' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/design_source/hex_driver.sv:1]
 INFO: [Synth 8-6157] synthesizing module 'mb_block' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/lab6.gen/sources_1/bd/mb_block/synth/mb_block.v:1082]
-INFO: [Synth 8-6157] synthesizing module 'mb_block_axi_uartlite_0_0' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-464708-michael-XPS-13-9360/realtime/mb_block_axi_uartlite_0_0_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'mb_block_axi_uartlite_0_0' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-464708-michael-XPS-13-9360/realtime/mb_block_axi_uartlite_0_0_stub.v:5]
-INFO: [Synth 8-6157] synthesizing module 'mb_block_clk_wiz_1_0' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-464708-michael-XPS-13-9360/realtime/mb_block_clk_wiz_1_0_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'mb_block_clk_wiz_1_0' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-464708-michael-XPS-13-9360/realtime/mb_block_clk_wiz_1_0_stub.v:5]
-INFO: [Synth 8-6157] synthesizing module 'mb_block_axi_gpio_2_1' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-464708-michael-XPS-13-9360/realtime/mb_block_axi_gpio_2_1_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'mb_block_axi_gpio_2_1' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-464708-michael-XPS-13-9360/realtime/mb_block_axi_gpio_2_1_stub.v:5]
-INFO: [Synth 8-6157] synthesizing module 'mb_block_axi_gpio_1_1' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-464708-michael-XPS-13-9360/realtime/mb_block_axi_gpio_1_1_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'mb_block_axi_gpio_1_1' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-464708-michael-XPS-13-9360/realtime/mb_block_axi_gpio_1_1_stub.v:5]
-INFO: [Synth 8-6157] synthesizing module 'mb_block_axi_gpio_0_1' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-464708-michael-XPS-13-9360/realtime/mb_block_axi_gpio_0_1_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'mb_block_axi_gpio_0_1' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-464708-michael-XPS-13-9360/realtime/mb_block_axi_gpio_0_1_stub.v:5]
-INFO: [Synth 8-6157] synthesizing module 'mb_block_mdm_1_0' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-464708-michael-XPS-13-9360/realtime/mb_block_mdm_1_0_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'mb_block_mdm_1_0' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-464708-michael-XPS-13-9360/realtime/mb_block_mdm_1_0_stub.v:5]
-INFO: [Synth 8-6157] synthesizing module 'mb_block_microblaze_0_0' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-464708-michael-XPS-13-9360/realtime/mb_block_microblaze_0_0_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'mb_block_microblaze_0_0' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-464708-michael-XPS-13-9360/realtime/mb_block_microblaze_0_0_stub.v:5]
-INFO: [Synth 8-6157] synthesizing module 'mb_block_microblaze_0_axi_intc_0' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-464708-michael-XPS-13-9360/realtime/mb_block_microblaze_0_axi_intc_0_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'mb_block_microblaze_0_axi_intc_0' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-464708-michael-XPS-13-9360/realtime/mb_block_microblaze_0_axi_intc_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'mb_block_axi_uartlite_0_0' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-632587-michael-XPS-13-9360/realtime/mb_block_axi_uartlite_0_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'mb_block_axi_uartlite_0_0' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-632587-michael-XPS-13-9360/realtime/mb_block_axi_uartlite_0_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'mb_block_clk_wiz_1_0' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-632587-michael-XPS-13-9360/realtime/mb_block_clk_wiz_1_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'mb_block_clk_wiz_1_0' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-632587-michael-XPS-13-9360/realtime/mb_block_clk_wiz_1_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'mb_block_axi_gpio_2_1' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-632587-michael-XPS-13-9360/realtime/mb_block_axi_gpio_2_1_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'mb_block_axi_gpio_2_1' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-632587-michael-XPS-13-9360/realtime/mb_block_axi_gpio_2_1_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'mb_block_axi_gpio_1_1' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-632587-michael-XPS-13-9360/realtime/mb_block_axi_gpio_1_1_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'mb_block_axi_gpio_1_1' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-632587-michael-XPS-13-9360/realtime/mb_block_axi_gpio_1_1_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'mb_block_axi_gpio_0_1' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-632587-michael-XPS-13-9360/realtime/mb_block_axi_gpio_0_1_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'mb_block_axi_gpio_0_1' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-632587-michael-XPS-13-9360/realtime/mb_block_axi_gpio_0_1_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'mb_block_mdm_1_0' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-632587-michael-XPS-13-9360/realtime/mb_block_mdm_1_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'mb_block_mdm_1_0' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-632587-michael-XPS-13-9360/realtime/mb_block_mdm_1_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'mb_block_microblaze_0_0' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-632587-michael-XPS-13-9360/realtime/mb_block_microblaze_0_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'mb_block_microblaze_0_0' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-632587-michael-XPS-13-9360/realtime/mb_block_microblaze_0_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'mb_block_microblaze_0_axi_intc_0' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-632587-michael-XPS-13-9360/realtime/mb_block_microblaze_0_axi_intc_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'mb_block_microblaze_0_axi_intc_0' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-632587-michael-XPS-13-9360/realtime/mb_block_microblaze_0_axi_intc_0_stub.v:5]
 INFO: [Synth 8-6157] synthesizing module 'mb_block_microblaze_0_axi_periph_0' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/lab6.gen/sources_1/bd/mb_block/synth/mb_block.v:1764]
 INFO: [Synth 8-6157] synthesizing module 'm00_couplers_imp_1TK4492' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/lab6.gen/sources_1/bd/mb_block/synth/mb_block.v:12]
 INFO: [Synth 8-6155] done synthesizing module 'm00_couplers_imp_1TK4492' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/lab6.gen/sources_1/bd/mb_block/synth/mb_block.v:12]
@@ -81,8 +81,8 @@ INFO: [Synth 8-6157] synthesizing module 'm07_couplers_imp_3PYGGY' [/home/rishab
 INFO: [Synth 8-6155] done synthesizing module 'm07_couplers_imp_3PYGGY' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/lab6.gen/sources_1/bd/mb_block/synth/mb_block.v:936]
 INFO: [Synth 8-6157] synthesizing module 's00_couplers_imp_5YIJ0K' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/lab6.gen/sources_1/bd/mb_block/synth/mb_block.v:3234]
 INFO: [Synth 8-6155] done synthesizing module 's00_couplers_imp_5YIJ0K' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/lab6.gen/sources_1/bd/mb_block/synth/mb_block.v:3234]
-INFO: [Synth 8-6157] synthesizing module 'mb_block_xbar_0' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-464708-michael-XPS-13-9360/realtime/mb_block_xbar_0_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'mb_block_xbar_0' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-464708-michael-XPS-13-9360/realtime/mb_block_xbar_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'mb_block_xbar_0' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-632587-michael-XPS-13-9360/realtime/mb_block_xbar_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'mb_block_xbar_0' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-632587-michael-XPS-13-9360/realtime/mb_block_xbar_0_stub.v:5]
 INFO: [Synth 8-6155] done synthesizing module 'mb_block_microblaze_0_axi_periph_0' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/lab6.gen/sources_1/bd/mb_block/synth/mb_block.v:1764]
 WARNING: [Synth 8-7071] port 'M07_AXI_araddr' of module 'mb_block_microblaze_0_axi_periph_0' is unconnected for instance 'microblaze_0_axi_periph' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/lab6.gen/sources_1/bd/mb_block/synth/mb_block.v:1505]
 WARNING: [Synth 8-7071] port 'M07_AXI_arprot' of module 'mb_block_microblaze_0_axi_periph_0' is unconnected for instance 'microblaze_0_axi_periph' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/lab6.gen/sources_1/bd/mb_block/synth/mb_block.v:1505]
@@ -97,39 +97,39 @@ WARNING: [Synth 8-7071] port 'M07_AXI_wstrb' of module 'mb_block_microblaze_0_ax
 WARNING: [Synth 8-7071] port 'M07_AXI_wvalid' of module 'mb_block_microblaze_0_axi_periph_0' is unconnected for instance 'microblaze_0_axi_periph' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/lab6.gen/sources_1/bd/mb_block/synth/mb_block.v:1505]
 WARNING: [Synth 8-7023] instance 'microblaze_0_axi_periph' of module 'mb_block_microblaze_0_axi_periph_0' has 177 connections declared, but only 166 given [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/lab6.gen/sources_1/bd/mb_block/synth/mb_block.v:1505]
 INFO: [Synth 8-6157] synthesizing module 'microblaze_0_local_memory_imp_G5BFEQ' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/lab6.gen/sources_1/bd/mb_block/synth/mb_block.v:3000]
-INFO: [Synth 8-6157] synthesizing module 'mb_block_dlmb_bram_if_cntlr_0' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-464708-michael-XPS-13-9360/realtime/mb_block_dlmb_bram_if_cntlr_0_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'mb_block_dlmb_bram_if_cntlr_0' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-464708-michael-XPS-13-9360/realtime/mb_block_dlmb_bram_if_cntlr_0_stub.v:5]
-INFO: [Synth 8-6157] synthesizing module 'mb_block_dlmb_v10_0' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-464708-michael-XPS-13-9360/realtime/mb_block_dlmb_v10_0_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'mb_block_dlmb_v10_0' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-464708-michael-XPS-13-9360/realtime/mb_block_dlmb_v10_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'mb_block_dlmb_bram_if_cntlr_0' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-632587-michael-XPS-13-9360/realtime/mb_block_dlmb_bram_if_cntlr_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'mb_block_dlmb_bram_if_cntlr_0' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-632587-michael-XPS-13-9360/realtime/mb_block_dlmb_bram_if_cntlr_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'mb_block_dlmb_v10_0' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-632587-michael-XPS-13-9360/realtime/mb_block_dlmb_v10_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'mb_block_dlmb_v10_0' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-632587-michael-XPS-13-9360/realtime/mb_block_dlmb_v10_0_stub.v:5]
 WARNING: [Synth 8-7071] port 'LMB_Rst' of module 'mb_block_dlmb_v10_0' is unconnected for instance 'dlmb_v10' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/lab6.gen/sources_1/bd/mb_block/synth/mb_block.v:3146]
 WARNING: [Synth 8-7023] instance 'dlmb_v10' of module 'mb_block_dlmb_v10_0' has 25 connections declared, but only 24 given [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/lab6.gen/sources_1/bd/mb_block/synth/mb_block.v:3146]
-INFO: [Synth 8-6157] synthesizing module 'mb_block_ilmb_bram_if_cntlr_0' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-464708-michael-XPS-13-9360/realtime/mb_block_ilmb_bram_if_cntlr_0_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'mb_block_ilmb_bram_if_cntlr_0' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-464708-michael-XPS-13-9360/realtime/mb_block_ilmb_bram_if_cntlr_0_stub.v:5]
-INFO: [Synth 8-6157] synthesizing module 'mb_block_ilmb_v10_0' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-464708-michael-XPS-13-9360/realtime/mb_block_ilmb_v10_0_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'mb_block_ilmb_v10_0' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-464708-michael-XPS-13-9360/realtime/mb_block_ilmb_v10_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'mb_block_ilmb_bram_if_cntlr_0' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-632587-michael-XPS-13-9360/realtime/mb_block_ilmb_bram_if_cntlr_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'mb_block_ilmb_bram_if_cntlr_0' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-632587-michael-XPS-13-9360/realtime/mb_block_ilmb_bram_if_cntlr_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'mb_block_ilmb_v10_0' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-632587-michael-XPS-13-9360/realtime/mb_block_ilmb_v10_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'mb_block_ilmb_v10_0' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-632587-michael-XPS-13-9360/realtime/mb_block_ilmb_v10_0_stub.v:5]
 WARNING: [Synth 8-7071] port 'LMB_Rst' of module 'mb_block_ilmb_v10_0' is unconnected for instance 'ilmb_v10' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/lab6.gen/sources_1/bd/mb_block/synth/mb_block.v:3192]
 WARNING: [Synth 8-7023] instance 'ilmb_v10' of module 'mb_block_ilmb_v10_0' has 25 connections declared, but only 24 given [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/lab6.gen/sources_1/bd/mb_block/synth/mb_block.v:3192]
-INFO: [Synth 8-6157] synthesizing module 'mb_block_lmb_bram_0' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-464708-michael-XPS-13-9360/realtime/mb_block_lmb_bram_0_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'mb_block_lmb_bram_0' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-464708-michael-XPS-13-9360/realtime/mb_block_lmb_bram_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'mb_block_lmb_bram_0' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-632587-michael-XPS-13-9360/realtime/mb_block_lmb_bram_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'mb_block_lmb_bram_0' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-632587-michael-XPS-13-9360/realtime/mb_block_lmb_bram_0_stub.v:5]
 WARNING: [Synth 8-7071] port 'rsta_busy' of module 'mb_block_lmb_bram_0' is unconnected for instance 'lmb_bram' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/lab6.gen/sources_1/bd/mb_block/synth/mb_block.v:3217]
 WARNING: [Synth 8-7071] port 'rstb_busy' of module 'mb_block_lmb_bram_0' is unconnected for instance 'lmb_bram' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/lab6.gen/sources_1/bd/mb_block/synth/mb_block.v:3217]
 WARNING: [Synth 8-7023] instance 'lmb_bram' of module 'mb_block_lmb_bram_0' has 16 connections declared, but only 14 given [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/lab6.gen/sources_1/bd/mb_block/synth/mb_block.v:3217]
 INFO: [Synth 8-6155] done synthesizing module 'microblaze_0_local_memory_imp_G5BFEQ' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/lab6.gen/sources_1/bd/mb_block/synth/mb_block.v:3000]
-INFO: [Synth 8-6157] synthesizing module 'mb_block_rst_clk_wiz_1_100M_0' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-464708-michael-XPS-13-9360/realtime/mb_block_rst_clk_wiz_1_100M_0_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'mb_block_rst_clk_wiz_1_100M_0' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-464708-michael-XPS-13-9360/realtime/mb_block_rst_clk_wiz_1_100M_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'mb_block_rst_clk_wiz_1_100M_0' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-632587-michael-XPS-13-9360/realtime/mb_block_rst_clk_wiz_1_100M_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'mb_block_rst_clk_wiz_1_100M_0' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-632587-michael-XPS-13-9360/realtime/mb_block_rst_clk_wiz_1_100M_0_stub.v:5]
 WARNING: [Synth 8-7071] port 'peripheral_reset' of module 'mb_block_rst_clk_wiz_1_100M_0' is unconnected for instance 'rst_clk_wiz_1_100M' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/lab6.gen/sources_1/bd/mb_block/synth/mb_block.v:1694]
 WARNING: [Synth 8-7071] port 'interconnect_aresetn' of module 'mb_block_rst_clk_wiz_1_100M_0' is unconnected for instance 'rst_clk_wiz_1_100M' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/lab6.gen/sources_1/bd/mb_block/synth/mb_block.v:1694]
 WARNING: [Synth 8-7023] instance 'rst_clk_wiz_1_100M' of module 'mb_block_rst_clk_wiz_1_100M_0' has 10 connections declared, but only 8 given [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/lab6.gen/sources_1/bd/mb_block/synth/mb_block.v:1694]
-INFO: [Synth 8-6157] synthesizing module 'mb_block_axi_quad_spi_0_0' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-464708-michael-XPS-13-9360/realtime/mb_block_axi_quad_spi_0_0_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'mb_block_axi_quad_spi_0_0' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-464708-michael-XPS-13-9360/realtime/mb_block_axi_quad_spi_0_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'mb_block_axi_quad_spi_0_0' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-632587-michael-XPS-13-9360/realtime/mb_block_axi_quad_spi_0_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'mb_block_axi_quad_spi_0_0' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-632587-michael-XPS-13-9360/realtime/mb_block_axi_quad_spi_0_0_stub.v:5]
 WARNING: [Synth 8-7071] port 'io0_t' of module 'mb_block_axi_quad_spi_0_0' is unconnected for instance 'spi_usb' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/lab6.gen/sources_1/bd/mb_block/synth/mb_block.v:1703]
 WARNING: [Synth 8-7071] port 'io1_o' of module 'mb_block_axi_quad_spi_0_0' is unconnected for instance 'spi_usb' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/lab6.gen/sources_1/bd/mb_block/synth/mb_block.v:1703]
 WARNING: [Synth 8-7071] port 'io1_t' of module 'mb_block_axi_quad_spi_0_0' is unconnected for instance 'spi_usb' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/lab6.gen/sources_1/bd/mb_block/synth/mb_block.v:1703]
 WARNING: [Synth 8-7071] port 'sck_t' of module 'mb_block_axi_quad_spi_0_0' is unconnected for instance 'spi_usb' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/lab6.gen/sources_1/bd/mb_block/synth/mb_block.v:1703]
 WARNING: [Synth 8-7071] port 'ss_t' of module 'mb_block_axi_quad_spi_0_0' is unconnected for instance 'spi_usb' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/lab6.gen/sources_1/bd/mb_block/synth/mb_block.v:1703]
 WARNING: [Synth 8-7023] instance 'spi_usb' of module 'mb_block_axi_quad_spi_0_0' has 33 connections declared, but only 28 given [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/lab6.gen/sources_1/bd/mb_block/synth/mb_block.v:1703]
-INFO: [Synth 8-6157] synthesizing module 'mb_block_axi_timer_0_0' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-464708-michael-XPS-13-9360/realtime/mb_block_axi_timer_0_0_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'mb_block_axi_timer_0_0' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-464708-michael-XPS-13-9360/realtime/mb_block_axi_timer_0_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'mb_block_axi_timer_0_0' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-632587-michael-XPS-13-9360/realtime/mb_block_axi_timer_0_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'mb_block_axi_timer_0_0' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-632587-michael-XPS-13-9360/realtime/mb_block_axi_timer_0_0_stub.v:5]
 WARNING: [Synth 8-7071] port 'generateout0' of module 'mb_block_axi_timer_0_0' is unconnected for instance 'timer_usb_axi' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/lab6.gen/sources_1/bd/mb_block/synth/mb_block.v:1732]
 WARNING: [Synth 8-7071] port 'generateout1' of module 'mb_block_axi_timer_0_0' is unconnected for instance 'timer_usb_axi' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/lab6.gen/sources_1/bd/mb_block/synth/mb_block.v:1732]
 WARNING: [Synth 8-7071] port 'pwm0' of module 'mb_block_axi_timer_0_0' is unconnected for instance 'timer_usb_axi' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/lab6.gen/sources_1/bd/mb_block/synth/mb_block.v:1732]
@@ -143,19 +143,19 @@ WARNING: [Synth 8-7071] port 'bram_addr_0' of module 'mb_block' is unconnected f
 WARNING: [Synth 8-7071] port 'slv_rden_0' of module 'mb_block' is unconnected for instance 'mb_block_i' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/design_source/mb_usb_hdmi_top.sv:86]
 WARNING: [Synth 8-7071] port 'slv_wren_0' of module 'mb_block' is unconnected for instance 'mb_block_i' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/design_source/mb_usb_hdmi_top.sv:86]
 WARNING: [Synth 8-7023] instance 'mb_block_i' of module 'mb_block' has 15 connections declared, but only 12 given [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/design_source/mb_usb_hdmi_top.sv:86]
-INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-464708-michael-XPS-13-9360/realtime/clk_wiz_0_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-464708-michael-XPS-13-9360/realtime/clk_wiz_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'clk_wiz_0' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-632587-michael-XPS-13-9360/realtime/clk_wiz_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'clk_wiz_0' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-632587-michael-XPS-13-9360/realtime/clk_wiz_0_stub.v:5]
 INFO: [Synth 8-6157] synthesizing module 'vga_controller' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/design_source/VGA_controller.sv:26]
 INFO: [Synth 8-6155] done synthesizing module 'vga_controller' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/design_source/VGA_controller.sv:26]
 WARNING: [Synth 8-7071] port 'sync' of module 'vga_controller' is unconnected for instance 'vga' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/design_source/mb_usb_hdmi_top.sv:111]
 WARNING: [Synth 8-7023] instance 'vga' of module 'vga_controller' has 8 connections declared, but only 7 given [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/design_source/mb_usb_hdmi_top.sv:111]
-INFO: [Synth 8-6157] synthesizing module 'hdmi_tx_0' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-464708-michael-XPS-13-9360/realtime/hdmi_tx_0_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'hdmi_tx_0' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-464708-michael-XPS-13-9360/realtime/hdmi_tx_0_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'hdmi_tx_0' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-632587-michael-XPS-13-9360/realtime/hdmi_tx_0_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'hdmi_tx_0' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-632587-michael-XPS-13-9360/realtime/hdmi_tx_0_stub.v:5]
 INFO: [Synth 8-6157] synthesizing module 'color_mapper' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/design_source/Color_Mapper.sv:17]
 INFO: [Synth 8-6155] done synthesizing module 'color_mapper' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/design_source/Color_Mapper.sv:17]
 INFO: [Synth 8-6157] synthesizing module 'doodlejump_homescreen' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/doodlejump/doodlejump_example.sv:1]
-INFO: [Synth 8-6157] synthesizing module 'doodlejump_rom' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-464708-michael-XPS-13-9360/realtime/doodlejump_rom_stub.v:5]
-INFO: [Synth 8-6155] done synthesizing module 'doodlejump_rom' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-464708-michael-XPS-13-9360/realtime/doodlejump_rom_stub.v:5]
+INFO: [Synth 8-6157] synthesizing module 'doodlejump_rom' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-632587-michael-XPS-13-9360/realtime/doodlejump_rom_stub.v:5]
+INFO: [Synth 8-6155] done synthesizing module 'doodlejump_rom' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/.Xil/Vivado-632587-michael-XPS-13-9360/realtime/doodlejump_rom_stub.v:5]
 WARNING: [Synth 8-689] width (6) of port connection 'douta' does not match port width (18) of module 'doodlejump_rom' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/doodlejump/doodlejump_example.sv:37]
 INFO: [Synth 8-6157] synthesizing module 'doodlejump_palette' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/doodlejump/doodlejump_palette.sv:1]
 INFO: [Synth 8-6155] done synthesizing module 'doodlejump_palette' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/doodlejump/doodlejump_palette.sv:1]
@@ -163,7 +163,6 @@ INFO: [Synth 8-6155] done synthesizing module 'doodlejump_homescreen' (0#1) [/ho
 INFO: [Synth 8-6157] synthesizing module 'doodle' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/design_source/Doodle.sv:18]
 INFO: [Synth 8-6155] done synthesizing module 'doodle' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/design_source/Doodle.sv:18]
 INFO: [Synth 8-6157] synthesizing module 'platform_generator' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/new/platform_generator.sv:23]
-WARNING: [Synth 8-6896] index 8 out of range inside initial block, initial block items will be ignored [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/new/platform_generator.sv:68]
 INFO: [Synth 8-6157] synthesizing module 'platform' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/new/platform.sv:23]
 INFO: [Synth 8-6155] done synthesizing module 'platform' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/new/platform.sv:23]
 INFO: [Synth 8-6155] done synthesizing module 'platform_generator' (0#1) [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/new/platform_generator.sv:23]
@@ -278,24 +277,24 @@ WARNING: [Synth 8-7129] Port In100[0] in module xlconcat_v2_1_4_xlconcat is eith
 WARNING: [Synth 8-7129] Port In101[0] in module xlconcat_v2_1_4_xlconcat is either unconnected or has no load
 INFO: [Common 17-14] Message 'Synth 8-7129' appears 100 times and further instances of the messages will be disabled. Use the Tcl command set_msg_config to change the current settings.
 ---------------------------------------------------------------------------------
-Finished RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2036.285 ; gain = 454.605 ; free physical = 945 ; free virtual = 3043
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1438.026; parent = 1217.943; children = 220.083
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3036.098; parent = 2036.289; children = 999.809
+Finished RTL Elaboration : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2036.992 ; gain = 454.605 ; free physical = 1001 ; free virtual = 3747
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1392.455; parent = 1183.508; children = 208.947
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3030.801; parent = 2036.996; children = 993.805
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2054.098 ; gain = 472.418 ; free physical = 944 ; free virtual = 3042
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1438.026; parent = 1217.943; children = 220.083
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3053.910; parent = 2054.102; children = 999.809
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2054.805 ; gain = 472.418 ; free physical = 1002 ; free virtual = 3748
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1392.455; parent = 1183.508; children = 208.947
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3048.613; parent = 2054.809; children = 993.805
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2054.098 ; gain = 472.418 ; free physical = 944 ; free virtual = 3042
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1438.026; parent = 1217.943; children = 220.083
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3053.910; parent = 2054.102; children = 999.809
+Finished RTL Optimization Phase 1 : Time (s): cpu = 00:00:09 ; elapsed = 00:00:10 . Memory (MB): peak = 2054.805 ; gain = 472.418 ; free physical = 1002 ; free virtual = 3748
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1392.455; parent = 1183.508; children = 208.947
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3048.613; parent = 2054.809; children = 993.805
 ---------------------------------------------------------------------------------
-Netlist sorting complete. Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00.04 . Memory (MB): peak = 2054.098 ; gain = 0.000 ; free physical = 939 ; free virtual = 3038
+Netlist sorting complete. Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.03 . Memory (MB): peak = 2054.805 ; gain = 0.000 ; free physical = 999 ; free virtual = 3746
 INFO: [Project 1-570] Preparing netlist for logic optimization
 
 Processing XDC Constraints
@@ -353,29 +352,29 @@ Parsing XDC File [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/Doodle
 Finished Parsing XDC File [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/dont_touch.xdc]
 Completed Processing XDC Constraints
 
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2212.848 ; gain = 0.000 ; free physical = 852 ; free virtual = 2950
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2213.555 ; gain = 0.000 ; free physical = 911 ; free virtual = 3658
 INFO: [Project 1-111] Unisim Transformation Summary:
 No Unisim elements were transformed.
 
-Constraint Validation Runtime : Time (s): cpu = 00:00:00.01 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2212.848 ; gain = 0.000 ; free physical = 852 ; free virtual = 2950
+Constraint Validation Runtime : Time (s): cpu = 00:00:00 ; elapsed = 00:00:00.01 . Memory (MB): peak = 2213.555 ; gain = 0.000 ; free physical = 911 ; free virtual = 3658
 WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'mb_block_i/spi_usb' at clock pin 'ext_spi_clk' is different from the actual clock period '10.000', this can lead to different synthesis results.
 WARNING: [Timing 38-316] Clock period '20.000' specified during out-of-context synthesis of instance 'mb_block_i/microblaze_0_local_memory/lmb_bram' at clock pin 'clka' is different from the actual clock period '10.000', this can lead to different synthesis results.
 INFO: [Designutils 20-5440] No compile time benefit to using incremental synthesis; A full resynthesis will be run
 INFO: [Designutils 20-4379] Flow is switching to default flow due to incremental criteria not met. If you would like to alter this behaviour and have the flow terminate instead, please set the following parameter config_implementation {autoIncr.Synth.RejectBehavior Terminate}
 INFO: [Synth 8-11241] undeclared symbol 'REGCCE', assumed default net type 'wire' [/tools/Xilinx/Vivado/2022.2/data/verilog/src/unimacro/BRAM_SINGLE_MACRO.v:2170]
 ---------------------------------------------------------------------------------
-Finished Constraint Validation : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 2212.848 ; gain = 631.168 ; free physical = 919 ; free virtual = 3018
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1438.026; parent = 1217.943; children = 220.083
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3180.645; parent = 2180.836; children = 999.809
+Finished Constraint Validation : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 2213.555 ; gain = 631.168 ; free physical = 986 ; free virtual = 3733
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1392.455; parent = 1183.508; children = 208.947
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3175.348; parent = 2181.543; children = 993.805
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Loading Part and Timing Information
 ---------------------------------------------------------------------------------
 Loading part: xc7s50csga324-1
 ---------------------------------------------------------------------------------
-Finished Loading Part and Timing Information : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 2212.848 ; gain = 631.168 ; free physical = 919 ; free virtual = 3018
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1438.026; parent = 1217.943; children = 220.083
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3180.645; parent = 2180.836; children = 999.809
+Finished Loading Part and Timing Information : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 2213.555 ; gain = 631.168 ; free physical = 986 ; free virtual = 3733
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1392.455; parent = 1183.508; children = 208.947
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3175.348; parent = 2181.543; children = 993.805
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Applying 'set_property' XDC Constraints
@@ -422,9 +421,9 @@ Applied set_property KEEP_HIERARCHY = SOFT for vga_to_hdmi. (constraint file  au
 Applied set_property KEEP_HIERARCHY = SOFT for clk_wiz. (constraint file  auto generated constraint).
 Applied set_property KEEP_HIERARCHY = SOFT for home_screen/doodlejump_rom. (constraint file  auto generated constraint).
 ---------------------------------------------------------------------------------
-Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 2212.848 ; gain = 631.168 ; free physical = 919 ; free virtual = 3018
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1438.026; parent = 1217.943; children = 220.083
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3180.645; parent = 2180.836; children = 999.809
+Finished applying 'set_property' XDC Constraints : Time (s): cpu = 00:00:18 ; elapsed = 00:00:19 . Memory (MB): peak = 2213.555 ; gain = 631.168 ; free physical = 986 ; free virtual = 3733
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1392.455; parent = 1183.508; children = 208.947
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3175.348; parent = 2181.543; children = 993.805
 ---------------------------------------------------------------------------------
 INFO: [Synth 8-802] inferred FSM for state register 'curr_state_reg' in module 'game_control_unit'
 WARNING: [Synth 8-327] inferring latch for variable 'Ball_Y_next_reg' [/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/design_source/Doodle.sv:147]
@@ -437,9 +436,9 @@ WARNING: [Synth 8-327] inferring latch for variable 'Ball_Y_next_reg' [/home/ris
 ---------------------------------------------------------------------------------------------------
 INFO: [Synth 8-3354] encoded FSM with state register 'curr_state_reg' using encoding 'one-hot' in module 'game_control_unit'
 ---------------------------------------------------------------------------------
-Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:18 ; elapsed = 00:00:20 . Memory (MB): peak = 2212.848 ; gain = 631.168 ; free physical = 908 ; free virtual = 3007
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1438.026; parent = 1217.943; children = 220.083
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3180.645; parent = 2180.836; children = 999.809
+Finished RTL Optimization Phase 2 : Time (s): cpu = 00:00:19 ; elapsed = 00:00:20 . Memory (MB): peak = 2213.555 ; gain = 631.168 ; free physical = 977 ; free virtual = 3724
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1392.455; parent = 1183.508; children = 208.947
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3175.348; parent = 2181.543; children = 993.805
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start RTL Component Statistics 
@@ -520,9 +519,9 @@ DSP Report: Generating DSP rom_address, operation Mode is: C+A*(B:0x140).
 DSP Report: operator rom_address is absorbed into DSP rom_address.
 DSP Report: operator rom_address0 is absorbed into DSP rom_address.
 ---------------------------------------------------------------------------------
-Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:26 ; elapsed = 00:00:27 . Memory (MB): peak = 2212.848 ; gain = 631.168 ; free physical = 883 ; free virtual = 2989
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1438.026; parent = 1217.943; children = 220.083
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3180.645; parent = 2180.836; children = 999.809
+Finished Cross Boundary and Area Optimization : Time (s): cpu = 00:00:27 ; elapsed = 00:00:28 . Memory (MB): peak = 2213.555 ; gain = 631.168 ; free physical = 948 ; free virtual = 3701
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1392.455; parent = 1183.508; children = 208.947
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3175.348; parent = 2181.543; children = 993.805
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start ROM, RAM, DSP, Shift Register and Retiming Reporting
@@ -563,25 +562,25 @@ Start Applying XDC Timing Constraints
 ---------------------------------------------------------------------------------
 WARNING: [Synth 8-565] redefining clock 'Clk'
 ---------------------------------------------------------------------------------
-Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:36 ; elapsed = 00:00:38 . Memory (MB): peak = 2212.848 ; gain = 631.168 ; free physical = 732 ; free virtual = 2837
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1579.798; parent = 1360.503; children = 220.083
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3180.645; parent = 2180.836; children = 999.809
+Finished Applying XDC Timing Constraints : Time (s): cpu = 00:00:37 ; elapsed = 00:00:39 . Memory (MB): peak = 2213.555 ; gain = 631.168 ; free physical = 798 ; free virtual = 3551
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1531.862; parent = 1323.421; children = 208.947
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3175.348; parent = 2181.543; children = 993.805
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Timing Optimization
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Timing Optimization : Time (s): cpu = 00:00:38 ; elapsed = 00:00:40 . Memory (MB): peak = 2212.848 ; gain = 631.168 ; free physical = 720 ; free virtual = 2825
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1590.056; parent = 1370.761; children = 220.083
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3180.645; parent = 2180.836; children = 999.809
+Finished Timing Optimization : Time (s): cpu = 00:00:38 ; elapsed = 00:00:40 . Memory (MB): peak = 2213.555 ; gain = 631.168 ; free physical = 783 ; free virtual = 3537
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1544.905; parent = 1336.464; children = 208.947
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3175.348; parent = 2181.543; children = 993.805
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Technology Mapping
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Technology Mapping : Time (s): cpu = 00:00:39 ; elapsed = 00:00:41 . Memory (MB): peak = 2212.848 ; gain = 631.168 ; free physical = 718 ; free virtual = 2824
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1593.481; parent = 1374.187; children = 220.083
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3180.645; parent = 2180.836; children = 999.809
+Finished Technology Mapping : Time (s): cpu = 00:00:39 ; elapsed = 00:00:41 . Memory (MB): peak = 2213.555 ; gain = 631.168 ; free physical = 785 ; free virtual = 3539
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1548.078; parent = 1339.636; children = 208.947
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3175.348; parent = 2181.543; children = 993.805
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start IO Insertion
@@ -599,49 +598,49 @@ Start Final Netlist Cleanup
 Finished Final Netlist Cleanup
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished IO Insertion : Time (s): cpu = 00:00:46 ; elapsed = 00:00:48 . Memory (MB): peak = 2212.848 ; gain = 631.168 ; free physical = 717 ; free virtual = 2823
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1593.931; parent = 1374.636; children = 220.083
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3180.645; parent = 2180.836; children = 999.809
+Finished IO Insertion : Time (s): cpu = 00:00:45 ; elapsed = 00:00:47 . Memory (MB): peak = 2213.555 ; gain = 631.168 ; free physical = 780 ; free virtual = 3534
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1548.476; parent = 1340.034; children = 208.947
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3175.348; parent = 2181.543; children = 993.805
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Instances
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Instances : Time (s): cpu = 00:00:46 ; elapsed = 00:00:48 . Memory (MB): peak = 2212.848 ; gain = 631.168 ; free physical = 717 ; free virtual = 2823
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1593.931; parent = 1374.636; children = 220.083
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3180.645; parent = 2180.836; children = 999.809
+Finished Renaming Generated Instances : Time (s): cpu = 00:00:45 ; elapsed = 00:00:47 . Memory (MB): peak = 2213.555 ; gain = 631.168 ; free physical = 780 ; free virtual = 3533
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1548.476; parent = 1340.034; children = 208.947
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3175.348; parent = 2181.543; children = 993.805
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Rebuilding User Hierarchy
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:46 ; elapsed = 00:00:48 . Memory (MB): peak = 2212.848 ; gain = 631.168 ; free physical = 717 ; free virtual = 2823
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1594.005; parent = 1374.710; children = 220.083
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3180.645; parent = 2180.836; children = 999.809
+Finished Rebuilding User Hierarchy : Time (s): cpu = 00:00:45 ; elapsed = 00:00:48 . Memory (MB): peak = 2213.555 ; gain = 631.168 ; free physical = 779 ; free virtual = 3533
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1548.565; parent = 1340.124; children = 208.947
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3175.348; parent = 2181.543; children = 993.805
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Ports
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Ports : Time (s): cpu = 00:00:46 ; elapsed = 00:00:49 . Memory (MB): peak = 2212.848 ; gain = 631.168 ; free physical = 718 ; free virtual = 2823
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1594.005; parent = 1374.710; children = 220.083
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3180.645; parent = 2180.836; children = 999.809
+Finished Renaming Generated Ports : Time (s): cpu = 00:00:45 ; elapsed = 00:00:48 . Memory (MB): peak = 2213.555 ; gain = 631.168 ; free physical = 779 ; free virtual = 3533
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1548.628; parent = 1340.187; children = 208.947
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3175.348; parent = 2181.543; children = 993.805
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Handling Custom Attributes
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Handling Custom Attributes : Time (s): cpu = 00:00:46 ; elapsed = 00:00:49 . Memory (MB): peak = 2212.848 ; gain = 631.168 ; free physical = 718 ; free virtual = 2823
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1594.005; parent = 1374.710; children = 220.083
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3180.645; parent = 2180.836; children = 999.809
+Finished Handling Custom Attributes : Time (s): cpu = 00:00:45 ; elapsed = 00:00:48 . Memory (MB): peak = 2213.555 ; gain = 631.168 ; free physical = 779 ; free virtual = 3533
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1548.628; parent = 1340.187; children = 208.947
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3175.348; parent = 2181.543; children = 993.805
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Renaming Generated Nets
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
-Finished Renaming Generated Nets : Time (s): cpu = 00:00:46 ; elapsed = 00:00:49 . Memory (MB): peak = 2212.848 ; gain = 631.168 ; free physical = 718 ; free virtual = 2823
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1594.005; parent = 1374.710; children = 220.083
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3180.645; parent = 2180.836; children = 999.809
+Finished Renaming Generated Nets : Time (s): cpu = 00:00:45 ; elapsed = 00:00:48 . Memory (MB): peak = 2213.555 ; gain = 631.168 ; free physical = 779 ; free virtual = 3533
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1548.628; parent = 1340.187; children = 208.947
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3175.348; parent = 2181.543; children = 993.805
 ---------------------------------------------------------------------------------
 ---------------------------------------------------------------------------------
 Start Writing Synthesis Report
@@ -717,11 +716,11 @@ Report Cell Usage:
 |22    |CARRY4                         |   163|
 |23    |DSP48E1                        |     9|
 |25    |LUT1                           |    26|
-|26    |LUT2                           |   361|
-|27    |LUT3                           |   139|
-|28    |LUT4                           |   122|
-|29    |LUT5                           |   136|
-|30    |LUT6                           |   245|
+|26    |LUT2                           |   360|
+|27    |LUT3                           |   140|
+|28    |LUT4                           |   124|
+|29    |LUT5                           |   130|
+|30    |LUT6                           |   262|
 |31    |FDCE                           |    22|
 |32    |FDRE                           |    81|
 |33    |FDSE                           |     8|
@@ -730,31 +729,31 @@ Report Cell Usage:
 |36    |OBUF                           |    29|
 +------+-------------------------------+------+
 ---------------------------------------------------------------------------------
-Finished Writing Synthesis Report : Time (s): cpu = 00:00:46 ; elapsed = 00:00:49 . Memory (MB): peak = 2212.848 ; gain = 631.168 ; free physical = 718 ; free virtual = 2823
-Synthesis current peak Physical Memory [PSS] (MB): peak = 1594.024; parent = 1374.729; children = 220.083
-Synthesis current peak Virtual Memory [VSS] (MB): peak = 3180.645; parent = 2180.836; children = 999.809
+Finished Writing Synthesis Report : Time (s): cpu = 00:00:45 ; elapsed = 00:00:48 . Memory (MB): peak = 2213.555 ; gain = 631.168 ; free physical = 779 ; free virtual = 3533
+Synthesis current peak Physical Memory [PSS] (MB): peak = 1548.671; parent = 1340.235; children = 208.947
+Synthesis current peak Virtual Memory [VSS] (MB): peak = 3175.348; parent = 2181.543; children = 993.805
 ---------------------------------------------------------------------------------
 Synthesis finished with 0 errors, 0 critical warnings and 36 warnings.
-Synthesis Optimization Runtime : Time (s): cpu = 00:00:44 ; elapsed = 00:00:46 . Memory (MB): peak = 2212.848 ; gain = 472.418 ; free physical = 784 ; free virtual = 2889
-Synthesis Optimization Complete : Time (s): cpu = 00:00:46 ; elapsed = 00:00:49 . Memory (MB): peak = 2212.848 ; gain = 631.168 ; free physical = 784 ; free virtual = 2889
+Synthesis Optimization Runtime : Time (s): cpu = 00:00:43 ; elapsed = 00:00:46 . Memory (MB): peak = 2213.555 ; gain = 472.418 ; free physical = 846 ; free virtual = 3600
+Synthesis Optimization Complete : Time (s): cpu = 00:00:46 ; elapsed = 00:00:48 . Memory (MB): peak = 2213.555 ; gain = 631.168 ; free physical = 846 ; free virtual = 3600
 INFO: [Project 1-571] Translating synthesized netlist
-Netlist sorting complete. Time (s): cpu = 00:00:00.03 ; elapsed = 00:00:00.03 . Memory (MB): peak = 2212.848 ; gain = 0.000 ; free physical = 883 ; free virtual = 2988
+Netlist sorting complete. Time (s): cpu = 00:00:00.04 ; elapsed = 00:00:00.04 . Memory (MB): peak = 2213.555 ; gain = 0.000 ; free physical = 950 ; free virtual = 3704
 INFO: [Netlist 29-17] Analyzing 182 Unisim elements for replacement
 INFO: [Netlist 29-28] Unisim Transformation completed in 0 CPU seconds
 INFO: [Project 1-570] Preparing netlist for logic optimization
 INFO: [Opt 31-140] Inserted 1 IBUFs to IO ports without IO buffers.
 INFO: [Opt 31-138] Pushed 0 inverter(s) to 0 load pin(s).
-Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2212.848 ; gain = 0.000 ; free physical = 823 ; free virtual = 2928
+Netlist sorting complete. Time (s): cpu = 00:00:00 ; elapsed = 00:00:00 . Memory (MB): peak = 2213.555 ; gain = 0.000 ; free physical = 892 ; free virtual = 3645
 INFO: [Project 1-111] Unisim Transformation Summary:
   A total of 10 instances were transformed.
   LD => LDCE: 10 instances
 
-Synth Design complete, checksum: d820759b
+Synth Design complete, checksum: f64455c8
 INFO: [Common 17-83] Releasing license: Synthesis
-128 Infos, 150 Warnings, 1 Critical Warnings and 0 Errors encountered.
+128 Infos, 149 Warnings, 1 Critical Warnings and 0 Errors encountered.
 synth_design completed successfully
-synth_design: Time (s): cpu = 00:00:57 ; elapsed = 00:00:55 . Memory (MB): peak = 2212.848 ; gain = 940.168 ; free physical = 1054 ; free virtual = 3156
+synth_design: Time (s): cpu = 00:00:56 ; elapsed = 00:00:54 . Memory (MB): peak = 2213.555 ; gain = 896.230 ; free physical = 1117 ; free virtual = 3868
 INFO: [runtcl-6] Synthesis results are not added to the cache due to CRITICAL_WARNING
 INFO: [Common 17-1381] The checkpoint '/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/synth_1/mb_usb_hdmi_top.dcp' has been generated.
 INFO: [runtcl-4] Executing : report_utilization -file mb_usb_hdmi_top_utilization_synth.rpt -pb mb_usb_hdmi_top_utilization_synth.pb
-INFO: [Common 17-206] Exiting Vivado at Wed Apr 17 18:40:41 2024...
+INFO: [Common 17-206] Exiting Vivado at Wed Apr 17 23:41:11 2024...

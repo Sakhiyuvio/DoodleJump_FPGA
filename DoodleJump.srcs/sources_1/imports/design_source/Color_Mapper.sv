@@ -87,7 +87,7 @@ module  color_mapper ( input  logic [9:0] BallX, BallY, DrawX, DrawY, Ball_size,
                         platform_on[4] == 1'b1 || platform_on[5] == 1'b1 || platform_on[6] == 1'b1 || platform_on[7] == 1'b1)
                 begin
                     Red = 4'h2;
-                    Green = 4'hD; 
+                    Green = 4'hC; 
                     Blue = 4'h2; 
                 end                                                    
                 else

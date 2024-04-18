@@ -62,12 +62,15 @@ module platform_generator(
     // random platform generation, currently hardcoded to about 4 platforms each frame/level
     initial 
     begin
-        for (i = 0; i < platform_numb; i++)
+        for (i = 0; i < 4; i++)
         begin 
-            plat_x[i] = 479 - (50*i);
-            plat_x[i + 4] = 160 + (10*i); 
-            plat_y[i] = 360 - (60*i);
-            plat_y[i + 4] = (30*i);
+            plat_x[i] = 160 + (15*(i+1));
+            plat_y[i] = (50*i);
+        end
+        for (i = 4; i < 8; i++)
+        begin 
+            plat_x[i] = 480 - (15*(i+1));
+            plat_y[i] = 200 + (30*i);
         end
      end 
      

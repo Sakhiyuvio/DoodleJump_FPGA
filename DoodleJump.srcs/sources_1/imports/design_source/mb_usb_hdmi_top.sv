@@ -180,9 +180,9 @@ assign game_b_g = 4'hD;
 assign game_b_b = 4'hD;
 
 // hard code doodle rgb for now
-assign doodle_r = 4'hf;
+assign doodle_r = 4'h3;
 assign doodle_g = 4'h8;
-assign doodle_b = 4'h2; 
+assign doodle_b = 4'h3; 
 
 // hardcode platform location for now, figure out how to auto generate
 //assign top_x_loc = 10'd200;
