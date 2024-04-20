@@ -169,3 +169,38 @@ platform generate
 platform config -updatehw {/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/mb_usb_hdmi_top.xsa}
 platform clean
 platform generate
+platform active {mb_usb_hdmi_top}
+platform config -updatehw {/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/mb_usb_hdmi_top.xsa}
+platform clean
+platform generate
+platform config -updatehw {/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/mb_usb_hdmi_top.xsa}
+platform clean
+platform generate
+platform config -updatehw {/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/mb_usb_hdmi_top.xsa}
+platform clean
+platform generate
+platform config -updatehw {/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/mb_usb_hdmi_top.xsa}
+platform clean
+platform generate
+platform config -updatehw {/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/mb_usb_hdmi_top.xsa}
+platform clean
+platform generate
+platform config -updatehw {/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/mb_usb_hdmi_top.xsa}
+platform clean
+platform generate
+platform config -updatehw {/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/mb_usb_hdmi_top.xsa}
+platform clean
+platform generate
+platform config -updatehw {/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/mb_usb_hdmi_top.xsa}
+platform clean
+platform generate
+platform config -updatehw {/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/mb_usb_hdmi_top.xsa}
+platform clean
+platform generate
+platform active {mb_usb_hdmi_top}
+platform config -updatehw {/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/mb_usb_hdmi_top.xsa}
+platform clean
+platform generate
+platform config -updatehw {/home/rishab/Documents/ECE_385_Final_Project/DoodleJump/mb_usb_hdmi_top.xsa}
+platform clean
+platform generate

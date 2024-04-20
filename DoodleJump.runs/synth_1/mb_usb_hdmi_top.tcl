@@ -70,6 +70,7 @@ proc create_report { reportName command } {
   }
 }
 OPTRACE "synth_1" START { ROLLUP_AUTO }
+set_param chipscope.maxJobs 2
 OPTRACE "Creating in-memory project" START { }
 create_project -in_memory -part xc7s50csga324-1
 
@@ -89,10 +90,13 @@ set_property ip_cache_permissions {read write} [current_project]
 OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 add_files /home/rishab/Image_to_COE/doodlejump/doodlejump.COE
+add_files /home/rishab/Image_to_COE/doodle_left_t/doodle_left_t.COE
 read_verilog -library xil_defaultlib -sv {
   /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/design_source/Color_Mapper.sv
   /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/design_source/Doodle.sv
   /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/design_source/VGA_controller.sv
+  /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/doodle_left_t/doodle_left_t_example.sv
+  /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/doodle_left_t/doodle_left_t_palette.sv
   /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/doodlejump/doodlejump_example.sv
   /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/doodlejump/doodlejump_palette.sv
   /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/new/game_control_unit.sv
@@ -152,6 +156,9 @@ set_property used_in_implementation false [get_files -all /home/rishab/Documents
 
 read_ip -quiet /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/ip/doodlejump_rom_1/doodlejump_rom.xci
 set_property used_in_implementation false [get_files -all /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.gen/sources_1/ip/doodlejump_rom_1/doodlejump_rom_ooc.xdc]
+
+read_ip -quiet /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/ip/doodle_left_t_rom_5/doodle_left_t_rom.xci
+set_property used_in_implementation false [get_files -all /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.gen/sources_1/ip/doodle_left_t_rom_5/doodle_left_t_rom_ooc.xdc]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being

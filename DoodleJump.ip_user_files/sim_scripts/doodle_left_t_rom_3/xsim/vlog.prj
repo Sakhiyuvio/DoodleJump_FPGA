@@ -1,0 +1,6 @@
+verilog xil_defaultlib  \
+"../../../../DoodleJump.gen/sources_1/ip/doodle_left_t_rom_3/sim/doodle_left_t_rom.v" \
+
+verilog xil_defaultlib "glbl.v"
+
+nosort
