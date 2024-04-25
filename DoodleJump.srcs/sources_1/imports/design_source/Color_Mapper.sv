@@ -21,6 +21,7 @@ module  color_mapper #(parameter numb_platform = 8)
                        input logic[3:0] gb_red, gb_green, gb_blue,
                        input logic[3:0] doodle_red, doodle_green, doodle_blue,
                        input logic [numb_platform - 1:0] platform_on, 
+                       input integer index, 
                        output logic doodle_on, 
                        output logic [10:0] rom_address_doodle, 
                        output logic [3:0]  Red, Green, Blue );
@@ -92,44 +93,41 @@ module  color_mapper #(parameter numb_platform = 8)
             if (DrawX >= 160 && DrawX < 480)
             begin
                 // draw doodle
-               for (i = 0; i < numb_platform; i = i+1)
-               begin
+               // if currently has to draw doodle 
                 if ((ball_on == 1'b1)) 
                 begin     
 
                     // TASK: Differentiate background with foreground for the doodle! 
                         if((doodle_red != 4'hF && doodle_green != 4'h0 && doodle_blue != 4'hB) ||
-                           (doodle_red != 4'hF && doodle_green != 4'h0 && doodle_blue != 4'hC))
+                           (doodle_red != 4'hF && doodle_green != 4'h0 && doodle_blue != 4'hC) || 
+                           (doodle_red != 4'hF && doodle_green != 4'h0 && doodle_blue != 4'hF) || 
+                           (doodle_red != 4'hE && doodle_green != 4'h0 && doodle_blue != 4'hE))
                             begin 
                                 Red = doodle_red;
                                 Green = doodle_green;
                                 Blue = doodle_blue;
                             end  
-                        else if 
-                        (platform_on[i] == 1'b1)
+                        else if (platform_on[index] == 1'b1)
                         begin
-                            Red = 4'h2;
-                            Green = 4'hC; 
-                            Blue = 4'h2; 
-                        end      
-                      
-                    else
-                    begin 
-                        // draw the background 
-                        Red = gb_red; 
-                        Green = gb_green;
-                        Blue = gb_blue;
-                    end   
+                                Red = 4'h2;
+                                Green = 4'hC; 
+                                Blue = 4'h2; 
+                        end              
+                        else
+                        begin 
+                            // draw the background 
+                            Red = gb_red; 
+                            Green = gb_green;
+                            Blue = gb_blue;
+                        end   
                 end
                 // draw platform
-
-               else if 
-                    (platform_on[i] == 1'b1)
+               else if (platform_on[index] == 1'b1)
                     begin
                         Red = 4'h2;
                         Green = 4'hC; 
                         Blue = 4'h2; 
-                    end                                                
+                    end                                                     
                 else
                 begin 
                     // draw the background 
@@ -137,7 +135,7 @@ module  color_mapper #(parameter numb_platform = 8)
                     Green = gb_green;
                     Blue = gb_blue;
                 end   
-            end  // end of for loop
+            
             end // end of if statement
             
             else 

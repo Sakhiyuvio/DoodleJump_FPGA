@@ -36,7 +36,8 @@ module platform
         input logic [3:0]        doodle_r, doodle_g, doodle_b, 
     
         output logic [numb_platform - 1:0]  platform,
-        output logic [9:0]  platx_range[numb_platform]
+        output logic [9:0]  platx_range[numb_platform],
+        output integer index
 //        output logic dead
     );
     
@@ -49,6 +50,9 @@ module platform
     // make rectangles 
     parameter [9:0] plat_size_x = 40;
     parameter [9:0] plat_size_y = 8; 
+    
+    // dummy bit to break out of the for loop
+    logic break_bit; 
     
     // hardcode the platform location for now 
     
@@ -68,6 +72,7 @@ module platform
     end
     
     // location logic 
+   
     always_comb
     begin: platform_on_logic
         // initialize the platform 
@@ -78,13 +83,21 @@ module platform
        
         if(drawX >= 160 && drawX < 480) 
         begin
+            break_bit = 1'b0; 
             for(i = 0; i < numb_platform; i = i + 1)
             begin
-               if(drawX >= topx[i] && drawX < topx[i] + plat_size_x && 
+               if (break_bit)
+               begin
+               // do nothing 
+               end 
+               
+               else if(drawX >= topx[i] && drawX < topx[i] + plat_size_x && 
                drawY >= topy[i] && drawY < topy[i] + plat_size_y && 
-               (doodle == 1'b0 || (doodle == 1'b1 && doodle_r == 4'hF && doodle_g == 4'h0 && (doodle_b == 4'hB || doodle_b == 4'hC))))
+               (doodle == 1'b0 || (doodle == 1'b1 && (doodle_r == 4'hF || doodle_r == 4'hE) && doodle_g == 4'h0 && (doodle_b == 4'hB || doodle_b == 4'hC || doodle_b == 4'hF || doodle_b == 4'hE))))
                begin
                     platform_on[i] = 1'b1; 
+                    index = i; 
+                    break_bit = 1'b1; 
                end 
             end                                  
         end  

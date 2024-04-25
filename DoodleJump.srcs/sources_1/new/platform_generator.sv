@@ -30,7 +30,8 @@ module platform_generator
         output logic[numb_platform-1:0] platform, 
         output logic[9:0] plat_range [numb_platform],
         output logic [9:0] plat_y_loc [numb_platform],
-        output logic [9:0] plat_x_loc [numb_platform]
+        output logic [9:0] plat_x_loc [numb_platform],
+        output integer index
     );
     
     parameter [9:0] screen_X_Min=160;       // Leftmost point on the X axis
@@ -50,7 +51,7 @@ module platform_generator
     
     // signals to send to doodle
     logic [9:0] top_x_max [numb_platform];
-    integer i; 
+    integer i;
 //    genvar j; 
     
     assign plat_range = top_x_max; 
@@ -83,7 +84,8 @@ module platform_generator
             .doodle_g(doodle_g),
             .doodle_b(doodle_b),
             .platform(platform_on),
-            .platx_range(top_x_max)
+            .platx_range(top_x_max),
+            .index(index)
     ) ;
         
 endmodule

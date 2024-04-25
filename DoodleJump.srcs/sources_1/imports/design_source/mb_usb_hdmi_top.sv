@@ -55,7 +55,15 @@ module mb_usb_hdmi_top(
     logic [2:0] game_vidmem; 
     logic [3:0] game_start_r, game_start_g, game_start_b; 
     logic [3:0] game_b_r, game_b_g, game_b_b; // background rgb
-    logic [3:0] doodle_r, doodle_g, doodle_b; // background rgb
+    
+    logic [3:0] doodle_r, doodle_g, doodle_b; // doodle final rgb
+    
+    logic [3:0] d_redleft, d_greenleft, d_blueleft; 
+    logic [3:0] d_redright, d_greenright, d_blueright; 
+    logic [3:0] d_redup, d_greenup, d_blueup; 
+    logic [3:0] d_redupleft, d_greenupleft, d_blueupleft; 
+    logic [3:0] d_redupright, d_greenupright, d_blueupright; 
+    
     logic restart; 
     logic [numb_platform - 1:0] platform_on; 
     logic [9:0] top_x_max [numb_platform]; 
@@ -63,6 +71,7 @@ module mb_usb_hdmi_top(
     logic [9:0] top_x_loc [numb_platform];
     logic doodle_on; 
     logic [10:0] rom_address_doodle; 
+    integer index; 
     
     assign reset_ah = reset_rtl_0;
     
@@ -167,6 +176,7 @@ module mb_usb_hdmi_top(
         .doodle_red(doodle_r),
         .doodle_green(doodle_g),
         .doodle_blue(doodle_b),
+        .index(index),
         .platform_on(platform_on), 
         .doodle_on(doodle_on),
         .rom_address_doodle(rom_address_doodle), 
@@ -206,20 +216,82 @@ assign game_b_b = 4'hD;
     ); 
     
 // draw doodle char 
+
+// left doodle 
     doodle_left doodle_char_left (
         .vga_clk(clk_25MHz),
         .DrawX(drawX),
         .DrawY(drawY),
         .blank(vde),
         .rom_address_doodle(rom_address_doodle), 
-        .red(doodle_r),
-        .green(doodle_g),
-        .blue(doodle_b)
+        .red(d_redleft),
+        .green(d_greenleft),
+        .blue(d_blueleft)
+    );
+
+// right doodle
+    doodle_right doodle_char_right (
+        .vga_clk(clk_25MHz),
+        .DrawX(drawX),
+        .DrawY(drawY),
+        .blank(vde),
+        .rom_address_doodle(rom_address_doodle), 
+        .red(d_redright),
+        .green(d_greenright),
+        .blue(d_blueright)
+    );
+    
+// up doodle 
+    doodle_up doodle_char_up (
+        .vga_clk(clk_25MHz),
+        .DrawX(drawX),
+        .DrawY(drawY),
+        .blank(vde),
+        .rom_address_doodle(rom_address_doodle), 
+        .red(d_redup),
+        .green(d_greenup),
+        .blue(d_blueup)
+    );
+    
+// up-right doodle
+    // hardcode rgb for now
+    assign d_redupright = 4'b0;
+    assign d_greenupright = 4'b0;
+    assign d_blueupright = 4'b0;
+    
+// up-left doodle 
+    assign d_redupleft = 4'b0;
+    assign d_greenupleft = 4'b0;
+    assign d_blueupleft = 4'b0;
+    
+// doodle char state module to pick final doodle RGB per frame
+    doodle_char_state doodle_draw (
+    .reset(reset_ah),
+    .doodle_restart(restart), 
+    .keycode(keycode0_gpio[7:0]),
+    .keycode_2(keycode0_gpio[15:8]),
+    .frame_clk(vsync),
+    .d_redleft(d_redleft),
+    .d_greenleft(d_greenleft),
+    .d_blueleft(d_blueleft),
+    .d_redright(d_redright),
+    .d_greenright(d_greenright),
+    .d_blueright(d_blueright),
+    .d_redup(d_redup),
+    .d_greenup(d_greenup),
+    .d_blueup(d_blueup),
+    .d_redupleft(d_redupleft),
+    .d_greenupleft(d_greenupleft),
+    .d_blueupleft(d_blueupleft),
+    .d_redupright(d_redupright),
+    .d_greenupright(d_greenupright),
+    .d_blueupright(d_blueupright),
+    .doodle_r(doodle_r),
+    .doodle_g(doodle_g),
+    .doodle_b(doodle_b)
     );
 
     // Doodle Module
-   
-    
     doodle #(numb_platform) doodle_instance(
         .Reset(reset_ah),
 //        .cpu_clk(Clk), 
@@ -253,7 +325,8 @@ assign game_b_b = 4'hD;
         .platform(platform_on),
         .plat_range(top_x_max),
         .plat_y_loc(top_y_loc),
-        .plat_x_loc(top_x_loc)
+        .plat_x_loc(top_x_loc),
+        .index(index)
     );
 
     // Game state Module 
