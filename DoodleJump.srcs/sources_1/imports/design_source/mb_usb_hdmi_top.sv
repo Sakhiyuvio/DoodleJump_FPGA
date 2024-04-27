@@ -255,14 +255,28 @@ assign game_b_b = 4'hD;
     
 // up-right doodle
     // hardcode rgb for now
-    assign d_redupright = 4'b0;
-    assign d_greenupright = 4'b0;
-    assign d_blueupright = 4'b0;
+    doodle_up_right doodle_char_up_right (
+        .vga_clk(clk_25MHz),
+        .DrawX(drawX),
+        .DrawY(drawY),
+        .blank(vde),
+        .rom_address_doodle(rom_address_doodle), 
+        .red(d_redupright),
+        .green(d_greenupright),
+        .blue(d_blueupright)
+   ); 
     
 // up-left doodle 
-    assign d_redupleft = 4'b0;
-    assign d_greenupleft = 4'b0;
-    assign d_blueupleft = 4'b0;
+    doodle_up_left doodle_char_up_left (
+        .vga_clk(clk_25MHz),
+        .DrawX(drawX),
+        .DrawY(drawY),
+        .blank(vde),
+        .rom_address_doodle(rom_address_doodle), 
+        .red(d_redupleft),
+        .green(d_greenupleft),
+        .blue(d_blueupleft)
+   ); 
     
 // doodle char state module to pick final doodle RGB per frame
     doodle_char_state doodle_draw (
@@ -316,9 +330,11 @@ assign game_b_b = 4'hD;
     platform_generator #(numb_platform) platform_inst (
         .reset(reset_ah),
         .frame_clk(vsync), 
+        .cpu_clk(Clk),
         .drawX(drawX), 
         .drawY(drawY),
         .doodle_on(doodle_on), 
+        .doodle_restart(restart),
         .doodle_r(doodle_r),
         .doodle_g(doodle_g),
         .doodle_b(doodle_b), 

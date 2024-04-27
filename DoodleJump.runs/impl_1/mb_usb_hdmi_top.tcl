@@ -146,6 +146,10 @@ OPTRACE "add files" START { }
   read_ip -quiet /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/ip/clk_wiz_0/clk_wiz_0.xci
   read_ip -quiet /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/ip/doodlejump_rom_1/doodlejump_rom.xci
   read_ip -quiet /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/ip/doodle_left_t_rom_5/doodle_left_t_rom.xci
+  read_ip -quiet /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/ip/doodle_right_t_rom/doodle_right_t_rom.xci
+  read_ip -quiet /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/ip/doodle_up_t_rom/doodle_up_t_rom.xci
+  read_ip -quiet /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/ip/doodle_up_left_t_rom/doodle_up_left_t_rom.xci
+  read_ip -quiet /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/ip/doodle_up_right_t_rom/doodle_up_right_t_rom.xci
   set_param project.isImplRun false
 OPTRACE "read constraints: implementation" START { }
   read_xdc /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/constrs_1/imports/pin_assignment/mb_usb_hdmi_top.xdc

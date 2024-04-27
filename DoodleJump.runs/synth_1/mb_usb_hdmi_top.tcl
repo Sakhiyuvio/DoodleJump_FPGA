@@ -91,12 +91,25 @@ OPTRACE "Creating in-memory project" END { }
 OPTRACE "Adding files" START { }
 add_files /home/rishab/Image_to_COE/doodlejump/doodlejump.COE
 add_files /home/rishab/Image_to_COE/doodle_left_t/doodle_left_t.COE
+add_files /home/rishab/Image_to_COE/doodle_right_t/doodle_right_t.COE
+add_files /home/rishab/Image_to_COE/doodle_up_t/doodle_up_t.COE
+add_files /home/rishab/Image_to_COE/doodle_up_left_t/doodle_up_left_t.COE
+add_files /home/rishab/Image_to_COE/doodle_up_right_t/doodle_up_right_t.COE
 read_verilog -library xil_defaultlib -sv {
   /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/design_source/Color_Mapper.sv
   /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/design_source/Doodle.sv
   /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/design_source/VGA_controller.sv
+  /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/new/doodle_char_state.sv
   /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/doodle_left_t/doodle_left_t_example.sv
   /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/doodle_left_t/doodle_left_t_palette.sv
+  /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/Image_to_COE/doodle_right_t/doodle_right_t_example.sv
+  /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/Image_to_COE/doodle_right_t/doodle_right_t_palette.sv
+  /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/Image_to_COE/doodle_up_left_t/doodle_up_left_t_example.sv
+  /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/Image_to_COE/doodle_up_left_t/doodle_up_left_t_palette.sv
+  /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/Image_to_COE/doodle_up_right_t/doodle_up_right_t_example.sv
+  /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/Image_to_COE/doodle_up_right_t/doodle_up_right_t_palette.sv
+  /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/Image_to_COE/doodle_up_t/doodle_up_t_example.sv
+  /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/Image_to_COE/doodle_up_t/doodle_up_t_palette.sv
   /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/doodlejump/doodlejump_example.sv
   /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/doodlejump/doodlejump_palette.sv
   /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/new/game_control_unit.sv
@@ -159,6 +172,18 @@ set_property used_in_implementation false [get_files -all /home/rishab/Documents
 
 read_ip -quiet /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/ip/doodle_left_t_rom_5/doodle_left_t_rom.xci
 set_property used_in_implementation false [get_files -all /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.gen/sources_1/ip/doodle_left_t_rom_5/doodle_left_t_rom_ooc.xdc]
+
+read_ip -quiet /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/ip/doodle_right_t_rom/doodle_right_t_rom.xci
+set_property used_in_implementation false [get_files -all /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.gen/sources_1/ip/doodle_right_t_rom/doodle_right_t_rom_ooc.xdc]
+
+read_ip -quiet /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/ip/doodle_up_t_rom/doodle_up_t_rom.xci
+set_property used_in_implementation false [get_files -all /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.gen/sources_1/ip/doodle_up_t_rom/doodle_up_t_rom_ooc.xdc]
+
+read_ip -quiet /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/ip/doodle_up_left_t_rom/doodle_up_left_t_rom.xci
+set_property used_in_implementation false [get_files -all /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.gen/sources_1/ip/doodle_up_left_t_rom/doodle_up_left_t_rom_ooc.xdc]
+
+read_ip -quiet /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/ip/doodle_up_right_t_rom/doodle_up_right_t_rom.xci
+set_property used_in_implementation false [get_files -all /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.gen/sources_1/ip/doodle_up_right_t_rom/doodle_up_right_t_rom_ooc.xdc]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being
