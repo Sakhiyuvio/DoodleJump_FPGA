@@ -66,6 +66,8 @@ module platform_generator
         input logic doodle_on, 
         input logic doodle_restart, 
         input logic [3:0] doodle_r, doodle_g, doodle_b,
+        input logic [9:0] doodleY, 
+        input logic [6:0] score, 
         output logic[numb_platform-1:0] platform, 
         output logic[9:0] plat_range [numb_platform],
         output logic [9:0] plat_y_loc [numb_platform],
@@ -82,6 +84,11 @@ module platform_generator
     // make rectangles 
     parameter [9:0] plat_size_x = 40;
     parameter [9:0] plat_size_y = 8; 
+    
+    // scroll 
+    parameter [9:0] scroll_threshold = 240; 
+    logic [9:0] scroll_amount;
+    assign scroll_amount = 10'd50; // keep it fixed for now 
     
     // array to store platform x and y coordinates
     logic [numb_platform - 1:0] platform_on;
@@ -100,6 +107,9 @@ module platform_generator
     assign plat_y_loc = plat_y; 
     assign plat_x_loc = plat_x; 
     
+    // signal for scroll 
+    logic threshold_pass; 
+    
     // random platform generation, currently hardcoded to about 4 platforms each frame/level
     
     // instantiate the LFSR module 
@@ -114,30 +124,97 @@ module platform_generator
     begin
         if (reset)
         begin
-        for (i = 0; i < numb_platform ; i++)
-        begin 
-            // additional patternized platform generator to abstract the randomness better 
-               plat_x[i] <= 10'b0;
-               plat_y[i] <= 10'b0; 
-        end
+        threshold_pass <= 1'b0; 
+            for (i = 0; i < numb_platform ; i++)
+            begin 
+                // additional patternized platform generator to abstract the randomness better 
+                plat_x[i] <= 10'b0;
+                plat_y[i] <= 10'b0; 
+            end
         end 
         
         else if (doodle_restart) // OR SCROLL, ADD LOGIC HERE
         begin
-        for (i = 0; i < numb_platform ; i++)
-        begin 
-            // additional patternized platform generator to abstract the randomness better 
-            if ((160 + randomized_number[i] + 30*i < 480) && (randomized_number[i] + 50*i < 480))
-            begin
-               plat_x[i] <= 160 + randomized_number[i] + 30*i;
-               plat_y[i] <= randomized_number[i] + 50*i; 
-            end
-            else 
-            begin
-               plat_x[i] <= 160 + randomized_number[i];
-               plat_y[i] <= randomized_number[i];
+        threshold_pass <= 1'b0; 
+            for (i = 0; i < numb_platform ; i++)
+            begin 
+                // additional patternized platform generator to abstract the randomness better 
+                if ((160 + randomized_number[i] + 20*i < 480) && (randomized_number[i] + 30*i < 480))
+                begin
+                   plat_x[i] <= 160 + randomized_number[i] + 20*i;
+                   plat_y[i] <= randomized_number[i] + 30*i; 
+                end
+                else if ((160 + randomized_number[i] < 480) && (480 - randomized_number[i] > 240))
+                begin
+                   plat_x[i] <= 160 + randomized_number[i];
+                   plat_y[i] <= 480 - randomized_number[i];
+                end
+                else if ((160 + 40*i < 480) && (480 - 30*i > 0))
+                begin
+                   plat_x[i] <= 160 + 40*i;
+                   plat_y[i] <= 480 - 30*i;
+                end
+                else
+                begin
+                   plat_x[i] <= 40*i;
+                   plat_y[i] <= 480 - 10*i;
+                end
             end
         end
+        
+        else if (doodleY <= scroll_threshold) 
+        begin
+            if (threshold_pass == 1'b0) 
+            begin
+            for (i = 0; i < numb_platform; i++)
+                begin
+                    if(plat_y[i] + scroll_amount < 480)
+                    begin
+                        plat_y[i] <= plat_y[i] + scroll_amount; 
+                    end
+                    
+                    else // generate new platforms using the index in which the y is more than 480 
+                    begin
+                        if (score <= 7'd4) 
+                        begin
+                        plat_x[i] <= 160 + randomized_number[i] + 20*i;
+                        plat_y[i] <= 15*i; 
+                        end 
+                        else if (score > 7'd4 && score <= 7'd8)
+                        begin   
+                            if (i <= 18)
+                            begin
+                            plat_x[i] <= 160 + randomized_number[i] + 20*i;
+                            plat_y[i] <= 15*i; 
+                            end 
+                            else 
+                            begin
+                                plat_x[i] <= 10'd0; 
+                                plat_y[i] <= 10'd0; 
+                            end
+                        end 
+                        else 
+                        begin
+                            if (i <= 12)
+                            begin
+                            plat_x[i] <= 160 + randomized_number[i] + 20*i;
+                            plat_y[i] <= 15*i; 
+                            end 
+                            else 
+                            begin
+                                plat_x[i] <= 10'd0; 
+                                plat_y[i] <= 10'd0; 
+                            end
+                        end 
+                    end 
+                end
+                threshold_pass <= 1'b1; 
+            end
+        end
+        
+        else if (doodleY > scroll_threshold)
+        begin
+            threshold_pass <= 1'b0; 
         end
    end 
      

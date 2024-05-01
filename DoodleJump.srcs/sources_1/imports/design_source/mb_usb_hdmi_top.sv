@@ -49,12 +49,14 @@ module mb_usb_hdmi_top(
     logic reset_ah;
     
         // final project additional modules and logic
-    parameter numb_platform = 8; 
+    parameter numb_platform = 16; 
     
     logic dead; 
+    logic dead_bit; 
     logic [2:0] game_vidmem; 
     logic [3:0] game_start_r, game_start_g, game_start_b; 
     logic [3:0] game_b_r, game_b_g, game_b_b; // background rgb
+    logic [3:0] gameover_r, gameover_g, gameover_b; // gameover rgb 
     
     logic [3:0] doodle_r, doodle_g, doodle_b; // doodle final rgb
     
@@ -73,7 +75,27 @@ module mb_usb_hdmi_top(
     logic [10:0] rom_address_doodle; 
     integer index; 
     
+    // bullet logic
+    logic sho_up, sho_left, sho_right; 
+    logic fly_up, fly_left, fly_right; 
+    logic [9:0] bullet_x, bullet_y, bullet_size; 
+    
+    // monster logic
+    logic [9:0] monster_x, monster_y; 
+    logic [3:0] monster_red, monster_green, monster_blue; 
+    logic [3:0] monster_r, monster_g, monster_b; 
+    logic [10:0] rom_address_monster; 
+    logic doodle_monster_collision;
+    logic bullet_monster_collision; 
+    logic monster_on; 
+    logic monster_dead; 
+    
+    // score logic
+    logic [6:0] score; 
+    
     assign reset_ah = reset_rtl_0;
+    assign dead_bit = dead | doodle_monster_collision;
+    
     
     
     //Keycode HEX drivers
@@ -166,6 +188,14 @@ module mb_usb_hdmi_top(
         .DrawY(drawY),
         .Ball_size_x(ballsizesig_x),
         .Ball_size_y(ballsizesig_y),
+        .BulletX(bullet_x),
+        .BulletY(bullet_y),
+        .BulletS(bullet_size),
+        .MonsterX(monster_x),
+        .MonsterY(monster_y),
+        .shoot_up(fly_up),
+        .shoot_left(fly_left),
+        .shoot_right(fly_right),
         .game_state(game_vidmem), 
         .gs_red(game_start_r),
         .gs_green(game_start_g),
@@ -176,10 +206,21 @@ module mb_usb_hdmi_top(
         .doodle_red(doodle_r),
         .doodle_green(doodle_g),
         .doodle_blue(doodle_b),
+        .monster_red(monster_r),
+        .monster_green(monster_g),
+        .monster_blue(monster_b),
+        .bullet_monster_bit(bullet_monster_collision), 
+        .gameover_red(gameover_r),
+        .gameover_green(gameover_g),
+        .gameover_blue(gameover_b),
+        .doodle_score(score), 
         .index(index),
         .platform_on(platform_on), 
         .doodle_on(doodle_on),
+        .monster(monster_on), 
+        .dead_monster(monster_dead),
         .rom_address_doodle(rom_address_doodle), 
+        .rom_address_monster(rom_address_monster),
         .Red(red),
         .Green(green),
         .Blue(blue)
@@ -215,6 +256,16 @@ assign game_b_b = 4'hD;
         .blue(game_start_b)
     ); 
     
+// draw the gameover screen
+    gameover_screen gameover (
+        .vga_clk(clk_25MHz),
+        .DrawX(drawX),
+        .DrawY(drawY),
+        .blank(vde),
+        .red(gameover_r),
+        .green(gameover_g),
+        .blue(gameover_b)
+    );
 // draw doodle char 
 
 // left doodle 
@@ -302,7 +353,10 @@ assign game_b_b = 4'hD;
     .d_blueupright(d_blueupright),
     .doodle_r(doodle_r),
     .doodle_g(doodle_g),
-    .doodle_b(doodle_b)
+    .doodle_b(doodle_b),
+    .shoot_up(sho_up),
+    .shoot_left(sho_left),
+    .shoot_right(sho_right)
     );
 
     // Doodle Module
@@ -317,16 +371,84 @@ assign game_b_b = 4'hD;
         .topplatXmin(top_x_loc),        // doodle gets top x of plat
         .topplatXmax(top_x_max),        // range 
         .topplatY(top_y_loc),           // y loc 
+        .doodle_score(score), 
         .BallX(ballxsig),
         .BallY(ballysig),
         .BallS_X(ballsizesig_x),
         .BallS_Y(ballsizesig_y),
         .dead(dead)
     );
-   
+    
+// bullet logic 
+    bullet_ball bullet_instance(
+        .Reset(reset_ah),
+        .doodle_restart(restart), 
+        .frame_clk(vsync),
+        .shoot_trajleft(sho_left),
+        .shoot_trajstraight(sho_up),
+        .shoot_trajright(sho_right),
+        .doodleX(ballxsig),
+        .doodleY(ballysig),
+        .BulletX(bullet_x),
+        .BulletY(bullet_y),
+        .BulletS(bullet_size),
+        .shoot_up(fly_up),
+        .shoot_left(fly_left),
+        .shoot_right(fly_right)
+    );
+
+// monster logic
+    monster_generator monster_instance(
+        .Reset(reset_ah),
+        .doodle_restart(restart), 
+        .frame_clk(vsync),
+        .cpu_clk(Clk),
+        .drawX(drawX),
+        .drawY(drawY),
+        .doodleY(ballysig), 
+        .monsterX(monster_x),
+        .monsterY(monster_y)
+    ); 
+    
+    blue_flying_monster monster_char(
+        .vga_clk(clk_25MHz),
+        .DrawX(drawX),
+        .DrawY(drawY),
+        .blank(vde),
+        .rom_address_monster(rom_address_monster),
+        .red(monster_red),
+        .green(monster_green),
+        .blue(monster_blue)
+    ); 
+
+    monster_collision monster_collision_logic (
+        .reset(reset_ah),
+        .doodle_restart(restart),
+        .monster_on(monster_on),
+        .monster_dead(monster_dead), 
+        .frame_clk(vsync),
+        .cpu_clk(Clk), 
+        .bulletX(bullet_x),
+        .bulletY(bullet_y),
+        .bulletS(bullet_size),
+        .doodleX(ballxsig),
+        .doodleY(ballysig),
+        .monsterX(monster_x),
+        .monsterY(monster_y),
+        .monster_red(monster_red),
+        .monster_green(monster_green),
+        .monster_blue(monster_blue),
+        .background_red(game_b_r),
+        .background_green(game_b_g),
+        .background_blue(game_b_b),
+        .monster_r(monster_r),
+        .monster_g(monster_g),
+        .monster_b(monster_b),
+        .doodle_monster_collision(doodle_monster_collision),
+        .bullet_monster_collision(bullet_monster_collision)
+    ); 
 
 // platform generator logic 
-
     platform_generator #(numb_platform) platform_inst (
         .reset(reset_ah),
         .frame_clk(vsync), 
@@ -338,6 +460,7 @@ assign game_b_b = 4'hD;
         .doodle_r(doodle_r),
         .doodle_g(doodle_g),
         .doodle_b(doodle_b), 
+        .doodleY(ballysig), 
         .platform(platform_on),
         .plat_range(top_x_max),
         .plat_y_loc(top_y_loc),
@@ -348,7 +471,7 @@ assign game_b_b = 4'hD;
     // Game state Module 
     game_control_unit game (
         .keycode(keycode0_gpio[7:0]),
-        .dead_bit(dead), 
+        .dead_bit(dead_bit), 
         .reset(reset_ah), 
         .clk(Clk), 
         .game_state(game_vidmem),

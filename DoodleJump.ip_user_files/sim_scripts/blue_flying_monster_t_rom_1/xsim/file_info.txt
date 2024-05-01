@@ -1,0 +1,2 @@
+blue_flying_monster_t_rom.v,verilog,xil_defaultlib,../../../../DoodleJump.gen/sources_1/ip/blue_flying_monster_t_rom_1/sim/blue_flying_monster_t_rom.v,
+glbl.v,Verilog,xil_defaultlib,glbl.v

@@ -95,10 +95,15 @@ add_files /home/rishab/Image_to_COE/doodle_right_t/doodle_right_t.COE
 add_files /home/rishab/Image_to_COE/doodle_up_t/doodle_up_t.COE
 add_files /home/rishab/Image_to_COE/doodle_up_left_t/doodle_up_left_t.COE
 add_files /home/rishab/Image_to_COE/doodle_up_right_t/doodle_up_right_t.COE
+add_files /home/rishab/Image_to_COE/blue_flying_monster_t/blue_flying_monster_t.COE
+add_files /home/rishab/Image_to_COE/gameover/gameover.COE
 read_verilog -library xil_defaultlib -sv {
   /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/design_source/Color_Mapper.sv
   /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/design_source/Doodle.sv
   /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/design_source/VGA_controller.sv
+  /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/blue_flying_monster_t/blue_flying_monster_t_example.sv
+  /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/blue_flying_monster_t/blue_flying_monster_t_palette.sv
+  /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/new/bullet_ball.sv
   /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/new/doodle_char_state.sv
   /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/doodle_left_t/doodle_left_t_example.sv
   /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/doodle_left_t/doodle_left_t_palette.sv
@@ -112,8 +117,13 @@ read_verilog -library xil_defaultlib -sv {
   /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/Image_to_COE/doodle_up_t/doodle_up_t_palette.sv
   /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/doodlejump/doodlejump_example.sv
   /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/doodlejump/doodlejump_palette.sv
+  /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/src/font_rom.sv
   /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/new/game_control_unit.sv
+  /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/gameover/gameover_example.sv
+  /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/gameover/gameover_palette.sv
   /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/design_source/hex_driver.sv
+  /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/new/monster_collision.sv
+  /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/new/monster_generator.sv
   /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/new/platform.sv
   /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/new/platform_generator.sv
   /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/imports/design_source/mb_usb_hdmi_top.sv
@@ -184,6 +194,12 @@ set_property used_in_implementation false [get_files -all /home/rishab/Documents
 
 read_ip -quiet /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/ip/doodle_up_right_t_rom/doodle_up_right_t_rom.xci
 set_property used_in_implementation false [get_files -all /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.gen/sources_1/ip/doodle_up_right_t_rom/doodle_up_right_t_rom_ooc.xdc]
+
+read_ip -quiet /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/ip/blue_flying_monster_t_rom_1/blue_flying_monster_t_rom.xci
+set_property used_in_implementation false [get_files -all /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.gen/sources_1/ip/blue_flying_monster_t_rom_1/blue_flying_monster_t_rom_ooc.xdc]
+
+read_ip -quiet /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.srcs/sources_1/ip/gameover_rom_1/gameover_rom.xci
+set_property used_in_implementation false [get_files -all /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.gen/sources_1/ip/gameover_rom_1/gameover_rom_ooc.xdc]
 
 OPTRACE "Adding files" END { }
 # Mark all dcp files as not used in implementation to prevent them from being

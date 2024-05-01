@@ -1,0 +1,13 @@
+#-----------------------------------------------------------
+# Vivado v2022.2 (64-bit)
+# SW Build 3671981 on Fri Oct 14 04:59:54 MDT 2022
+# IP Build 3669848 on Fri Oct 14 08:30:02 MDT 2022
+# Start of session at: Mon Apr 29 13:45:21 2024
+# Process ID: 137355
+# Current directory: /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/gameover_rom_synth_1
+# Command line: vivado -log gameover_rom.vds -product Vivado -mode batch -messageDb vivado.pb -notrace -source gameover_rom.tcl
+# Log file: /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/gameover_rom_synth_1/gameover_rom.vds
+# Journal file: /home/rishab/Documents/ECE_385_Final_Project/DoodleJump/DoodleJump.runs/gameover_rom_synth_1/vivado.jou
+# Running On: michael-XPS-13-9360, OS: Linux, CPU Frequency: 2040.624 MHz, CPU Physical cores: 4, Host memory: 8036 MB
+#-----------------------------------------------------------
+source gameover_rom.tcl -notrace

@@ -1,0 +1,2 @@
+gameover_rom.v,verilog,xil_defaultlib,../../../../DoodleJump.gen/sources_1/ip/gameover_rom_1/sim/gameover_rom.v,
+glbl.v,Verilog,xil_defaultlib,glbl.v
