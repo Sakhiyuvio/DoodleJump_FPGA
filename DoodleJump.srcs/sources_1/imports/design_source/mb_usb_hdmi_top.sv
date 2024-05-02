@@ -49,10 +49,12 @@ module mb_usb_hdmi_top(
     logic reset_ah;
     
         // final project additional modules and logic
-    parameter numb_platform = 16; 
+    parameter numb_platform = 24; 
+    parameter numb_monster = 4; 
     
     logic dead; 
     logic dead_bit; 
+    logic gravity_enable;
     logic [2:0] game_vidmem; 
     logic [3:0] game_start_r, game_start_g, game_start_b; 
     logic [3:0] game_b_r, game_b_g, game_b_b; // background rgb
@@ -81,22 +83,46 @@ module mb_usb_hdmi_top(
     logic [9:0] bullet_x, bullet_y, bullet_size; 
     
     // monster logic
-    logic [9:0] monster_x, monster_y; 
+    logic [9:0] monster_x[numb_monster]; 
+    logic [9:0] monster_y[numb_monster]; 
     logic [3:0] monster_red, monster_green, monster_blue; 
     logic [3:0] monster_r, monster_g, monster_b; 
     logic [10:0] rom_address_monster; 
-    logic doodle_monster_collision;
-    logic bullet_monster_collision; 
-    logic monster_on; 
-    logic monster_dead; 
+    logic [numb_monster - 1:0]doodle_monster_collision;
+    logic [numb_monster - 1:0]bullet_monster_collision; 
+    logic [numb_monster - 1 :0]monster_on; 
+    logic [numb_monster - 1 : 0]monster_dead; 
+    logic break_bit;
+    integer i; 
     
     // score logic
     logic [6:0] score; 
     
+    
     assign reset_ah = reset_rtl_0;
-    assign dead_bit = dead | doodle_monster_collision;
-    
-    
+
+    always_comb
+    begin
+    break_bit = 1'b0; 
+    dead_bit = 1'b0;
+    for(i = 0; i < numb_monster; i++)
+    begin
+        if (break_bit)
+        begin
+        // do nothing
+        end
+        else if((dead | doodle_monster_collision[i]) == 1'b1)
+        begin
+            dead_bit = dead | doodle_monster_collision[i];
+            break_bit = 1'b1; 
+        end
+//        else
+//        begin
+//            dead_bit = 1'b0; 
+//        end  
+    end
+    end
+   
     
     //Keycode HEX drivers
     hex_driver HexA (
@@ -181,7 +207,7 @@ module mb_usb_hdmi_top(
 
     
     //Color Mapper Module   
-    color_mapper #(numb_platform) color_instance(
+    color_mapper #(numb_platform, numb_monster) color_instance(
         .BallX(ballxsig),
         .BallY(ballysig),
         .DrawX(drawX),
@@ -376,7 +402,8 @@ assign game_b_b = 4'hD;
         .BallY(ballysig),
         .BallS_X(ballsizesig_x),
         .BallS_Y(ballsizesig_y),
-        .dead(dead)
+        .dead(dead),
+        .gravity(gravity_enable)
     );
     
 // bullet logic 
@@ -398,14 +425,16 @@ assign game_b_b = 4'hD;
     );
 
 // monster logic
-    monster_generator monster_instance(
+    monster_generator #(numb_monster) monster_instance(
         .Reset(reset_ah),
         .doodle_restart(restart), 
         .frame_clk(vsync),
         .cpu_clk(Clk),
+        .gravity_enable(gravity_enable),
         .drawX(drawX),
         .drawY(drawY),
         .doodleY(ballysig), 
+        .score(score),
         .monsterX(monster_x),
         .monsterY(monster_y)
     ); 
@@ -421,7 +450,7 @@ assign game_b_b = 4'hD;
         .blue(monster_blue)
     ); 
 
-    monster_collision monster_collision_logic (
+    monster_collision #(numb_monster) monster_collision_logic (
         .reset(reset_ah),
         .doodle_restart(restart),
         .monster_on(monster_on),
@@ -457,10 +486,12 @@ assign game_b_b = 4'hD;
         .drawY(drawY),
         .doodle_on(doodle_on), 
         .doodle_restart(restart),
+        .gravity_enable(gravity_enable),
         .doodle_r(doodle_r),
         .doodle_g(doodle_g),
         .doodle_b(doodle_b), 
         .doodleY(ballysig), 
+        .score(score),
         .platform(platform_on),
         .plat_range(top_x_max),
         .plat_y_loc(top_y_loc),

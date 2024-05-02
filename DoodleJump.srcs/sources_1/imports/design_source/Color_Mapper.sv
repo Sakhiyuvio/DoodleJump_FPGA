@@ -14,36 +14,44 @@
 //-------------------------------------------------------------------------
 
 
-module  color_mapper #(parameter numb_platform = 8)
+module  color_mapper #(parameter numb_platform = 8,
+                       parameter numb_monster = 6)
                     (  input  logic [9:0] BallX, BallY, DrawX, DrawY, Ball_size_x, Ball_size_y, 
                        input logic [9:0] BulletX, BulletY, BulletS, 
-                       input logic [9:0] MonsterX, MonsterY,
+                       input logic [9:0] MonsterX [numb_monster], 
+                       input logic [9:0] MonsterY [numb_monster],
                        input logic shoot_up, shoot_left, shoot_right, 
                        input logic [2:0] game_state, 
                        input logic[3:0] gs_red, gs_green, gs_blue,
                        input logic[3:0] gb_red, gb_green, gb_blue,
                        input logic[3:0] doodle_red, doodle_green, doodle_blue,
                        input logic[3:0] monster_red, monster_green, monster_blue, 
-                       input logic bullet_monster_bit,
+                       input logic [numb_monster - 1 : 0] bullet_monster_bit,
                        input logic[3:0] gameover_red, gameover_green, gameover_blue, 
                        input logic [6:0] doodle_score, 
                        input logic [numb_platform - 1:0] platform_on, 
                        input integer index, 
                        output logic doodle_on, 
-                       output logic monster, 
-                       output logic dead_monster, 
+                       output logic [numb_monster - 1 : 0] monster, 
+                       output logic [numb_monster - 1 : 0] dead_monster, 
                        output logic [10:0] rom_address_doodle, 
                        output logic [10:0] rom_address_monster,
                        output logic [3:0]  Red, Green, Blue );
     
     logic ball_on;
     logic bullet_on; 
-    logic monster_on; 
-    logic monster_dead; 
+    logic [numb_monster - 1 : 0] monster_on; 
+    logic [numb_monster - 1 : 0] monster_dead; 
     logic shape1_on, shape2_on; 
+    logic break_bit; 
+    
+    integer i; 
+    integer monster_index; 
+    
     assign doodle_on = ball_on; 
     assign monster = monster_on; 
     assign dead_monster = monster_dead; 
+    
 	 
  /* Old Ball: Generated square box by checking if the current pixel is within a square of length
     2*BallS, centered at (BallX, BallY).  Note that this requires unsigned comparisons.
@@ -92,8 +100,8 @@ module  color_mapper #(parameter numb_platform = 8)
    
    assign offset_font_rom_addr = 10'h30;
    
-   assign shape_x = 10'd144; 
-   assign shape2_x = 10'd152; 
+   assign shape_x = 10'd160; 
+   assign shape2_x = 10'd168; 
    assign shape_y = 10'd0; 
    assign shape2_y = 10'd0; 
    assign shape_size_x = 10'd8; 
@@ -128,30 +136,35 @@ module  color_mapper #(parameter numb_platform = 8)
     font_rom font (.addr(sprite_addr), .data(sprite_data)); 
 
     // monster logic
+    
+    // might need to add a break bit 
     always_comb
     begin:Monster_on_proc
         // check if other objects are not on 
             // check if within bounds
-        if (DrawX >= (MonsterX - 20) && DrawX <= (MonsterX + 20) && DrawY >= (MonsterY - 20) && DrawY <= (MonsterY + 20))
+        monster_index = 0; 
+        break_bit = 1'b0; 
+        for (i = 0; i < numb_monster; i++)
         begin
-                // start drawing, initialize the rom address  
-//            if (bullet_monster_bit)
-//            begin
-//                monster_on = 1'b0; 
-//                rom_address_monster = 0;
-//            end 
-//            else 
-//            begin
-            rom_address_monster = ((DrawX-160) - (MonsterX - 20)) + ((40) * (DrawY - (MonsterY - 20))); 
-            monster_on = 1'b1; 
-//            end 
+            if (break_bit)
+            begin
+                // do nothing
+            end 
+            else if (DrawX >= (MonsterX[i] - 20) && DrawX <= (MonsterX[i] + 20) && DrawY >= (MonsterY[i] - 20) && DrawY <= (MonsterY[i] + 20))
+            begin
+                rom_address_monster = ((DrawX-160) - (MonsterX[i] - 20)) + ((40) * (DrawY - (MonsterY[i] - 20))); 
+                monster_on[i] = 1'b1; 
+                monster_index = i; 
+                break_bit = 1'b1; 
+    //            end 
+            end 
+            else 
+            begin
+                // reset rom address
+                rom_address_monster = 0;
+                monster_on[i] = 1'b0; 
+            end  
         end 
-        else 
-        begin
-            // reset rom address
-            rom_address_monster = 0;
-            monster_on = 1'b0; 
-        end  
     end 
     
     always_comb 
@@ -182,10 +195,10 @@ module  color_mapper #(parameter numb_platform = 8)
         end;
      end 
        
-    integer i; 
+//    integer i; 
     always_comb
     begin:RGB_Display
-        monster_dead = 1'b0; 
+        monster_dead[monster_index] = 1'b0; 
         if (game_state == 3'b010)  //draw dead background
         begin
             if (DrawX >= 160 && DrawX < 480)
@@ -224,8 +237,30 @@ module  color_mapper #(parameter numb_platform = 8)
         else if (game_state == 3'b001) // draw game background
         begin
             // add logic for background screen and doodle coord
-            if (DrawX >= 144 && DrawX < 160 &&  DrawY >= 0 && DrawY <= 16)
+//            if (DrawX >= 144 && DrawX < 160 &&  DrawY >= 0 && DrawY <= 16)
+//            begin
+//                if((shape1_on == 1'b1) && sprite_data[inv1s - (DrawX - shape_x)] == 1'b1) 
+//                begin 
+//                    Red = 4'h0;
+//                    Green = 4'h9; 
+//                    Blue = 4'h0; 
+//                end 
+//                else if((shape2_on == 1'b1) && sprite_data[inv1s - (DrawX - shape2_x)] == 1'b1)                                                                                                                                                                                                               // do ron gon bon not inverted 
+//                begin 
+//                    Red = 4'h0; 
+//                    Green = 4'h9; 
+//                    Blue = 4'h0; 
+//                end 
+//                else
+//                begin
+//                    Red = gb_red; 
+//                    Green = gb_green;
+//                    Blue = gb_blue; 
+//                end
+//            end
+            if (DrawX >= 160 && DrawX < 480)
             begin
+                // draw score
                 if((shape1_on == 1'b1) && sprite_data[inv1s - (DrawX - shape_x)] == 1'b1) 
                 begin 
                     Red = 4'h0;
@@ -238,18 +273,9 @@ module  color_mapper #(parameter numb_platform = 8)
                     Green = 4'h9; 
                     Blue = 4'h0; 
                 end 
-                else
-                begin
-                    Red = gb_red; 
-                    Green = gb_green;
-                    Blue = gb_blue; 
-                end
-            end
-            else if (DrawX >= 160 && DrawX < 480)
-            begin
                 // draw doodle
                // if currently has to draw doodle 
-                if ((ball_on == 1'b1)) 
+                else if ((ball_on == 1'b1)) 
                 begin     
 
                     // TASK: Differentiate background with foreground for the doodle! 
@@ -301,17 +327,17 @@ module  color_mapper #(parameter numb_platform = 8)
                         end   
               end 
               // draw monster
-              else if ((monster_on == 1'b1))
+              else if ((monster_on[monster_index] == 1'b1))
               begin
 //                    if(doodle_on == 1'b0) 
 //                    begin
                         // put monster RGB here, if there is a collision, draw the background
 
-                        if (DrawY >= (MonsterY - 15))
+                        if (DrawY >= (MonsterY[monster_index] - 15))
                         begin
-                            if (bullet_monster_bit) 
+                            if (bullet_monster_bit[monster_index]) 
                             begin
-                                monster_dead = 1'b1;
+                                monster_dead[monster_index] = 1'b1;
                                 if (platform_on[index] == 1'b1)
                                 begin
                                 Red = 4'h2;

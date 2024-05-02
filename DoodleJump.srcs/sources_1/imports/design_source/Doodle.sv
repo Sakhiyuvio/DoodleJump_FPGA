@@ -32,7 +32,8 @@ module  doodle
     output logic [9:0]  BallY, 
     output logic [9:0]  BallS_X,
     output logic [9:0]  BallS_Y, 
-    output logic dead
+    output logic dead,
+    output logic gravity 
 );
     
 
@@ -70,6 +71,7 @@ module  doodle
     logic threshold_pass;
     logic[6:0] score;
     assign doodle_score = score; 
+    assign gravity = gravity_enable;
 
     always_ff @(posedge frame_clk) begin
     
@@ -79,7 +81,7 @@ module  doodle
             threshold_pass <= 1'b0; 
         end
         
-        else if (BallY <= scroll_threshold) begin
+        else if (BallY == scroll_threshold) begin
             if (!threshold_pass) begin
                 score <= score + 1;
                 threshold_pass <= 1'b1;
@@ -115,7 +117,7 @@ module  doodle
 //         doodle-platform collision logic 
          for (i = 0; i < numb_platform; i = i+1)
          begin
-             if (((BallY + BallS_Y) == topplatY[i]) && ((BallX) <= topplatXmax[i]) && ((BallX) >= topplatXmin[i]))
+             if (((BallY + BallS_Y) >= topplatY[i]) && ((BallY + BallS_Y) <= topplatY[i] + 3) && ((BallX) <= topplatXmax[i]) && ((BallX) >= topplatXmin[i]))
              begin
                  Ball_Y_Motion_next = (~(Ball_Y_Step) + 1'b1); // jump 
              end
@@ -142,6 +144,7 @@ module  doodle
             Ball_Y_Motion_next = Ball_Y_Step;
         end
         
+        // kinda iffy about this, isn't this checked on the previous for loop? 
         else if (~gravity_enable)
         begin
             Ball_Y_Motion_next = (~(Ball_Y_Step) + 1'b1); // jump
@@ -231,7 +234,7 @@ module  doodle
             //collision_timer <= collision_timer + 1'b1;
             for (i = 0; i < numb_platform; i = i+1)
             begin
-                if (((BallY + BallS_Y) == topplatY[i]) && ((BallX) <= topplatXmax[i]) && ((BallX) >= topplatXmin[i]))
+                if (((BallY + BallS_Y) >= topplatY[i]) && ((BallY + BallS_Y) <= topplatY[i] + 3) && ((BallX) <= topplatXmax[i]) && ((BallX) >= topplatXmin[i]))
                 begin
                     gravity_enable <= 1'b0; // Disable gravity on collision
                     collision_timer <= 10'd0; // Reset collision timer
@@ -250,18 +253,31 @@ begin: gravity_cond
     else if (gravity_enable) // Check if gravity is enabled and no recent collision
     begin
         // Gravity case
-        Ball_Y_Step <= 10'd1; 
+//        Ball_Y_Step <= 10'd1; 
         acceleration <= acceleration + 1'b1;
 
-        if (acceleration >= 10'd60)
+        if (acceleration >= 10'd10)
         begin
-            Ball_Y_Step <= Ball_Y_Step + 1'b1;
+            if (Ball_Y_Step <= 10'd3)
+            begin
+                Ball_Y_Step <= Ball_Y_Step + 1'b1;
+            end
             acceleration <= 10'd0;
         end
     end
     else 
     begin
-        Ball_Y_Step <= 10'd1; 
+        Ball_Y_Step <= 10'd3; 
+        acceleration <= acceleration + 1'b1;
+        if (acceleration >= 10'd10) //mess  this
+        begin
+            if (Ball_Y_Step > 10'd1)
+            begin
+                Ball_Y_Step <= Ball_Y_Step - 1'b1;
+            end
+            acceleration <= 10'd0;
+        end
+            
     end 
 end
     
@@ -281,9 +297,16 @@ end
 			Ball_Y_Motion <= Ball_Y_Motion_next; 
 			Ball_X_Motion <= Ball_X_Motion_next; 
 		
-
-            BallY <= Ball_Y_next;  // Update ball position
-            BallX <= Ball_X_next;			
+            if (Ball_Y_next <= 240) begin
+                BallY <= 240;
+                BallX <= Ball_X_next;	
+            end
+            else begin
+                BallY <= Ball_Y_next;  // Update ball position
+                BallX <= Ball_X_next;	
+            
+            end
+            		
 		end  
     end
     

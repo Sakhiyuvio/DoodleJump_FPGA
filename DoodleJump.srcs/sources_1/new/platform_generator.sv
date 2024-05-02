@@ -65,6 +65,7 @@ module platform_generator
         input logic [9:0] drawX, drawY,
         input logic doodle_on, 
         input logic doodle_restart, 
+        input logic gravity_enable, 
         input logic [3:0] doodle_r, doodle_g, doodle_b,
         input logic [9:0] doodleY, 
         input logic [6:0] score, 
@@ -88,7 +89,7 @@ module platform_generator
     // scroll 
     parameter [9:0] scroll_threshold = 240; 
     logic [9:0] scroll_amount;
-    assign scroll_amount = 10'd50; // keep it fixed for now 
+    assign scroll_amount = 10'd1; // keep it fixed for now 
     
     // array to store platform x and y coordinates
     logic [numb_platform - 1:0] platform_on;
@@ -100,6 +101,7 @@ module platform_generator
     logic [9:0] randomized_number [numb_platform - 1 : 0]; 
     
     integer i;
+//    integer j; 
 //    genvar j; 
     
     assign plat_range = top_x_max; 
@@ -108,7 +110,7 @@ module platform_generator
     assign plat_x_loc = plat_x; 
     
     // signal for scroll 
-    logic threshold_pass; 
+//    logic threshold_pass; 
     
     // random platform generation, currently hardcoded to about 4 platforms each frame/level
     
@@ -124,7 +126,7 @@ module platform_generator
     begin
         if (reset)
         begin
-        threshold_pass <= 1'b0; 
+//        threshold_pass <= 1'b0; 
             for (i = 0; i < numb_platform ; i++)
             begin 
                 // additional patternized platform generator to abstract the randomness better 
@@ -135,58 +137,108 @@ module platform_generator
         
         else if (doodle_restart) // OR SCROLL, ADD LOGIC HERE
         begin
-        threshold_pass <= 1'b0; 
+//        threshold_pass <= 1'b0; 
             for (i = 0; i < numb_platform ; i++)
             begin 
                 // additional patternized platform generator to abstract the randomness better 
-                if ((160 + randomized_number[i] + 20*i < 480) && (randomized_number[i] + 30*i < 480))
-                begin
-                   plat_x[i] <= 160 + randomized_number[i] + 20*i;
-                   plat_y[i] <= randomized_number[i] + 30*i; 
-                end
-                else if ((160 + randomized_number[i] < 480) && (480 - randomized_number[i] > 240))
-                begin
-                   plat_x[i] <= 160 + randomized_number[i];
-                   plat_y[i] <= 480 - randomized_number[i];
-                end
-                else if ((160 + 40*i < 480) && (480 - 30*i > 0))
-                begin
-                   plat_x[i] <= 160 + 40*i;
-                   plat_y[i] <= 480 - 30*i;
-                end
-                else
-                begin
-                   plat_x[i] <= 40*i;
-                   plat_y[i] <= 480 - 10*i;
-                end
-            end
+                    if (i > 15)
+                    begin
+                        if ((160 + randomized_number[i] + 13*i < 480))
+                        begin
+                           plat_x[i] <= 160 + randomized_number[i] + 13*i;
+                           plat_y[i] <= 380 - (randomized_number[i] + 8*i); 
+                        end
+//                        else if ((160 + randomized_number[i] < 480) && (480 - randomized_number[i] > 150))
+//                        begin
+//                           plat_x[i] <= 160 + randomized_number[i];
+//                           plat_y[i] <= 480 - randomized_number[i];
+//                        end
+//                        else if ((160 + randomized_number[i] < 480) && (480 - randomized_number[i] > 0))
+//                        begin
+//                           plat_x[i] <= 160 + randomized_number[i];
+//                           plat_y[i] <= 480 - randomized_number[i];
+//                        end
+                        else
+                        begin
+                           plat_x[i] <= 160 + 13*i;
+                           plat_y[i] <= 480 - 10*i;
+                        end
+                    end
+                    else
+                    begin
+                        plat_x[i] <= 160 + randomized_number[i] + 28*i;
+                        plat_y[i] <= 480 - 10*i;
+                    end
+           end
         end
         
         else if (doodleY <= scroll_threshold) 
         begin
-            if (threshold_pass == 1'b0) 
-            begin
+//            if (threshold_pass == 1'b0) 
+//            begin
             for (i = 0; i < numb_platform; i++)
                 begin
+                
                     if(plat_y[i] + scroll_amount < 480)
                     begin
-                        plat_y[i] <= plat_y[i] + scroll_amount; 
+                        if (gravity_enable == 1'b0)
+                        begin
+                            plat_y[i] <= plat_y[i] + scroll_amount; 
+                        end
                     end
                     
                     else // generate new platforms using the index in which the y is more than 480 
                     begin
                         if (score <= 7'd4) 
                         begin
-                        plat_x[i] <= 160 + randomized_number[i] + 20*i;
-                        plat_y[i] <= 15*i; 
-                        end 
-                        else if (score > 7'd4 && score <= 7'd8)
-                        begin   
-                            if (i <= 18)
+                            if (i <= 5)
                             begin
-                            plat_x[i] <= 160 + randomized_number[i] + 20*i;
-                            plat_y[i] <= 15*i; 
+                            plat_x[i] <= 160 + randomized_number[i] + 32*i;
+                            plat_y[i] <= 32*(i+1); 
+                            end
+                            else if (i <= 10)
+                            begin
+                            plat_x[i] <= 240 - randomized_number[i] + 24*i;
+                            plat_y[i] <= 16*(i+1); 
+                            end
+                            else if (i > 10 && i <= 15)
+                            begin
+                                plat_x[i] <= 240 + randomized_number[i] + 16*i;
+                                plat_y[i] <= 300 - (randomized_number[i] + 16*i); 
+                            end
+                            else if (i > 15 && i <= 20)
+                            begin
+                                plat_x[i] <= 480 - randomized_number[i] - 10*i;
+                                plat_y[i] <= 300 - (randomized_number[i] + 10*i); 
+                            end
+                            else
+                            begin
+                                plat_x[i] <= 480 - randomized_number[i] + 10*i;
+                                plat_y[i] <= randomized_number[i] + 10*i; 
+                            end
+                        end 
+                        else if (score > 7'd4 && score <= 7'd10)
+                        begin   
+                            if (i <= 5)
+                            begin
+                            plat_x[i] <= 160 + randomized_number[i] + 32*i;
+                            plat_y[i] <= 28*(i+1); 
                             end 
+                            else if (i <= 10)
+                            begin
+                            plat_x[i] <= 240 - randomized_number[i] + 16*i;
+                            plat_y[i] <= 28*(i+1); 
+                            end 
+                            else if (i <= 15)
+                            begin
+                            plat_x[i] <= 400 + randomized_number[i] - 20*i;
+                            plat_y[i] <= 280 - 10*i; 
+                            end
+                            else if (i <= 20)
+                            begin
+                            plat_x[i] <= 100 + randomized_number[i] + 10*i;
+                            plat_y[i] <= 8*i; 
+                            end
                             else 
                             begin
                                 plat_x[i] <= 10'd0; 
@@ -195,11 +247,21 @@ module platform_generator
                         end 
                         else 
                         begin
-                            if (i <= 12)
+                            if (i <= 5)
                             begin
-                            plat_x[i] <= 160 + randomized_number[i] + 20*i;
-                            plat_y[i] <= 15*i; 
+                            plat_x[i] <= 160 + randomized_number[i] + 32*i;
+                            plat_y[i] <= 24*(i+1); 
                             end 
+                            else if (i <= 10)
+                            begin
+                                plat_x[i] <= 480 + randomized_number[i] - 32*i;
+                                plat_y[i] <= 10*(i+1); 
+                            end
+                            else if (i <= 18)
+                            begin
+                                plat_x[i] <= 360 - randomized_number[i] + 18*i;
+                                plat_y[i] <= 5*i;  
+                            end
                             else 
                             begin
                                 plat_x[i] <= 10'd0; 
@@ -207,15 +269,15 @@ module platform_generator
                             end
                         end 
                     end 
-                end
-                threshold_pass <= 1'b1; 
+//                end
+//                threshold_pass <= 1'b1; 
             end
         end
         
-        else if (doodleY > scroll_threshold)
-        begin
-            threshold_pass <= 1'b0; 
-        end
+//        else if (doodleY > scroll_threshold)
+//        begin
+//            threshold_pass <= 1'b0; 
+//        end
    end 
      
      // instantiate the platform modules

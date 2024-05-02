@@ -56,31 +56,36 @@ module monster_randomizer
 
 endmodule
 
-module monster_generator(
+module monster_generator
+    #(parameter numb_monster = 6) 
+(
         input logic         Reset, 
         input logic         doodle_restart, 
         input logic         frame_clk,
         input logic         cpu_clk, 
+        input logic         gravity_enable, 
         input logic [9:0]   drawX,
         input logic [9:0]   drawY, 
         input logic [9:0]   doodleY,
-        output logic [9:0]  monsterX, 
-        output logic [9:0]  monsterY
+        input logic [6:0]   score, 
+        output logic [9:0]  monsterX [numb_monster], 
+        output logic [9:0]  monsterY [numb_monster]
     );
     
-    logic [9:0] random_loc; 
-    logic [9:0] monster_x, monster_y; 
+    logic [9:0] random_loc [numb_monster - 1 : 0]; 
+    logic [9:0] monster_x [numb_monster];
+    logic [9:0] monster_y [numb_monster]; 
     
     // monster scroll logic
     parameter [9:0] scroll_threshold = 240; 
     logic [9:0] scroll_amount;
-    assign scroll_amount = 10'd50; // keep it fixed for now 
-    logic threshold_pass; 
+    assign scroll_amount = 10'd1; // keep it fixed for now 
+//    logic threshold_pass; 
     
     assign monsterX = monster_x;
     assign monsterY = monster_y; 
     
-    monster_randomizer rand_loc  
+    monster_randomizer rand_loc [numb_monster - 1:0]  
     (
         .reset(Reset),
         .clk(cpu_clk),
@@ -88,46 +93,152 @@ module monster_generator(
         .random_number(random_loc)
     );
     
+    integer i; 
     always_ff @(posedge frame_clk) 
     begin
         if (Reset)
         begin
-               threshold_pass <= 1'b0; 
-               monster_x <= 10'b0;
-               monster_y <= 10'b0; 
-
+//               threshold_pass <= 1'b0; 
+               for (i = 0; i < numb_monster; i++)
+               begin
+               monster_x[i] <= 10'b0;
+               monster_y[i] <= 10'b0; 
+               end
         end 
         else if (doodle_restart) // OR SCROLL, ADD LOGIC HERE
         begin
-            threshold_pass <= 1'b0; 
+//            threshold_pass <= 1'b0; 
             // additional patternized monster generator to abstract the randomness better 
-            if ((160 + random_loc <= 440) && (160 + random_loc >= 180) && (random_loc > 100) && (random_loc < 240))
+            for (i = 0; i < numb_monster; i++)
             begin
-               monster_x <= 160 + random_loc; 
-               monster_y <= random_loc - 10'd100;
-            end
-            else 
-            begin
-               monster_x <= 10'd240;
-               monster_y <= 10'd40;
+                if (score <= 7'd2 && i == 0) 
+                begin
+                        if ((160 + random_loc[i] <= 440) && (160 + random_loc[i] >= 180) && (random_loc[i] > 100) && (random_loc[i] < 240))
+                        begin
+                           monster_x[i] <= 160 + random_loc[i]; 
+                           monster_y[i] <= random_loc[i] - 10'd100;
+                        end
+                end
+                else
+                        begin
+                           monster_x[i] <= 7'd0;
+                           monster_y[i] <= 7'd0;
+                        end
+//                else if (score >= 7'd3 && score < 7'd8)
+//                begin
+//                // generate 1 monster 
+//                    if (i == 0)
+//                    begin
+//                        if ((160 + random_loc[i] <= 440) && (160 + random_loc[i] >= 180) && (random_loc[i] > 100) && (random_loc[i] < 240))
+//                        begin
+//                           monster_x[i] <= 160 + random_loc[i]; 
+//                           monster_y[i] <= random_loc[i] - 10'd100;
+//                        end
+//                    end
+//                    else
+//                    begin
+//                            monster_x[i] <= 10'd0;
+//                            monster_y[i] <= 10'd0;
+//                    end
+//                end
+//                else 
+//                begin
+//                   monster_x[i] <= 10'd2;
+//                   monster_y[i] <= 10'd40;
+//            end
             end
         end
         else if (doodleY <= scroll_threshold)
         begin
-            if(threshold_pass == 1'b0)
-            begin
-                if(monster_y + scroll_amount < 480)
+//            if(threshold_pass == 1'b0)
+//            begin
+                for (i = 0; i < numb_monster; i++)
                 begin
-                        monster_y <= monster_y + scroll_amount; 
-                end
-                 // add monster after a certain score threshold?
-                threshold_pass <= 1'b1; 
+//                    if(monster_y[i] + scroll_amount < 480)
+//                    begin
+//                        if (gravity_enable == 1'b0) begin
+                        
+//                            monster_y[i] <= monster_y[i] + scroll_amount;
+//                        end
+//                    end
+
+//                     else
+//                     begin
+//                     // add monster after a certain score threshold
+                        if (score <= 7'd5) 
+                        begin
+                            if(monster_y[i] + scroll_amount < 480)
+                             begin
+                            if (gravity_enable == 1'b0) begin
+                            
+                                monster_y[i] <= monster_y[i] + scroll_amount;
+                            end
+                            end
+                        // add no new monster 
+                        else
+                        begin
+                        monster_x[i] <= 10'd0;
+                        monster_y[i] <= 10'd0;
+                        end
+                        end 
+                        
+                        else if (score >= 7'd4 && score <= 7'd12)
+                        begin   
+                            if (i == 1)
+                            begin
+                               if(monster_x[i] >= 160 && monster_y[i] + scroll_amount < 480)
+                                begin
+                                    if (gravity_enable == 1'b0) 
+                                    begin
+                                    monster_y[i] <= monster_y[i] + scroll_amount;
+                                     end
+                                end
+                                else
+                                begin
+                                    monster_x[i] <= 160 + random_loc[i];
+                                    monster_y[i] <= 15*i; 
+                                end
+                            end 
+                            else 
+                            begin
+                                monster_x[i] <= 10'd0; 
+                                monster_y[i] <= 10'd0; 
+                            end
+                        end 
+                        
+                        else 
+                        begin
+                            if (i == 2 || i == 3)
+                            begin
+                                  if(monster_x[i] >= 160 && monster_y[i] + scroll_amount < 480)
+                                  begin
+                                    if (gravity_enable == 1'b0) 
+                                    begin
+                                        monster_y[i] <= monster_y[i] + scroll_amount;
+                                    end
+                                  end
+                            else
+                            begin
+                            monster_x[i] <= 160 + random_loc[i] + 40*i;
+                            monster_y[i] <= 40*i; 
+                            end
+                            
+                            end 
+                            else 
+                            begin
+                                monster_x[i] <= 10'd0; 
+                                monster_y[i] <= 10'd0; 
+                            end
+                        end
+//                     end 
+//                 end
+//                threshold_pass <= 1'b1; 
             end
         end
-        else if (doodleY > scroll_threshold)
-        begin
-            threshold_pass <= 1'b0; 
-        end
+//        else if (doodleY > scroll_threshold)
+//        begin
+//            threshold_pass <= 1'b0; 
+//        end
    end 
      
     
