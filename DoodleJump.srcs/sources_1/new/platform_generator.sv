@@ -114,13 +114,26 @@ module platform_generator
     
     // random platform generation, currently hardcoded to about 4 platforms each frame/level
     
+    // instantiate the LSFR module for each platform 
+    genvar j;
+    generate
+      for (j = 0; j < numb_platform; j = j + 1) begin : lfsr_inst
+        randomizer lfsr_number_generator (
+          .reset(reset),
+          .clk(cpu_clk),
+          .doodle_restart(doodle_restart),
+          .random_number(randomized_number[j])
+        );
+      end
+    endgenerate
+    
     // instantiate the LFSR module 
-    randomizer lfsr_number_generator [numb_platform - 1 : 0](
-    .reset(reset), 
-    .clk(cpu_clk), 
-    .doodle_restart(doodle_restart),
-    .random_number(randomized_number)
-    ); 
+//    randomizer lfsr_number_generator [numb_platform - 1 : 0](
+//    .reset(reset), 
+//    .clk(cpu_clk), 
+//    .doodle_restart(doodle_restart),
+//    .random_number(randomized_number)
+//    ); 
     
     always_ff @(posedge frame_clk) 
     begin
@@ -143,31 +156,21 @@ module platform_generator
                 // additional patternized platform generator to abstract the randomness better 
                     if (i > 15)
                     begin
-                        if ((160 + randomized_number[i] + 13*i < 480))
+                        if ((160 + randomized_number[i] < 480))
                         begin
-                           plat_x[i] <= 160 + randomized_number[i] + 13*i;
-                           plat_y[i] <= 380 - (randomized_number[i] + 8*i); 
+                           plat_x[i] <= 160 + randomized_number[i];// + 13*i;
+                           plat_y[i] <= 380 - (randomized_number[i]); //+ 8*i); 
                         end
-//                        else if ((160 + randomized_number[i] < 480) && (480 - randomized_number[i] > 150))
-//                        begin
-//                           plat_x[i] <= 160 + randomized_number[i];
-//                           plat_y[i] <= 480 - randomized_number[i];
-//                        end
-//                        else if ((160 + randomized_number[i] < 480) && (480 - randomized_number[i] > 0))
-//                        begin
-//                           plat_x[i] <= 160 + randomized_number[i];
-//                           plat_y[i] <= 480 - randomized_number[i];
-//                        end
                         else
                         begin
-                           plat_x[i] <= 160 + 13*i;
-                           plat_y[i] <= 480 - 10*i;
+                           plat_x[i] <= 160 + randomized_number[i];
+                           plat_y[i] <= 400 - randomized_number[i];
                         end
                     end
                     else
                     begin
-                        plat_x[i] <= 160 + randomized_number[i] + 28*i;
-                        plat_y[i] <= 480 - 10*i;
+                        plat_x[i] <= 160 + randomized_number[i]; // + 28*i;
+                        plat_y[i] <= 480 - randomized_number[i];
                     end
            end
         end
@@ -193,51 +196,52 @@ module platform_generator
                         begin
                             if (i <= 5)
                             begin
-                            plat_x[i] <= 160 + randomized_number[i] + 32*i;
-                            plat_y[i] <= 32*(i+1); 
+                            plat_x[i] <= 160 + randomized_number[i]; // + 32*i;
+//                            plat_y[i] <= 32*(i+1); 
+                            plat_y[i] <= 240 - randomized_number[i];
                             end
                             else if (i <= 10)
                             begin
-                            plat_x[i] <= 240 - randomized_number[i] + 24*i;
-                            plat_y[i] <= 16*(i+1); 
+                            plat_x[i] <= 300 - randomized_number[i]; // + 24*i;
+                            plat_y[i] <= 180 - randomized_number[i]; 
                             end
                             else if (i > 10 && i <= 15)
                             begin
-                                plat_x[i] <= 240 + randomized_number[i] + 16*i;
-                                plat_y[i] <= 300 - (randomized_number[i] + 16*i); 
+                                plat_x[i] <= 240 + randomized_number[i] ; //+ 16*i;
+                                plat_y[i] <= 300 - randomized_number[i]; // + 16*i); 
                             end
                             else if (i > 15 && i <= 20)
                             begin
-                                plat_x[i] <= 480 - randomized_number[i] - 10*i;
-                                plat_y[i] <= 300 - (randomized_number[i] + 10*i); 
+                                plat_x[i] <= 480 - randomized_number[i]; // - 10*i;
+                                plat_y[i] <= 300 - randomized_number[i]; // + 10*i); 
                             end
                             else
                             begin
-                                plat_x[i] <= 480 - randomized_number[i] + 10*i;
-                                plat_y[i] <= randomized_number[i] + 10*i; 
+                                plat_x[i] <= 400 - randomized_number[i]; //10*i;
+                                plat_y[i] <= randomized_number[i] ; // 10*i; 
                             end
                         end 
                         else if (score > 7'd4 && score <= 7'd10)
                         begin   
                             if (i <= 5)
                             begin
-                            plat_x[i] <= 160 + randomized_number[i] + 32*i;
-                            plat_y[i] <= 28*(i+1); 
+                            plat_x[i] <= 160 + randomized_number[i];// 32*i;
+                            plat_y[i] <= 180 - randomized_number[i]; 
                             end 
                             else if (i <= 10)
                             begin
-                            plat_x[i] <= 240 - randomized_number[i] + 16*i;
-                            plat_y[i] <= 28*(i+1); 
+                            plat_x[i] <= 240 - randomized_number[i]; //+ 16*i;
+                            plat_y[i] <= 160 - randomized_number[i]; 
                             end 
                             else if (i <= 15)
                             begin
-                            plat_x[i] <= 400 + randomized_number[i] - 20*i;
-                            plat_y[i] <= 280 - 10*i; 
+                            plat_x[i] <= 400 + randomized_number[i]; //- 20*i;
+                            plat_y[i] <= 240 - randomized_number[i]; 
                             end
                             else if (i <= 20)
                             begin
-                            plat_x[i] <= 100 + randomized_number[i] + 10*i;
-                            plat_y[i] <= 8*i; 
+                            plat_x[i] <= 160 + randomized_number[i]; // + 10*i;
+                            plat_y[i] <= 200 - randomized_number[i]; 
                             end
                             else 
                             begin
@@ -249,18 +253,18 @@ module platform_generator
                         begin
                             if (i <= 5)
                             begin
-                            plat_x[i] <= 160 + randomized_number[i] + 32*i;
-                            plat_y[i] <= 24*(i+1); 
+                            plat_x[i] <= 160 + randomized_number[i]; // + 32*i;
+                            plat_y[i] <= 200 - randomized_number[i]; 
                             end 
                             else if (i <= 10)
                             begin
-                                plat_x[i] <= 480 + randomized_number[i] - 32*i;
-                                plat_y[i] <= 10*(i+1); 
+                                plat_x[i] <= 480 + randomized_number[i]; // - 32*i;
+                                plat_y[i] <= 240 - randomized_number[i]; // 10*(i+1); 
                             end
                             else if (i <= 18)
                             begin
-                                plat_x[i] <= 360 - randomized_number[i] + 18*i;
-                                plat_y[i] <= 5*i;  
+                                plat_x[i] <= 360 - randomized_number[i]; //+ 18*i;
+                                plat_y[i] <= 180 - randomized_number[i];  
                             end
                             else 
                             begin

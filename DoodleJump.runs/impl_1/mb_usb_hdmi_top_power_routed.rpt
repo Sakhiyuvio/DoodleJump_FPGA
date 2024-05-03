@@ -1,7 +1,7 @@
 Copyright 1986-2022 Xilinx, Inc. All Rights Reserved.
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------
 | Tool Version     : Vivado v.2022.2 (lin64) Build 3671981 Fri Oct 14 04:59:54 MDT 2022
-| Date             : Thu May  2 16:45:12 2024
+| Date             : Thu May  2 22:57:53 2024
 | Host             : michael-XPS-13-9360 running 64-bit Ubuntu 20.04.4 LTS
 | Command          : report_power -file mb_usb_hdmi_top_power_routed.rpt -pb mb_usb_hdmi_top_power_summary_routed.pb -rpx mb_usb_hdmi_top_power_routed.rpx
 | Design           : mb_usb_hdmi_top
@@ -30,10 +30,10 @@ Table of Contents
 ----------
 
 +--------------------------+--------------+
-| Total On-Chip Power (W)  | 0.505        |
+| Total On-Chip Power (W)  | 0.516        |
 | Design Power Budget (W)  | Unspecified* |
 | Power Budget Margin (W)  | NA           |
-| Dynamic (W)              | 0.427        |
+| Dynamic (W)              | 0.438        |
 | Device Static (W)        | 0.078        |
 | Effective TJA (C/W)      | 4.9          |
 | Max Ambient (C)          | 82.5         |
@@ -52,23 +52,23 @@ Table of Contents
 +--------------------------+-----------+----------+-----------+-----------------+
 | On-Chip                  | Power (W) | Used     | Available | Utilization (%) |
 +--------------------------+-----------+----------+-----------+-----------------+
-| Clocks                   |     0.015 |       12 |       --- |             --- |
-| Slice Logic              |     0.026 |    15062 |       --- |             --- |
-|   LUT as Logic           |     0.024 |     6922 |     32600 |           21.23 |
-|   CARRY4                 |     0.001 |      898 |      8150 |           11.02 |
+| Clocks                   |     0.016 |       12 |       --- |             --- |
+| Slice Logic              |     0.032 |    14784 |       --- |             --- |
+|   LUT as Logic           |     0.029 |     6724 |     32600 |           20.63 |
+|   CARRY4                 |     0.001 |      885 |      8150 |           10.86 |
 |   LUT as Distributed RAM |    <0.001 |      172 |      9600 |            1.79 |
-|   Register               |    <0.001 |     3563 |     65200 |            5.46 |
-|   F7/F8 Muxes            |    <0.001 |      247 |     32600 |            0.76 |
+|   Register               |    <0.001 |     3566 |     65200 |            5.47 |
+|   F7/F8 Muxes            |    <0.001 |      237 |     32600 |            0.73 |
 |   LUT as Shift Register  |    <0.001 |      112 |      9600 |            1.17 |
 |   BUFG                   |    <0.001 |        1 |        32 |            3.13 |
 |   Others                 |     0.000 |      919 |       --- |             --- |
-| Signals                  |     0.025 |     9595 |       --- |             --- |
+| Signals                  |     0.030 |     9575 |       --- |             --- |
 | Block RAM                |     0.004 |       56 |        75 |           74.67 |
 | MMCM                     |     0.212 |        2 |         5 |           40.00 |
 | DSPs                     |     0.005 |       24 |       120 |           20.00 |
 | I/O                      |     0.140 |       42 |       210 |           20.00 |
 | Static Power             |     0.078 |          |           |                 |
-| Total                    |     0.505 |          |           |                 |
+| Total                    |     0.516 |          |           |                 |
 +--------------------------+-----------+----------+-----------+-----------------+
 
 
@@ -78,7 +78,7 @@ Table of Contents
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
 | Source    | Voltage (V) | Total (A) | Dynamic (A) | Static (A) | Powerup (A) | Budget (A)  | Margin (A) |
 +-----------+-------------+-----------+-------------+------------+-------------+-------------+------------+
-| Vccint    |       1.000 |     0.089 |       0.077 |      0.012 |       NA    | Unspecified | NA         |
+| Vccint    |       1.000 |     0.099 |       0.088 |      0.012 |       NA    | Unspecified | NA         |
 | Vccaux    |       1.800 |     0.130 |       0.118 |      0.013 |       NA    | Unspecified | NA         |
 | Vcco33    |       3.300 |     0.042 |       0.041 |      0.001 |       NA    | Unspecified | NA         |
 | Vcco25    |       2.500 |     0.003 |       0.002 |      0.001 |       NA    | Unspecified | NA         |
@@ -150,39 +150,39 @@ Table of Contents
 3.1 By Hierarchy
 ----------------
 
-+-------------------------------+-----------+
-| Name                          | Power (W) |
-+-------------------------------+-----------+
-| mb_usb_hdmi_top               |     0.427 |
-|   bullet_instance             |     0.001 |
-|   clk_wiz                     |     0.106 |
-|     inst                      |     0.106 |
-|   color_instance              |     0.003 |
-|   doodle_instance             |     0.007 |
-|   gameover                    |     0.001 |
-|   home_screen                 |     0.004 |
-|     doodlejump_rom            |     0.001 |
-|       U0                      |     0.001 |
-|   mb_block_i                  |     0.131 |
-|     clk_wiz_1                 |     0.106 |
-|       inst                    |     0.106 |
-|     microblaze_0              |     0.013 |
-|       U0                      |     0.013 |
-|     microblaze_0_axi_intc     |     0.001 |
-|       U0                      |     0.001 |
-|     microblaze_0_axi_periph   |     0.001 |
-|       xbar                    |     0.001 |
-|     spi_usb                   |     0.004 |
-|       U0                      |     0.004 |
-|     timer_usb_axi             |     0.002 |
-|       U0                      |     0.002 |
-|   monster_instance            |     0.005 |
-|   platform_inst               |     0.019 |
-|     generate_platform         |     0.003 |
-|     lfsr_number_generator[23] |     0.008 |
-|   vga                         |     0.004 |
-|   vga_to_hdmi                 |     0.132 |
-|     inst                      |     0.132 |
-+-------------------------------+-----------+
++----------------------------------------+-----------+
+| Name                                   | Power (W) |
++----------------------------------------+-----------+
+| mb_usb_hdmi_top                        |     0.438 |
+|   bullet_instance                      |     0.001 |
+|   clk_wiz                              |     0.106 |
+|     inst                               |     0.106 |
+|   color_instance                       |     0.003 |
+|   doodle_instance                      |     0.008 |
+|   gameover                             |     0.001 |
+|   home_screen                          |     0.004 |
+|     doodlejump_rom                     |     0.001 |
+|       U0                               |     0.001 |
+|   mb_block_i                           |     0.131 |
+|     clk_wiz_1                          |     0.106 |
+|       inst                             |     0.106 |
+|     microblaze_0                       |     0.013 |
+|       U0                               |     0.013 |
+|     microblaze_0_axi_intc              |     0.001 |
+|       U0                               |     0.001 |
+|     microblaze_0_axi_periph            |     0.001 |
+|       xbar                             |     0.001 |
+|     spi_usb                            |     0.004 |
+|       U0                               |     0.004 |
+|     timer_usb_axi                      |     0.002 |
+|       U0                               |     0.002 |
+|   monster_instance                     |     0.005 |
+|   platform_inst                        |     0.026 |
+|     generate_platform                  |     0.005 |
+|     lfsr_inst[0].lfsr_number_generator |     0.006 |
+|   vga                                  |     0.005 |
+|   vga_to_hdmi                          |     0.132 |
+|     inst                               |     0.132 |
++----------------------------------------+-----------+
 
 
